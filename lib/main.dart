@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/screens/offers.dart';
 
 //*-----------------------------MAIN--------------------------------------------
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() async {
   runApp(GamesValley());
 }
 
@@ -16,17 +16,7 @@ class GamesValley extends StatelessWidget {
         fontFamily: 'OpenSans',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('GamesValley'),      
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.work), label: 'Offers'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-          ),
-      ),
+      home: OffersScreen(),
     );
   }
 }

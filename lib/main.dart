@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/screens/login.dart';
 import 'package:games_valley/screens/offers.dart';
 
 //*-----------------------------MAIN--------------------------------------------
@@ -16,7 +17,7 @@ class GamesValley extends StatelessWidget {
         fontFamily: 'OpenSans',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: OffersScreen(),
+      home: LoginScreen(),
     );
   }
 }

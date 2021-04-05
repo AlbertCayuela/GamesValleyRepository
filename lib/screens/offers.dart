@@ -5,6 +5,7 @@ class OffersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.work), label: 'Offers'),
@@ -15,7 +16,7 @@ class OffersScreen extends StatelessWidget {
             children: [
               for(var i = 0; i<10; i++)
               Offer(
-                title: 'Gameplay Programmer C++',
+                title: '3D Artist sdfsdsfdsf dsfdsfsdfdsfsd fegdfgdfgdfgdfg',
                 location: 'Barcelona, Spain',
                 company: 'Ubisoft',
 
@@ -41,7 +42,6 @@ class Offer extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
           children: [
             CircleAvatar(
               backgroundImage: NetworkImage(this.imageURL),
@@ -49,32 +49,32 @@ class Offer extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            Column(
-              
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children:[
-                Text(this.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.deepPurple),),                           
-                Text(this.company),
-                          
-                SizedBox(height: 10),
-                Row(          
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.place, color: Colors.blueGrey, size: 17,),
-                        Text(this.location, style: TextStyle(color: Colors.blueGrey),),
-                      ],
-                    ),
-                    SizedBox(width: 20),
-                    Row(                     
-                      children: [
-                        Icon(Icons.attach_money, color: Colors.blueGrey, size: 17,),
-                        Text('$minSalary - $maxSalary $money', style: TextStyle(color: Colors.blueGrey),),
-                      ],
-                    ),
-                  ],
-                ),
-              ]
+            Expanded(
+                child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:[
+                  Text(this.title, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.deepPurple),),                           
+                  Text(this.company),                         
+                  SizedBox(height: 10),
+                  Row(          
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.place, color: Colors.blueGrey, size: 17,),
+                          Text(this.location, style: TextStyle(color: Colors.blueGrey),),
+                        ],
+                      ),
+                      SizedBox(width: 20),
+                      Row(                     
+                        children: [
+                          Icon(Icons.attach_money, color: Colors.blueGrey, size: 17,),
+                          Text('${this.minSalary} - ${this.maxSalary} $money', style: TextStyle(color: Colors.blueGrey)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ]
+              ),
             ),
           ],
         ),

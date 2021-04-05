@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+
+//todo touch outside textfield doesnt work
+//todo forgot passsword is just a text
+
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

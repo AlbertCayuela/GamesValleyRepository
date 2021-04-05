@@ -17,7 +17,7 @@ class GamesValley extends StatelessWidget {
         fontFamily: 'OpenSans',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      home: OffersScreen(),
     );
   }
 }

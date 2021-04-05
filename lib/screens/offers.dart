@@ -13,6 +13,7 @@ class OffersScreen extends StatelessWidget {
           ),
           body: ListView(
             children: [
+              for(var i = 0; i<10; i++)
               Offer(
                 title: 'Gameplay Programmer C++',
                 location: 'Barcelona, Spain',

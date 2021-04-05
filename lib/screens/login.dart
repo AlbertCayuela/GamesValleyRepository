@@ -43,7 +43,11 @@ class LoginScreen extends StatelessWidget {
               )
               ),
             Text('or'),
-            OutlinedButton(onPressed: null, child: Text('Sign up'))
+            OutlinedButton(onPressed: null, child: Text('Sign up')),
+            Expanded(child: Align(child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Forgot password?'),
+            ), alignment: Alignment.bottomCenter,)),
           ]
         ),
       ),

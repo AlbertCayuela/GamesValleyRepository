@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-class OffersScreen extends StatelessWidget {
+class OffersScreen extends StatefulWidget {
+  @override
+  _OffersScreenState createState() => _OffersScreenState();
+}
+
+class _OffersScreenState extends State<OffersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +21,7 @@ class OffersScreen extends StatelessWidget {
             children: [
               for(var i = 0; i<10; i++)
               Offer(
-                title: '3D Artist sdfsdsfdsf dsfdsfsdfdsfsd fegdfgdfgdfgdfg',
+                title: '3D Artist for the best company in the world',
                 location: 'Barcelona, Spain',
                 company: 'Ubisoft',
 
@@ -53,24 +58,16 @@ class Offer extends StatelessWidget {
                 child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children:[
-                  Text(this.title, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.deepPurple),),                           
+                  Text(this.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.deepPurple),),                           
                   Text(this.company),                         
                   SizedBox(height: 10),
                   Row(          
-                    children: [
-                      Row(
-                        children: [
+                    children: [                                              
                           Icon(Icons.place, color: Colors.blueGrey, size: 17,),
-                          Text(this.location, style: TextStyle(color: Colors.blueGrey),),
-                        ],
-                      ),
-                      SizedBox(width: 20),
-                      Row(                     
-                        children: [
+                          Text(this.location, style: TextStyle(color: Colors.blueGrey),),                                            
+                          SizedBox(width: 20),                                                        
                           Icon(Icons.attach_money, color: Colors.blueGrey, size: 17,),
-                          Text('${this.minSalary} - ${this.maxSalary} $money', style: TextStyle(color: Colors.blueGrey)),
-                        ],
-                      ),
+                          Text('${this.minSalary} - ${this.maxSalary} $money', style: TextStyle(color: Colors.blueGrey)),                         
                     ],
                   ),
                 ]

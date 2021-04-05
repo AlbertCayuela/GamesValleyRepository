@@ -26,14 +26,24 @@ class LoginScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
+                obscureText: true, //todo show-hide password
                 decoration: InputDecoration(
                   icon: Icon(Icons.vpn_key),
                   labelText: 'Password',
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                ),
-              
+                ),             
               ),
             ),
+            OutlinedButton(
+              onPressed: null, 
+              child: Text('Login', style: TextStyle(color: Colors.deepPurple),),
+              style: OutlinedButton.styleFrom(
+                primary: Colors.deepPurple,
+                side: BorderSide(color: Colors.deepPurple)
+              )
+              ),
+            Text('or'),
+            OutlinedButton(onPressed: null, child: Text('Sign up'))
           ]
         ),
       ),

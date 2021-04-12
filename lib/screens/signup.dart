@@ -65,7 +65,9 @@ class SignUpScreen extends StatelessWidget {
                     primary: Colors.deepPurple,
                     side: BorderSide(color: Colors.deepPurple))),
             Text('or'),
-            OutlinedButton(onPressed: null, child: Text('Login')),
+            OutlinedButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Login', style: TextStyle(color: Colors.blueGrey))),
           ]),
         ),
       ),

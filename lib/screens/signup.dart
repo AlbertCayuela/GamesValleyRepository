@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 //todo touch outside textfield doesnt work
 //todo forgot passsword is just a text
-
-class LoginScreen extends StatelessWidget {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-
+//todo overflow lower screen
+class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +34,18 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10),
             child: TextField(
+              decoration: InputDecoration(
+                icon: Icon(Icons.person),
+                labelText: 'Username',
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              keyboardType: TextInputType.emailAddress,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: TextField(
               obscureText: true, //todo show-hide password
               decoration: InputDecoration(
                 icon: Icon(Icons.vpn_key),
@@ -49,22 +58,14 @@ class LoginScreen extends StatelessWidget {
           OutlinedButton(
               onPressed: null,
               child: Text(
-                'Login',
+                'Sign Up',
                 style: TextStyle(color: Colors.deepPurple),
               ),
               style: OutlinedButton.styleFrom(
                   primary: Colors.deepPurple,
                   side: BorderSide(color: Colors.deepPurple))),
           Text('or'),
-          OutlinedButton(onPressed: null, child: Text('Sign up')),
-          Expanded(
-              child: Align(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('Forgot password?'),
-            ),
-            alignment: Alignment.bottomCenter,
-          )),
+          OutlinedButton(onPressed: null, child: Text('Login')),
         ]),
       ),
     );

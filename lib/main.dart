@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/screens/base.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:games_valley/screens/signup.dart';
 
 //*-----------------------------MAIN--------------------------------------------
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(GamesValley());
 }
 
@@ -16,7 +20,7 @@ class GamesValley extends StatelessWidget {
         fontFamily: 'OpenSans',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BaseScreen(),
+      home: SignUpScreen(),
     );
   }
 }

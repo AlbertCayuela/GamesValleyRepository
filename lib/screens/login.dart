@@ -24,6 +24,19 @@ class LoginScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: EdgeInsets.only(left: 55),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54),
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: TextField(

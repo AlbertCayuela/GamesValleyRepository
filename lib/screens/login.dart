@@ -66,8 +66,7 @@ class LoginScreen extends StatelessWidget {
                 'Sign up',
                 style: TextStyle(color: Colors.blueGrey),
               ),
-              onPressed: () =>
-                  Navigator.pushReplacementNamed(context, '/signup'),
+              onPressed: () => Navigator.pushNamed(context, '/signup'),
             ),
           ]),
         ),

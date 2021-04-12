@@ -41,7 +41,6 @@ class SignUpScreen extends StatelessWidget {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
                 ),
-                keyboardType: TextInputType.emailAddress,
               ),
             ),
             Padding(

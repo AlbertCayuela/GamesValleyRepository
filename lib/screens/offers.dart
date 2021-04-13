@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/functions/offers_functions.dart';
 
 class OffersScreen extends StatefulWidget {
   @override
@@ -7,22 +8,29 @@ class OffersScreen extends StatefulWidget {
 
 class _OffersScreenState extends State<OffersScreen> {
   List<Offer> offersList;
+  ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     offersList = List.generate(10, (index) => Offer(title: '$index'));
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        loadMoreOffers(10, offersList);
+        setState(() {});
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      controller: _scrollController,
       itemCount: offersList.length,
       itemBuilder: (context, index) {
-        return Container(
-          child: offersList[index],
-        );
+        return offersList[index];
       },
     );
   }

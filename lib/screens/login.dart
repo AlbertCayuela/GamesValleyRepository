@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 //todo forgot passsword is just a text
 
 class LoginScreen extends StatelessWidget {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +42,7 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     icon: Icon(Icons.mail),
                     labelText: 'Email',
@@ -52,6 +55,7 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: TextField(
+                  controller: _passwordController,
                   obscureText: true, //todo show-hide password
                   decoration: InputDecoration(
                     icon: Icon(Icons.vpn_key),
@@ -65,7 +69,11 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: OutlinedButton(
-                    onPressed: null,
+                    onPressed: () {
+                      context.read<UserRepository>().signIn(
+                          email: _emailController.text,
+                          password: _passwordController.text);
+                    },
                     child: Text(
                       'Login',
                       style: TextStyle(color: Colors.deepPurple),

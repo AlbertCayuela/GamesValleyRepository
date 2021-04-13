@@ -28,7 +28,7 @@ class GamesValley extends StatelessWidget {
         '/offers': (context) => LoginScreen(),
         '/profile': (context) => ProfileScreen(),
       },
-      home: LoginScreen(),
+      home: BaseScreen(),
     );
   }
 }

@@ -6,16 +6,25 @@ class OffersScreen extends StatefulWidget {
 }
 
 class _OffersScreenState extends State<OffersScreen> {
+  List<Offer> offersList;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    offersList = List.generate(10, (index) => Offer(title: '$index'));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      for (var i = 0; i < 10; i++)
-        Offer(
-          title: '3D Artist for the best company in the world',
-          location: 'Barcelona, Spain',
-          company: 'Ubisoft',
-        ),
-    ]);
+    return ListView.builder(
+      itemCount: offersList.length,
+      itemBuilder: (context, index) {
+        return Container(
+          child: offersList[index],
+        );
+      },
+    );
   }
 }
 

@@ -37,6 +37,7 @@ class UserRepository {
       db.collection('users').doc(firebaseAuth.currentUser.uid).set({
         'username': userName,
         'email': firebaseAuth.currentUser.email,
+        'registrationdate': DateTime.now(),
       });
       return true;
     }

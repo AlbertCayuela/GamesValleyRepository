@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    context.read<UserRepository>().getUserInfo();
     return Scaffold(
       body: Column(
         children: [

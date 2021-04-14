@@ -59,13 +59,20 @@ class UserRepository {
   }
 
   Future<UserInfo> getUserInfo() async {
-    //get username
-    // CollectionReference reference =
-    //     FirebaseFirestore.instance.collection('users').
-    // QuerySnapshot usersQuery = await reference.get()
+    DocumentReference docReference = FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseAuth.currentUser.uid);
+    await docReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        print(datasnapshot.get('username'));
+      } else {
+        print('cant find this user...');
+      }
+    });
   }
 }
 
 class UserInfo {
   String username;
+  var uid;
 }

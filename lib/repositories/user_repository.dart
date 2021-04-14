@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserRepository {
-  final FirebaseAuth _firebaseAuth;
+  final FirebaseAuth firebaseAuth;
 
-  UserRepository(this._firebaseAuth);
+  UserRepository(this.firebaseAuth);
 
-  Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
+  Stream<User> get authStateChanges => firebaseAuth.authStateChanges();
 
   Future<String> signIn({String email, String password}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       return 'Signed in';
     } on FirebaseAuthException catch (e) {
@@ -19,7 +19,7 @@ class UserRepository {
 
   Future<String> signUp({String email, String password}) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
       return 'Signed up';
     } catch (e) {
@@ -27,7 +27,16 @@ class UserRepository {
     }
   }
 
+  Future<void> singOut() async {
+    await firebaseAuth.signOut();
+  }
+
   String getUserEmail() {
-    return _firebaseAuth.currentUser.email;
+    String email;
+    if (firebaseAuth.currentUser == null) {
+      return 'current user is null';
+    }
+    email = firebaseAuth.currentUser.email;
+    return email;
   }
 }

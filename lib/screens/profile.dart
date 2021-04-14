@@ -12,6 +12,7 @@ class ProfileScreen extends StatelessWidget {
           RaisedButton(
             onPressed: () {
               context.read<UserRepository>().singOut();
+              Navigator.popAndPushNamed(context, '/authwrapper');
             },
             child: Text('Sing out'),
           )

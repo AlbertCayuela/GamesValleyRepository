@@ -5,9 +5,19 @@ import 'package:provider/provider.dart';
 //todo touch outside textfield doesnt work
 //todo forgot passsword is just a text
 //todo overflow lower screen
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  bool isSignedUp = false;
+  bool signUp = false;
+
   TextEditingController _emailController = TextEditingController();
+
   TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,10 +88,18 @@ class SignUpScreen extends StatelessWidget {
               ),
 //------------SIGN UP BUTTON----------------------------------------------------------------------------
               OutlinedButton(
-                  onPressed: () {
-                    context.read<UserRepository>().signUp(
+                  onPressed: () async {
+                    isSignedUp = await context.read<UserRepository>().signUp(
                         email: _emailController.text,
                         password: _passwordController.text);
+                    if (isSignedUp) {
+                      setState(() {
+                        signUp = true;
+                      });
+                      if (signUp) {
+                        Navigator.pushNamed(context, '/offers');
+                      }
+                    }
                   },
                   child: Text(
                     'Sign Up',

@@ -4,6 +4,7 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/base.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:games_valley/screens/login.dart';
+import 'package:games_valley/screens/offers.dart';
 import 'package:games_valley/screens/profile.dart';
 import 'package:games_valley/screens/signup.dart';
 import 'package:provider/provider.dart';
@@ -36,8 +37,9 @@ class GamesValley extends StatelessWidget {
         routes: {
           '/login': (context) => LoginScreen(),
           '/signup': (context) => SignUpScreen(),
-          '/offers': (context) => LoginScreen(),
+          '/offers': (context) => BaseScreen(),
           '/profile': (context) => ProfileScreen(),
+          '/authwrapper': (context) => AuthWrapper(),
         },
         home: MultiProvider(
           child: AuthWrapper(),

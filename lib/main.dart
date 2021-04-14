@@ -18,28 +18,37 @@ Future<void> main() async {
 class GamesValley extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'GamesValley',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: 'OpenSans',
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      routes: {
-        '/login': (context) => LoginScreen(),
-        '/signup': (context) => SignUpScreen(),
-        '/offers': (context) => LoginScreen(),
-        '/profile': (context) => ProfileScreen(),
-      },
-      home: MultiProvider(
-        child: AuthWrapper(),
-        providers: [
-          Provider<UserRepository>(
-              create: (_) => UserRepository(FirebaseAuth.instance)),
-          StreamProvider(
-              create: (context) =>
-                  context.read<UserRepository>().authStateChanges),
-        ],
+    return MultiProvider(
+      providers: [
+        Provider<UserRepository>(
+            create: (_) => UserRepository(FirebaseAuth.instance)),
+        StreamProvider(
+            create: (context) =>
+                context.read<UserRepository>().authStateChanges),
+      ],
+      child: MaterialApp(
+        title: 'GamesValley',
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          fontFamily: 'OpenSans',
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        routes: {
+          '/login': (context) => LoginScreen(),
+          '/signup': (context) => SignUpScreen(),
+          '/offers': (context) => LoginScreen(),
+          '/profile': (context) => ProfileScreen(),
+        },
+        home: MultiProvider(
+          child: AuthWrapper(),
+          providers: [
+            Provider<UserRepository>(
+                create: (_) => UserRepository(FirebaseAuth.instance)),
+            StreamProvider(
+                create: (context) =>
+                    context.read<UserRepository>().authStateChanges),
+          ],
+        ),
       ),
     );
   }

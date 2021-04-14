@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
 
 //todo touch outside textfield doesnt work
 //todo forgot passsword is just a text
 //todo overflow lower screen
 class SignUpScreen extends StatelessWidget {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +42,7 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     icon: Icon(Icons.mail),
                     labelText: 'Email',
@@ -62,6 +66,7 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: TextField(
+                  controller: _passwordController,
                   obscureText: true, //todo show-hide password
                   decoration: InputDecoration(
                     icon: Icon(Icons.vpn_key),
@@ -71,8 +76,13 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
               ),
-//              OutlinedButton(
-                  onPressed: null,
+//------------SIGN UP BUTTON----------------------------------------------------------------------------
+              OutlinedButton(
+                  onPressed: () {
+                    context.read<UserRepository>().signUp(
+                        email: _emailController.text,
+                        password: _passwordController.text);
+                  },
                   child: Text(
                     'Sign Up',
                     style: TextStyle(color: Colors.deepPurple),

@@ -17,6 +17,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _emailController = TextEditingController();
 
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _userNameController = TextEditingController();
 
   @override
   void initState() {
@@ -72,6 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: TextField(
+                  controller: _userNameController,
                   decoration: InputDecoration(
                     icon: Icon(Icons.person),
                     labelText: 'Username',
@@ -98,7 +100,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onPressed: () async {
                     isSignedUp = await context.read<UserRepository>().signUp(
                         email: _emailController.text,
-                        password: _passwordController.text);
+                        password: _passwordController.text,
+                        userName: _userNameController.text);
                     if (isSignedUp) {
                       setState(() {
                         signUp = true;

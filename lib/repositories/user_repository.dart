@@ -21,7 +21,7 @@ class UserRepository {
   }
 
   //sign up
-  Future<bool> signUp({String email, String password}) async {
+  Future<bool> signUp({String email, String password, String userName}) async {
     bool success;
     try {
       await firebaseAuth.createUserWithEmailAndPassword(
@@ -34,6 +34,7 @@ class UserRepository {
     if (success) {
       db.collection('users').add({
         'uid': firebaseAuth.currentUser.uid,
+        'username': userName,
       });
       return true;
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 //todo touch outside textfield doesnt work
 //todo forgot passsword is just a text
@@ -70,7 +71,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              OutlinedButton(
+//              OutlinedButton(
                   onPressed: null,
                   child: Text(
                     'Sign Up',

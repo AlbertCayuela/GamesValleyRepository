@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 //todo forgot passsword is just a text
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
+  bool logInSuccess = true;
+  bool logInError = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,11 +77,35 @@ class LoginScreen extends StatelessWidget {
               Text('Forgot password?'),
               Padding(
                 padding: const EdgeInsets.all(8.0),
+//LOGIN BUTTON--------------------------------------------------------------------------------------
                 child: OutlinedButton(
-                    onPressed: () {
-                      context.read<UserRepository>().signIn(
-                          email: _emailController.text,
-                          password: _passwordController.text);
+                    onPressed: () async {
+                      logInSuccess = await context
+                          .read<UserRepository>()
+                          .signIn(
+                              email: _emailController.text,
+                              password: _passwordController.text);
+                      print(logInSuccess);
+                      setState(() {
+                        logInError = !logInSuccess;
+                      });
+                      if (logInError) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(
+                                    'Email and/or password not correct :('),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('OK')),
+                                ],
+                              );
+                            });
+                      }
                     },
                     child: Text(
                       'Login',
@@ -82,6 +115,7 @@ class LoginScreen extends StatelessWidget {
                         primary: Colors.deepPurple,
                         side: BorderSide(color: Colors.deepPurple))),
               ),
+//--------------------------------------------------------------------------------------------------------
               Text('or'),
               OutlinedButton(
                 child: Text(

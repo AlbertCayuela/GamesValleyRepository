@@ -7,13 +7,13 @@ class UserRepository {
 
   Stream<User> get authStateChanges => firebaseAuth.authStateChanges();
 
-  Future<String> signIn({String email, String password}) async {
+  Future<bool> signIn({String email, String password}) async {
     try {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      return 'Signed in';
+      return true;
     } on FirebaseAuthException catch (e) {
-      return e.message;
+      return false;
     }
   }
 

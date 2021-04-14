@@ -22,12 +22,20 @@ class UserRepository {
 
   //sign up
   Future<bool> signUp({String email, String password}) async {
+    bool success;
     try {
       await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-      return true;
+      success = true;
     } catch (e) {
       return false;
+    }
+
+    if (success) {
+      db.collection('users').add({
+        'uid': firebaseAuth.currentUser.uid,
+      });
+      return true;
     }
   }
 
@@ -44,11 +52,5 @@ class UserRepository {
     }
     email = firebaseAuth.currentUser.email;
     return email;
-  }
-
-  void addUserToDatabase() {
-    db.collection('users').add({
-      'uid': firebaseAuth.currentUser.uid,
-    });
   }
 }

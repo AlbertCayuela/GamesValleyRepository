@@ -5,6 +5,8 @@ class UserRepository {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
+  UserInfo user;
+
   UserRepository(this.firebaseAuth);
 
   Stream<User> get authStateChanges => firebaseAuth.authStateChanges();
@@ -32,9 +34,9 @@ class UserRepository {
     }
 
     if (success) {
-      db.collection('users').add({
-        'uid': firebaseAuth.currentUser.uid,
+      db.collection('users').doc(firebaseAuth.currentUser.uid).set({
         'username': userName,
+        'email': firebaseAuth.currentUser.email,
       });
       return true;
     }
@@ -54,4 +56,15 @@ class UserRepository {
     email = firebaseAuth.currentUser.email;
     return email;
   }
+
+  Future<UserInfo> getUserInfo() async {
+    //get username
+    // CollectionReference reference =
+    //     FirebaseFirestore.instance.collection('users').
+    // QuerySnapshot usersQuery = await reference.get()
+  }
+}
+
+class UserInfo {
+  String username;
 }

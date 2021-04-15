@@ -28,25 +28,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-      return CircularProgressIndicator();
+      return Center(child: CircularProgressIndicator());
     } else {
-      return Scaffold(
-        body: Column(
-          children: [
-            Text(context.read<UserRepository>().getUserEmail()),
-            RaisedButton(
-              onPressed: () {
-                context.read<UserRepository>().singOut();
-                Navigator.popAndPushNamed(context, '/authwrapper');
-              },
-              child: Text('Sing out'),
-            ),
-            Text(user.username),
-            Text(user.uid),
-            Text(user.email),
-          ],
-        ),
-      );
+      return ProfileScreenWidget(user: user);
     }
+  }
+}
+
+class ProfileScreenWidget extends StatelessWidget {
+  const ProfileScreenWidget({
+    Key key,
+    @required this.user,
+  }) : super(key: key);
+
+  final UserInfo user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Text(context.read<UserRepository>().getUserEmail()),
+          RaisedButton(
+            onPressed: () {
+              context.read<UserRepository>().singOut();
+              Navigator.popAndPushNamed(context, '/authwrapper');
+            },
+            child: Text('Sing out'),
+          ),
+          Text(user.username),
+          Text(user.uid),
+          Text(user.email),
+        ],
+      ),
+    );
   }
 }

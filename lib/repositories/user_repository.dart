@@ -5,8 +5,6 @@ class UserRepository {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
-  UserInfo user;
-
   UserRepository(this.firebaseAuth);
 
   Stream<User> get authStateChanges => firebaseAuth.authStateChanges();
@@ -58,21 +56,28 @@ class UserRepository {
     return email;
   }
 
+  //get user information into user class
   Future<UserInfo> getUserInfo() async {
+    UserInfo user = UserInfo();
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseAuth.currentUser.uid);
     await docReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
-        print(datasnapshot.get('username'));
+        user.username = datasnapshot.get('username');
+        user.uid = docReference.id;
+        user.email = datasnapshot.get('email');
       } else {
         print('cant find this user...');
       }
     });
+
+    return user;
   }
 }
 
 class UserInfo {
   String username;
+  String email;
   var uid;
 }

@@ -55,7 +55,24 @@ class ProfileScreenWidget extends StatelessWidget {
               children: [
                 MainInfoWidget(user: user),
                 SizedBox(height: 8),
-                WorkExperienceWidget(),
+                WorkAndStudiesWidget(
+                  title: 'Gameplay programmer',
+                  place: 'Ubisoft',
+                  isWork: true,
+                  startMonth: 'March',
+                  startYear: 2019,
+                  finalMonth: 'January',
+                  finalYear: 2020,
+                ),
+                SizedBox(height: 8),
+                WorkAndStudiesWidget(
+                    title: 'Video games design and development',
+                    place: 'Universitat Politècninca de Catalunya',
+                    isWork: false,
+                    finalMonth: 'July',
+                    finalYear: 2021,
+                    startMonth: 'September',
+                    startYear: 2016),
                 SizedBox(height: 8),
                 Container(
                   padding: EdgeInsets.all(7),
@@ -64,28 +81,41 @@ class ProfileScreenWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                   ),
                   child: Row(
-                    mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Column(
-                          mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              'Studies:',
+                              'Languages:',
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
                             SizedBox(height: 5),
-                            Text('Uni'),
+                            Row(
+                              children: [
+                                Text('English - '),
+                                Text(
+                                  'Professional level',
+                                  style: TextStyle(color: Colors.blueGrey),
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       ),
                       Align(
-                          alignment: Alignment.topRight,
-                          child:
-                              TextButton(onPressed: () {}, child: Text('Edit')))
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('Edit'),
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -98,10 +128,25 @@ class ProfileScreenWidget extends StatelessWidget {
   }
 }
 
-class WorkExperienceWidget extends StatelessWidget {
-  const WorkExperienceWidget({
+class WorkAndStudiesWidget extends StatelessWidget {
+  const WorkAndStudiesWidget({
     Key key,
+    @required this.title,
+    @required this.place,
+    @required this.isWork,
+    @required this.finalMonth,
+    @required this.finalYear,
+    @required this.startMonth,
+    @required this.startYear,
   }) : super(key: key);
+
+  final String title;
+  final String place;
+  final bool isWork;
+  final String startMonth;
+  final String finalMonth;
+  final int startYear;
+  final int finalYear;
 
   @override
   Widget build(BuildContext context) {
@@ -119,16 +164,21 @@ class WorkExperienceWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Work Experience:',
+                  isWork ? 'Work experience:' : 'Studies:',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 SizedBox(height: 5),
                 Text(
-                  'Gameplay programmer at Ubisoft',
+                  this.title + ' at ' + this.place,
                 ),
-                SizedBox(height: 10),
                 Text(
-                  'March 2019 - October 2020',
+                  this.startMonth +
+                      ' ' +
+                      this.startYear.toString() +
+                      ' - ' +
+                      this.finalMonth +
+                      ' ' +
+                      this.finalYear.toString(),
                   style: TextStyle(color: Colors.blueGrey, fontSize: 12),
                 ),
               ],
@@ -160,6 +210,8 @@ class MainInfoWidget extends StatelessWidget {
         color: Colors.white,
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           CircleAvatar(
             radius: 60,
@@ -169,56 +221,67 @@ class MainInfoWidget extends StatelessWidget {
           SizedBox(
             width: 20,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Margarita Robles',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Icon(
-                    Icons.perm_identity,
-                    color: Colors.blueGrey,
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    user.username,
-                    style: TextStyle(color: Colors.blueGrey, fontSize: 15),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Icon(
-                    Icons.email_outlined,
-                    color: Colors.blueGrey,
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    user.email,
-                    style: TextStyle(color: Colors.blueGrey, fontSize: 15),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Icon(
-                    Icons.phone_outlined,
-                    color: Colors.blueGrey,
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    '+34 666 66 66 66',
-                    style: TextStyle(color: Colors.blueGrey, fontSize: 15),
-                  ),
-                ],
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Margarita Robles',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.perm_identity,
+                      color: Colors.blueGrey,
+                    ),
+                    SizedBox(width: 5),
+                    Text(
+                      user.username,
+                      style: TextStyle(color: Colors.blueGrey, fontSize: 15),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.email_outlined,
+                      color: Colors.blueGrey,
+                    ),
+                    SizedBox(width: 5),
+                    Text(
+                      user.email,
+                      style: TextStyle(color: Colors.blueGrey, fontSize: 15),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.phone_outlined,
+                      color: Colors.blueGrey,
+                    ),
+                    SizedBox(width: 5),
+                    Expanded(
+                      child: Text(
+                        '+34 666 66 66 666666 66666 6666666',
+                        style: TextStyle(color: Colors.blueGrey, fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: TextButton(
+              onPressed: () {},
+              child: Text('Edit'),
+            ),
           ),
         ],
       ),

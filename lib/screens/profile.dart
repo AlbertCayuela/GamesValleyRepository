@@ -55,29 +55,60 @@ class ProfileScreenWidget extends StatelessWidget {
               children: [
                 MainInfoWidget(user: user),
                 SizedBox(height: 8),
-                Container(
-                  padding: EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(7)),
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'Work Experience:',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                WorkExperienceWidget(),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class WorkExperienceWidget extends StatelessWidget {
+  const WorkExperienceWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(7),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(7)),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Work Experience:',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'Gameplay programmer at Ubisoft saodsdklsadkadñakdsñakdñakdñakdñakdñakdañdkañdkañdkañ',
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'March 2019 - October 2020',
+                  style: TextStyle(
+                      color: Colors.blueGrey, fontSize: 12),
+                ),
+              ],
+            ),
+          ),
+          Align(
+              alignment: Alignment.topRight,
+              child: TextButton(
+                  onPressed: () {}, child: Text('Edit'))),
+        ],
       ),
     );
   }

@@ -56,6 +56,39 @@ class ProfileScreenWidget extends StatelessWidget {
                 MainInfoWidget(user: user),
                 SizedBox(height: 8),
                 WorkExperienceWidget(),
+                SizedBox(height: 8),
+                Container(
+                  padding: EdgeInsets.all(7),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Studies:',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            SizedBox(height: 5),
+                            Text('Uni'),
+                          ],
+                        ),
+                      ),
+                      Align(
+                          alignment: Alignment.topRight,
+                          child:
+                              TextButton(onPressed: () {}, child: Text('Edit')))
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -75,8 +108,7 @@ class WorkExperienceWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(7),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(7)),
+          color: Colors.white, borderRadius: BorderRadius.circular(7)),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,26 +120,23 @@ class WorkExperienceWidget extends StatelessWidget {
               children: [
                 Text(
                   'Work Experience:',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 SizedBox(height: 5),
                 Text(
-                  'Gameplay programmer at Ubisoft saodsdklsadkadñakdsñakdñakdñakdñakdñakdañdkañdkañdkañ',
+                  'Gameplay programmer at Ubisoft',
                 ),
                 SizedBox(height: 10),
                 Text(
                   'March 2019 - October 2020',
-                  style: TextStyle(
-                      color: Colors.blueGrey, fontSize: 12),
+                  style: TextStyle(color: Colors.blueGrey, fontSize: 12),
                 ),
               ],
             ),
           ),
           Align(
               alignment: Alignment.topRight,
-              child: TextButton(
-                  onPressed: () {}, child: Text('Edit'))),
+              child: TextButton(onPressed: () {}, child: Text('Edit'))),
         ],
       ),
     );

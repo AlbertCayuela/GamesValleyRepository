@@ -37,6 +37,9 @@ class UserRepository {
         'email': firebaseAuth.currentUser.email,
         'registrationdate': DateTime.now(),
       });
+      db.collection('work').doc(firebaseAuth.currentUser.uid).set({
+        '0' : [], 
+      });
       return true;
     }
   }

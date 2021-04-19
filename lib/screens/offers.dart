@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/functions/offers_functions.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
 class OffersScreen extends StatefulWidget {
   @override
@@ -59,6 +61,7 @@ class Offer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            TextButton(onPressed: (){context.read<UserRepository>().singOut();}, child: Text('sign out')),
             CircleAvatar(
               backgroundImage: NetworkImage(this.imageURL),
             ),

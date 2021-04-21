@@ -84,9 +84,9 @@ class UserRepository {
     @required String job,
     @required String company,
     @required String startingMonth,
-    @required int startingYear,
+    @required String startingYear,
     String finishingMonth,
-    int finishYear,
+    String finishYear,
   }) {
     var jobArray = [
       job,
@@ -97,7 +97,7 @@ class UserRepository {
       finishYear
     ];
 
-    db.collection('work').doc(firebaseAuth.currentUser.uid).set({
+    db.collection('work').doc(firebaseAuth.currentUser.uid).update({
       Timestamp.now().microsecondsSinceEpoch.toString(): jobArray,
     });
   }

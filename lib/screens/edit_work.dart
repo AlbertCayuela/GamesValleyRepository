@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
 class EditWorkScreen extends StatefulWidget {
   @override
@@ -45,6 +47,7 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                   ),
                   SizedBox(height: 10),
                   TextField(
+                    controller: _jobController,
                     decoration: InputDecoration(
                       //icon: Icon(Icons.mail),
                       labelText: 'Job',
@@ -54,6 +57,7 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                   ),
                   SizedBox(height: 10),
                   TextField(
+                    controller: _companyController,
                     decoration: InputDecoration(
                       //icon: Icon(Icons.mail),
                       labelText: 'Company',
@@ -118,6 +122,7 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                   ),
                   SizedBox(height: 10),
                   TextField(
+                    controller: _startingYearController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Starting year',
@@ -182,16 +187,28 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                   ),
                   SizedBox(height: 10),
                   TextField(
+                    controller: _finishingYearController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Finish year',
+                      labelText: 'Finishing year',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                      onPressed: () {}, child: Text('Add experience')),
+                      onPressed: () {
+                        context.read<UserRepository>().addJobExperience(
+                              job: _jobController.text,
+                              company: _companyController.text,
+                              startingMonth: startingMonth,
+                              startingYear: _startingYearController.text,
+                              finishingMonth: finishMonth,
+                              finishYear: _finishingYearController.text,
+                            );
+                        Navigator.pop(context);
+                      },
+                      child: Text('Add experience')),
                 ]),
           ),
         ),

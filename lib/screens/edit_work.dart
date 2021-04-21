@@ -206,7 +206,7 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                               finishingMonth: finishMonth,
                               finishYear: _finishingYearController.text,
                             );
-                        Navigator.pop(context);
+                        //Navigator.pop(context);
                       },
                       child: Text('Add experience')),
                 ]),

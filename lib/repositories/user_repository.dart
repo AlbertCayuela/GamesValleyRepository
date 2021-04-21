@@ -63,6 +63,7 @@ class UserRepository {
   //get user information into user class
   Future<UserInfo> getUserInfo() async {
     UserInfo user = UserInfo();
+    var maps;
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseAuth.currentUser.uid);
@@ -74,6 +75,15 @@ class UserRepository {
       } else {
         print('cant find this user...');
       }
+    });
+
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('work')
+        .doc(firebaseAuth.currentUser.uid);
+    await documentReference.get().then((datasnapshot) {
+      maps = datasnapshot.data();
+      user.workExperiences = maps.values.toList();
+      print(user.workExperiences);
     });
 
     return user;
@@ -107,4 +117,5 @@ class UserInfo {
   String username;
   String email;
   var uid;
+  List<dynamic> workExperiences;
 }

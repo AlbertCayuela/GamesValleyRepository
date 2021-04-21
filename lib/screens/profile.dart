@@ -56,6 +56,7 @@ class ProfileScreenWidget extends StatelessWidget {
                 MainInfoWidget(user: user),
                 SizedBox(height: 8),
                 WorkAndStudiesWidget(
+                  user: user,
                   title: 'Gameplay programmer',
                   place: 'Ubisoft',
                   isWork: true,
@@ -66,6 +67,7 @@ class ProfileScreenWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 WorkAndStudiesWidget(
+                    user: user,
                     title: 'Video games design and development',
                     place: 'Universitat Politècninca de Catalunya',
                     isWork: false,
@@ -138,6 +140,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
     @required this.finalYear,
     @required this.startMonth,
     @required this.startYear,
+    @required this.user,
   }) : super(key: key);
 
   final String title;
@@ -147,7 +150,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
   final String finalMonth;
   final int startYear;
   final int finalYear;
-
+  final UserInfo user;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -168,27 +171,74 @@ class WorkAndStudiesWidget extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 SizedBox(height: 5),
-                Text(
-                  this.title + ' at ' + this.place,
-                ),
-                Text(
-                  this.startMonth +
-                      ' ' +
-                      this.startYear.toString() +
-                      ' - ' +
-                      this.finalMonth +
-                      ' ' +
-                      this.finalYear.toString(),
-                  style: TextStyle(color: Colors.blueGrey, fontSize: 12),
-                ),
+                if (isWork)
+                  for (int i = 0; i < this.user.workExperiences.length; i++)
+                    WorkAndStudiesInfo(
+                        user: user,
+                        title: this.user.workExperiences[i][0],
+                        place: this.user.workExperiences[i][1],
+                        startMonth: startMonth,
+                        startYear: startYear,
+                        finalMonth: finalMonth,
+                        finalYear: finalYear),
+                //is studies ?
               ],
             ),
           ),
           Align(
               alignment: Alignment.topRight,
-              child: TextButton(onPressed: () {
-                isWork ? Navigator.pushNamed(context, '/editwork') : null;
-              }, child: Text('Edit'))),
+              child: TextButton(
+                  onPressed: () {
+                    //isWork ? Navigator.pushNamed(context, '/editwork') : null;
+                    print(user.workExperiences);
+                  },
+                  child: Text('Edit'))),
+        ],
+      ),
+    );
+  }
+}
+
+class WorkAndStudiesInfo extends StatelessWidget {
+  const WorkAndStudiesInfo({
+    Key key,
+    @required this.user,
+    @required this.title,
+    @required this.place,
+    @required this.startMonth,
+    @required this.startYear,
+    @required this.finalMonth,
+    @required this.finalYear,
+  }) : super(key: key);
+
+  final UserInfo user;
+  final String title;
+  final String place;
+  final String startMonth;
+  final int startYear;
+  final String finalMonth;
+  final int finalYear;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            this.title + ' at ' + this.place,
+          ),
+          Text(
+            this.startMonth +
+                ' ' +
+                this.startYear.toString() +
+                ' - ' +
+                this.finalMonth +
+                ' ' +
+                this.finalYear.toString(),
+            style: TextStyle(color: Colors.blueGrey, fontSize: 12),
+          ),
+          SizedBox(height: 5),
         ],
       ),
     );

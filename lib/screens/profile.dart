@@ -186,7 +186,9 @@ class WorkAndStudiesWidget extends StatelessWidget {
           ),
           Align(
               alignment: Alignment.topRight,
-              child: TextButton(onPressed: () {}, child: Text('Edit'))),
+              child: TextButton(onPressed: () {
+                isWork ? Navigator.pushNamed(context, '/editwork') : null;
+              }, child: Text('Edit'))),
         ],
       ),
     );

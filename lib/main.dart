@@ -8,6 +8,7 @@ import 'package:games_valley/screens/offers.dart';
 import 'package:games_valley/screens/profile.dart';
 import 'package:games_valley/screens/signup.dart';
 import 'package:provider/provider.dart';
+import 'package:games_valley/screens/edit_work.dart';
 
 //*-----------------------------MAIN--------------------------------------------
 Future<void> main() async {
@@ -40,6 +41,7 @@ class GamesValley extends StatelessWidget {
           '/offers': (context) => BaseScreen(),
           '/profile': (context) => ProfileScreen(),
           '/authwrapper': (context) => AuthWrapper(),
+          '/editwork' : (context) => EditWorkScreen(),
         },
         home: MultiProvider(
           child: AuthWrapper(),

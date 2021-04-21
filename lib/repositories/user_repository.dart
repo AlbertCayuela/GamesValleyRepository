@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class UserRepository {
   final FirebaseAuth firebaseAuth;
@@ -38,7 +39,7 @@ class UserRepository {
         'registrationdate': DateTime.now(),
       });
       db.collection('work').doc(firebaseAuth.currentUser.uid).set({
-        '0' : [], 
+        '0': [],
       });
       return true;
     }
@@ -76,6 +77,29 @@ class UserRepository {
     });
 
     return user;
+  }
+
+  //upload new job experience
+  void addJobExperience({
+    @required String job,
+    @required String company,
+    @required String startingMonth,
+    @required int startingYear,
+    String finishingMonth,
+    int finishYear,
+  }) {
+    var jobArray = [
+      job,
+      company,
+      startingMonth,
+      startingYear,
+      finishingMonth,
+      finishYear
+    ];
+
+    db.collection('work').doc(firebaseAuth.currentUser.uid).set({
+      Timestamp.now().microsecondsSinceEpoch.toString(): jobArray,
+    });
   }
 }
 

@@ -9,6 +9,11 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
   String startingMonth;
   String finishMonth;
 
+  TextEditingController _jobController = TextEditingController();
+  TextEditingController _companyController = TextEditingController();
+  TextEditingController _startingYearController = TextEditingController();
+  TextEditingController _finishingYearController = TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState

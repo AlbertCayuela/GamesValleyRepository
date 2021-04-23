@@ -17,7 +17,11 @@ class _BaseScreenState extends State<BaseScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _currentIndex = widget.index;
+    if (widget.index != null) {
+      _currentIndex = widget.index;
+    } else {
+      _currentIndex = 0;
+    }
   }
 
   @override

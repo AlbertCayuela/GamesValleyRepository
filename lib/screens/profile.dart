@@ -57,24 +57,13 @@ class ProfileScreenWidget extends StatelessWidget {
                 SizedBox(height: 8),
                 WorkAndStudiesWidget(
                   user: user,
-                  title: 'Gameplay programmer',
-                  place: 'Ubisoft',
                   isWork: true,
-                  startMonth: 'March',
-                  startYear: 2019,
-                  finalMonth: 'January',
-                  finalYear: 2020,
                 ),
                 SizedBox(height: 8),
                 WorkAndStudiesWidget(
-                    user: user,
-                    title: 'Video games design and development',
-                    place: 'Universitat Politècninca de Catalunya',
-                    isWork: false,
-                    finalMonth: 'July',
-                    finalYear: 2021,
-                    startMonth: 'September',
-                    startYear: 2016),
+                  user: user,
+                  isWork: false,
+                ),
                 SizedBox(height: 8),
                 Container(
                   padding: EdgeInsets.all(7),
@@ -133,23 +122,12 @@ class ProfileScreenWidget extends StatelessWidget {
 class WorkAndStudiesWidget extends StatelessWidget {
   const WorkAndStudiesWidget({
     Key key,
-    @required this.title,
-    @required this.place,
     @required this.isWork,
-    @required this.finalMonth,
-    @required this.finalYear,
-    @required this.startMonth,
-    @required this.startYear,
     @required this.user,
   }) : super(key: key);
 
-  final String title;
-  final String place;
   final bool isWork;
-  final String startMonth;
-  final String finalMonth;
-  final int startYear;
-  final int finalYear;
+
   final UserInfo user;
   @override
   Widget build(BuildContext context) {
@@ -171,16 +149,16 @@ class WorkAndStudiesWidget extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 SizedBox(height: 5),
-                if (isWork && this.user.workExperiences[0].isNotEmpty)
-                  for (int i = 0; i < this.user.workExperiences.length; i++)
+                if (isWork && this.user.workExperiences.length > 1)
+                  for (int i = 1; i < this.user.workExperiences.length; i++)
                     WorkAndStudiesInfo(
                         user: user,
                         title: this.user.workExperiences[i][0],
                         place: this.user.workExperiences[i][1],
-                        startMonth: startMonth,
-                        startYear: startYear,
-                        finalMonth: finalMonth,
-                        finalYear: finalYear),
+                        startMonth: this.user.workExperiences[i][2],
+                        startYear: this.user.workExperiences[i][3],
+                        finalMonth: this.user.workExperiences[i][4],
+                        finalYear: this.user.workExperiences[i][5]),
                 //is studies ?
               ],
             ),
@@ -215,9 +193,9 @@ class WorkAndStudiesInfo extends StatelessWidget {
   final String title;
   final String place;
   final String startMonth;
-  final int startYear;
+  final String startYear;
   final String finalMonth;
-  final int finalYear;
+  final String finalYear;
 
   @override
   Widget build(BuildContext context) {

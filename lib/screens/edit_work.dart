@@ -228,15 +228,15 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                           } else {
                             print('Something wrong!');
                           }
-                          // context.read<UserRepository>().addJobExperience(
-                          //       job: _jobController.text,
-                          //       company: _companyController.text,
-                          //       startingMonth: startingMonth,
-                          //       startingYear: _startingYearController.text,
-                          //       finishingMonth: finishMonth,
-                          //       finishYear: _finishingYearController.text,
-                          //     );
-                          //Navigator.pop(context);
+                          context.read<UserRepository>().addJobExperience(
+                                job: _jobController.text,
+                                company: _companyController.text,
+                                startingMonth: startingMonth,
+                                startingYear: _startingYearController.text,
+                                finishingMonth: finishMonth,
+                                finishYear: _finishingYearController.text,
+                              );
+                          Navigator.pop(context);
                         },
                         child: Text('Add experience')),
                   ]),

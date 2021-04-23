@@ -168,7 +168,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
               child: TextButton(
                   onPressed: () {
                     isWork
-                        ? Navigator.pushNamed(
+                        ? Navigator.popAndPushNamed(
                             context,
                             '/editwork',
                           )

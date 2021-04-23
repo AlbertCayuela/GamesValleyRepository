@@ -171,7 +171,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 SizedBox(height: 5),
-                if (isWork)
+                if (isWork && this.user.workExperiences[0].isNotEmpty)
                   for (int i = 0; i < this.user.workExperiences.length; i++)
                     WorkAndStudiesInfo(
                         user: user,
@@ -266,7 +266,7 @@ class MainInfoWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           CircleAvatar(
-            radius: 60,
+            radius: 40,
             backgroundImage: NetworkImage(
                 'https://media.redadn.es/imagenes/otros-aticulos_308786.jpg'),
           ),
@@ -303,9 +303,11 @@ class MainInfoWidget extends StatelessWidget {
                       color: Colors.blueGrey,
                     ),
                     SizedBox(width: 5),
-                    Text(
-                      user.email,
-                      style: TextStyle(color: Colors.blueGrey, fontSize: 15),
+                    Expanded(
+                      child: Text(
+                        user.email,
+                        style: TextStyle(color: Colors.blueGrey, fontSize: 15),
+                      ),
                     ),
                   ],
                 ),

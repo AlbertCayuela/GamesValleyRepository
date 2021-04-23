@@ -3,12 +3,23 @@ import 'package:games_valley/screens/offers.dart';
 import 'package:games_valley/screens/profile.dart';
 
 class BaseScreen extends StatefulWidget {
+  int index;
+
+  BaseScreen({Key key, this.index}) : super(key: key);
+
   @override
   _BaseScreenState createState() => _BaseScreenState();
 }
 
 class _BaseScreenState extends State<BaseScreen> {
-  int _currentIndex = 0;
+  int _currentIndex;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _currentIndex = widget.index;
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget body;

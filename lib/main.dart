@@ -38,10 +38,10 @@ class GamesValley extends StatelessWidget {
         routes: {
           '/login': (context) => LoginScreen(),
           '/signup': (context) => SignUpScreen(),
-          '/offers': (context) => BaseScreen(),
-          '/profile': (context) => ProfileScreen(),
+          '/offers': (context) => BaseScreen(index: 0),
+          '/profile': (context) => BaseScreen(index: 1),
           '/authwrapper': (context) => AuthWrapper(),
-          '/editwork' : (context) => EditWorkScreen(),
+          '/editwork': (context) => EditWorkScreen(),
         },
         home: MultiProvider(
           child: AuthWrapper(),

@@ -92,7 +92,7 @@ class ProfileScreenWidget extends StatelessWidget {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              'Languages:',
+                              'Languages',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -167,7 +167,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  isWork ? 'Work experience:' : 'Studies:',
+                  isWork ? 'Work experience' : 'Studies',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 SizedBox(height: 5),

@@ -78,13 +78,13 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                     DropdownButtonFormField(
                       validator: (value) {
                         if (value == null) {
-                          return 'Please select a montn';
+                          return 'Please select a monnth';
                         }
                         return null;
                       },
                       isExpanded: true,
                       value: startingMonth,
-                      hint: Text('Starting month'),
+                      hint: Text('Starting month*'),
                       items: [
                         DropdownMenuItem(
                           child: Text('January'),
@@ -149,7 +149,7 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                       controller: _startingYearController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        labelText: 'Starting year',
+                        labelText: 'Starting year*',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),

@@ -47,70 +47,72 @@ class ProfileScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: Colors.grey[200],
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: Column(
-              children: [
-                MainInfoWidget(user: user),
-                SizedBox(height: 8),
-                WorkAndStudiesWidget(
-                  user: user,
-                  isWork: true,
-                ),
-                SizedBox(height: 8),
-                WorkAndStudiesWidget(
-                  user: user,
-                  isWork: false,
-                ),
-                SizedBox(height: 8),
-                Container(
-                  padding: EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(7),
+        child: SingleChildScrollView(
+          child: Container(
+            color: Colors.grey[200],
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: Column(
+                children: [
+                  MainInfoWidget(user: user),
+                  SizedBox(height: 8),
+                  WorkAndStudiesWidget(
+                    user: user,
+                    isWork: true,
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              'Languages',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                  SizedBox(height: 8),
+                  WorkAndStudiesWidget(
+                    user: user,
+                    isWork: false,
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    padding: EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Languages',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 5),
-                            Row(
-                              children: [
-                                Text('English - '),
-                                Text(
-                                  'Professional level',
-                                  style: TextStyle(color: Colors.blueGrey),
-                                )
-                              ],
-                            ),
-                          ],
+                              SizedBox(height: 5),
+                              Row(
+                                children: [
+                                  Text('English - '),
+                                  Text(
+                                    'Professional level',
+                                    style: TextStyle(color: Colors.blueGrey),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text('Edit'),
-                        ),
-                      )
-                    ],
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text('Edit'),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

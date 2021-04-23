@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/screens/offers.dart';
-import 'package:games_valley/screens/profile.dart';
+import 'package:games_valley/screens/profile/profile.dart';
 
 class BaseScreen extends StatefulWidget {
   int index;

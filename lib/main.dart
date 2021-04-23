@@ -5,10 +5,10 @@ import 'package:games_valley/screens/base.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:games_valley/screens/login.dart';
 import 'package:games_valley/screens/offers.dart';
-import 'package:games_valley/screens/profile.dart';
+import 'package:games_valley/screens/profile/profile.dart';
 import 'package:games_valley/screens/signup.dart';
 import 'package:provider/provider.dart';
-import 'package:games_valley/screens/edit_work.dart';
+import 'package:games_valley/screens/profile/work_edit/edit_work.dart';
 
 //*-----------------------------MAIN--------------------------------------------
 Future<void> main() async {

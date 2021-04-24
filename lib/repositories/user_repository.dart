@@ -41,6 +41,9 @@ class UserRepository {
       db.collection('work').doc(firebaseAuth.currentUser.uid).set({
         '0': [],
       });
+      db.collection('studies').doc(firebaseAuth.currentUser.uid).set({
+        '0': [],
+      });
       return true;
     }
   }

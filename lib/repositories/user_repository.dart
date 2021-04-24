@@ -123,7 +123,29 @@ class UserRepository {
     ];
 
     db.collection('work').doc(firebaseAuth.currentUser.uid).update({
-      Timestamp.now().microsecondsSinceEpoch.toString(): jobArray,
+      Timestamp.now().millisecondsSinceEpoch.toString(): jobArray,
+    });
+  }
+
+  void addStudies({
+    @required String typeOfStudies,
+    @required String centerOfStudies,
+    @required String startingMonth,
+    @required String startingYear,
+    String finishingMonth,
+    String finishingYear,
+  }) {
+    var studiesArray = [
+      typeOfStudies,
+      centerOfStudies,
+      startingMonth,
+      startingYear,
+      finishingMonth,
+      finishingYear
+    ];
+
+    db.collection('studies').doc(firebaseAuth.currentUser.uid).update({
+      Timestamp.now().millisecondsSinceEpoch.toString(): studiesArray,
     });
   }
 }

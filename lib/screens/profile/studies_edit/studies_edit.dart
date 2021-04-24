@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
 import 'package:validators/validators.dart';
+import 'package:provider/provider.dart';
 
 class EditStudiesScreen extends StatefulWidget {
   @override
@@ -214,6 +216,14 @@ class _EditStudiesScreenState extends State<EditStudiesScreen> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         print('Everything ok!');
+                        context.read<UserRepository>().addStudies(
+                              typeOfStudies: _typeOfStudiesController.text,
+                              centerOfStudies: _centerOfStudiesController.text,
+                              startingMonth: startingMonth,
+                              startingYear: _startingYearController.text,
+                              finishingMonth: finishMonth,
+                              finishingYear: _finishingYearController.text,
+                            );
                       } else {
                         print('something wrong!');
                       }

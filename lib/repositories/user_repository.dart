@@ -66,7 +66,8 @@ class UserRepository {
   //get user information into user class
   Future<UserInfo> getUserInfo() async {
     UserInfo user = UserInfo();
-    var maps;
+    var workMaps;
+    var studiesMaps;
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseAuth.currentUser.uid);
@@ -84,9 +85,20 @@ class UserRepository {
         .collection('work')
         .doc(firebaseAuth.currentUser.uid);
     await documentReference.get().then((datasnapshot) {
-      maps = datasnapshot.data();
-      user.workExperiences = maps.values.toList();
+      workMaps = datasnapshot.data();
+      user.workExperiences = workMaps.values.toList();
+      print('work:');
       print(user.workExperiences);
+    });
+
+    DocumentReference dReference = FirebaseFirestore.instance
+        .collection('studies')
+        .doc(firebaseAuth.currentUser.uid);
+    await dReference.get().then((datasnapshot) {
+      studiesMaps = datasnapshot.data();
+      user.studies = studiesMaps.values.toList();
+      print('studies:');
+      print(user.studies);
     });
 
     return user;
@@ -121,4 +133,5 @@ class UserInfo {
   String email;
   var uid;
   List<dynamic> workExperiences;
+  List<dynamic> studies;
 }

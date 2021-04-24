@@ -49,7 +49,9 @@ class LanguagesWidget extends StatelessWidget {
           Align(
             alignment: Alignment.topRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/editlanguages');
+              },
               child: Text('Edit'),
             ),
           )

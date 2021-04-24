@@ -5,6 +5,7 @@ import 'package:games_valley/screens/base.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:games_valley/screens/login.dart';
 import 'package:games_valley/screens/offers.dart';
+import 'package:games_valley/screens/profile/languages_edit/languages_edit.dart';
 import 'package:games_valley/screens/profile/profile.dart';
 import 'package:games_valley/screens/profile/studies_edit/studies_edit.dart';
 import 'package:games_valley/screens/signup.dart';
@@ -44,6 +45,7 @@ class GamesValley extends StatelessWidget {
           '/authwrapper': (context) => AuthWrapper(),
           '/editwork': (context) => EditWorkScreen(),
           '/editstudies': (context) => EditStudiesScreen(),
+          '/editlanguages': (context) => EditLanguagesScreen(),
         },
         home: MultiProvider(
           child: AuthWrapper(),

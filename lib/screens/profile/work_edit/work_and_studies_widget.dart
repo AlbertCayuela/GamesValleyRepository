@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
-import 'package:games_valley/screens/profile/work_and_studies_info.dart';
+import 'package:games_valley/screens/profile/work_edit/work_and_studies_info.dart';
 
 class WorkAndStudiesWidget extends StatelessWidget {
   const WorkAndStudiesWidget({

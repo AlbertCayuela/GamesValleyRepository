@@ -107,6 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         signUp = true;
                       });
                       if (signUp) {
+                        //todo change this pushnamed
                         Navigator.pushNamed(context, '/offers');
                       }
                     }

@@ -151,6 +151,20 @@ class UserRepository {
       Timestamp.now().millisecondsSinceEpoch.toString(): studiesArray,
     });
   }
+
+  void addLanguages({
+    @required String language,
+    @required String level,
+  }) {
+    var languageArray = [
+      language,
+      level,
+    ];
+
+    db.collection('languages').doc(firebaseAuth.currentUser.uid).update({
+      Timestamp.now().millisecondsSinceEpoch.toString(): languageArray,
+    });
+  }
 }
 
 class UserInfo {

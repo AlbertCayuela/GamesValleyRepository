@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
 class EditLanguagesScreen extends StatefulWidget {
   @override
@@ -81,6 +83,10 @@ class _EditLanguagesScreenState extends State<EditLanguagesScreen> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         print('all ok!');
+                        context.read<UserRepository>().addLanguages(
+                              language: _languageController.text,
+                              level: level,
+                            );
                       } else {
                         print('something wrong!');
                       }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
-import 'package:games_valley/screens/profile/work_and_studies_widget.dart';
+import 'package:games_valley/screens/profile/work_edit/work_and_studies_widget.dart';
 import 'package:provider/provider.dart';
 
+import 'languages_edit/languages_widget.dart';
 import 'main_info.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -69,51 +70,7 @@ class ProfileScreenWidget extends StatelessWidget {
                     isWork: false,
                   ),
                   SizedBox(height: 8),
-                  Container(
-                    padding: EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                'Languages',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                children: [
-                                  Text('English - '),
-                                  Text(
-                                    'Professional level',
-                                    style: TextStyle(color: Colors.blueGrey),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text('Edit'),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  LanguagesWidget(user: user),
                 ],
               ),
             ),

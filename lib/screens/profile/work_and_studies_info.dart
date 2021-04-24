@@ -28,17 +28,26 @@ class WorkAndStudiesInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            this.title + ' at ' + this.place,
+            (this.place == null || this.place == '')
+                ? this.title
+                : this.title + ' at ' + this.place,
           ),
-          Text(
-            this.startMonth +
-                ' ' +
-                this.startYear.toString() +
-                ' - ' +
-                this.finalMonth +
-                ' ' +
-                this.finalYear.toString(),
-            style: TextStyle(color: Colors.blueGrey, fontSize: 12),
+          Row(
+            children: [
+              Text(
+                this.startMonth + ' ' + this.startYear,
+                style: TextStyle(color: Colors.blueGrey, fontSize: 12),
+              ),
+              if (this.finalMonth != null)
+                Text(
+                  ' - ' + this.finalMonth,
+                  style: TextStyle(color: Colors.blueGrey, fontSize: 12),
+                ),
+              Text(
+                ' ' + this.finalYear,
+                style: TextStyle(color: Colors.blueGrey, fontSize: 12),
+              )
+            ],
           ),
           SizedBox(height: 5),
         ],

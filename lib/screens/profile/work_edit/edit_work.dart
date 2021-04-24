@@ -225,18 +225,18 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             print('all ok!');
+                            context.read<UserRepository>().addJobExperience(
+                                  job: _jobController.text,
+                                  company: _companyController.text,
+                                  startingMonth: startingMonth,
+                                  startingYear: _startingYearController.text,
+                                  finishingMonth: finishMonth,
+                                  finishYear: _finishingYearController.text,
+                                );
+                            Navigator.popAndPushNamed(context, '/profile');
                           } else {
                             print('Something wrong!');
                           }
-                          context.read<UserRepository>().addJobExperience(
-                                job: _jobController.text,
-                                company: _companyController.text,
-                                startingMonth: startingMonth,
-                                startingYear: _startingYearController.text,
-                                finishingMonth: finishMonth,
-                                finishYear: _finishingYearController.text,
-                              );
-                          Navigator.popAndPushNamed(context, '/profile');
                         },
                         child: Text('Add experience')),
                   ]),

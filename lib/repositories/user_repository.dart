@@ -71,6 +71,7 @@ class UserRepository {
     UserInfo user = UserInfo();
     var workMaps;
     var studiesMaps;
+    var languagesMaps;
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseAuth.currentUser.uid);
@@ -102,6 +103,16 @@ class UserRepository {
       user.studies = studiesMaps.values.toList();
       print('studies:');
       print(user.studies);
+    });
+
+    DocumentReference reference = FirebaseFirestore.instance
+        .collection('languages')
+        .doc(firebaseAuth.currentUser.uid);
+    await reference.get().then((datasnapshot) {
+      languagesMaps = datasnapshot.data();
+      user.languages = languagesMaps.values.toList();
+      print('languages:');
+      print(user.languages);
     });
 
     return user;
@@ -173,4 +184,5 @@ class UserInfo {
   var uid;
   List<dynamic> workExperiences;
   List<dynamic> studies;
+  List<dynamic> languages;
 }

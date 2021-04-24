@@ -4,10 +4,12 @@ import 'package:games_valley/repositories/user_repository.dart';
 class LanguagesWidget extends StatelessWidget {
   const LanguagesWidget({
     Key key,
-    @required this.user,
+    @required this.language,
+    @required this.level,
   }) : super(key: key);
 
-  final UserInfo user;
+  final String language;
+  final String level;
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +38,9 @@ class LanguagesWidget extends StatelessWidget {
                 SizedBox(height: 5),
                 Row(
                   children: [
-                    Text('English - '),
+                    Text(language + ' - '),
                     Text(
-                      'Professional level',
+                      level + ' level',
                       style: TextStyle(color: Colors.blueGrey),
                     )
                   ],

@@ -50,7 +50,9 @@ class WorkAndStudiesWidget extends StatelessWidget {
               alignment: Alignment.topRight,
               child: TextButton(
                   onPressed: () {
-                    isWork ? Navigator.pushNamed(context, '/editwork') : null;
+                    isWork
+                        ? Navigator.pushNamed(context, '/editwork')
+                        : Navigator.pushNamed(context, '/editstudies');
                     print(user.workExperiences);
                   },
                   child: Text('Edit'))),

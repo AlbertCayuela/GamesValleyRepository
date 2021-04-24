@@ -224,7 +224,7 @@ class _EditStudiesScreenState extends State<EditStudiesScreen> {
                               finishingMonth: finishMonth,
                               finishingYear: _finishingYearController.text,
                             );
-                        Navigator.popAndPushNamed(context, '/profile');
+                        //Navigator.popAndPushNamed(context, '/profile');
                       } else {
                         print('something wrong!');
                       }

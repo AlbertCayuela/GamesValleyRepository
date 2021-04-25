@@ -89,7 +89,9 @@ class MainInfoWidget extends StatelessWidget {
           Align(
             alignment: Alignment.topRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/editmaininfo');
+              },
               child: Text('Edit'),
             ),
           ),

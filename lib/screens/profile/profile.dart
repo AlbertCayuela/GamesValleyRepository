@@ -4,7 +4,7 @@ import 'package:games_valley/screens/profile/work_edit/work_and_studies_widget.d
 import 'package:provider/provider.dart';
 
 import 'languages_edit/languages_widget.dart';
-import 'main_info.dart';
+import 'main_info_edit/main_info.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override

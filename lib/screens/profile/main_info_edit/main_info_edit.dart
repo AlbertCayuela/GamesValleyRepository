@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
-class EditMainInfoScreen extends StatelessWidget {
+class EditMainInfoScreen extends StatefulWidget {
+  @override
+  _EditMainInfoScreenState createState() => _EditMainInfoScreenState();
+}
+
+class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
+  String imageUrl;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,12 +24,23 @@ class EditMainInfoScreen extends StatelessWidget {
         child: Column(
           children: [
             CircleAvatar(
-              child: Icon(
-                Icons.person,
-                size: 45,
-              ),
+              child: (imageUrl != null) ? null : Icon(Icons.person, size: 45),
               radius: 50,
-              //backgroundImage: NetworkImage(               ),
+              backgroundImage:
+                  (imageUrl != null) ? NetworkImage(imageUrl) : null,
+            ),
+            TextButton(
+              onPressed: () {
+                context
+                    .read<UserRepository>()
+                    .pickImageAndUpload()
+                    .then((value) {
+                  setState(() {
+                    imageUrl = value;
+                  });
+                });
+              },
+              child: Text('Edit profile image'),
             ),
             SizedBox(height: 10),
             TextFormField(
@@ -49,6 +69,8 @@ class EditMainInfoScreen extends StatelessWidget {
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
             ),
+            SizedBox(height: 10),
+            ElevatedButton(onPressed: () {}, child: Text('Edit information')),
           ],
         ),
       ),

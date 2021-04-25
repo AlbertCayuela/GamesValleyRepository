@@ -1,10 +1,19 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class UserRepository {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore db = FirebaseFirestore.instance;
+  final firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
+
+  File imageFile;
 
   UserRepository(this.firebaseAuth);
 
@@ -176,6 +185,30 @@ class UserRepository {
       Timestamp.now().millisecondsSinceEpoch.toString(): languageArray,
     });
   }
+
+  Future<String> pickImageAndUpload() async {
+    final pickedImage =
+        await ImagePicker().getImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      imageFile = File(pickedImage.path);
+      print('SELECTED IMAGE: ' + basename(pickedImage.path));
+      if (imageFile != null) {
+        String fileName = basename(imageFile.path);
+        print(fileName);
+        var snapshot = await storage
+            .ref()
+            .child(firebaseAuth.currentUser.uid)
+            .putFile(imageFile);
+        String downloadUrl = await snapshot.ref.getDownloadURL();
+        return downloadUrl;
+      }
+    } else {
+      return null;
+    }
+  }
+
+  Future<void> uploadImageToFirebase() async {}
 }
 
 class UserInfo {

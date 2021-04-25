@@ -70,13 +70,9 @@ class ProfileScreenWidget extends StatelessWidget {
                     isWork: false,
                   ),
                   SizedBox(height: 8),
-                  if (this.user.languages.length > 1)
-                    for (int i = 0; i < this.user.languages.length; i++)
-                      if (this.user.languages[i].isNotEmpty)
-                        LanguagesWidget(
-                          language: this.user.languages[i][0],
-                          level: this.user.languages[i][1],
-                        ),
+                  LanguagesWidget(
+                    user: user,
+                  ),
                 ],
               ),
             ),

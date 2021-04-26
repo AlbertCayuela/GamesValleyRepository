@@ -218,6 +218,12 @@ class UserRepository {
       return null;
     }
   }
+
+  void changeName(String name) {
+    db.collection('users').doc(firebaseAuth.currentUser.uid).update({
+      'name': name,
+    });
+  }
 }
 
 class UserInfo {

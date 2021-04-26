@@ -72,13 +72,6 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
-                    validator: (value) {
-                      if (!isAlpha(value)) {
-                        return 'The name must contain only letters';
-                      }
-                      return null;
-                    },
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
                   SizedBox(height: 10),
                   TextFormField(
@@ -88,13 +81,6 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
-                    validator: (value) {
-                      if (!isAlpha(value)) {
-                        return 'The name must contain only letters';
-                      }
-                      return null;
-                    },
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
                   SizedBox(height: 10),
                   TextFormField(
@@ -108,10 +94,11 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                   SizedBox(height: 10),
                   ElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          print('all the main info is correct');
-                        } else {
-                          print('something in the main info is not correct');
+                        if (_nameController.text != '') {
+                          print('changing name!');
+                          context
+                              .read<UserRepository>()
+                              .changeName(_nameController.text);
                         }
                       },
                       child: Text('Edit information')),

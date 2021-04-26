@@ -201,19 +201,21 @@ class UserRepository {
             .child(firebaseAuth.currentUser.uid)
             .putFile(imageFile);
         String downloadUrl = await snapshot.ref.getDownloadURL();
+        db.collection('users').doc(firebaseAuth.currentUser.uid).update({
+          'profileimagelink': downloadUrl,
+        });
         return downloadUrl;
       }
     } else {
       return null;
     }
   }
-
-  Future<void> uploadImageToFirebase() async {}
 }
 
 class UserInfo {
   String username;
   String email;
+  String profileImageUrl;
   var uid;
   List<dynamic> workExperiences;
   List<dynamic> studies;

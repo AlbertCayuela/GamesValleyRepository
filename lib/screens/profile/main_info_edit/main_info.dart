@@ -40,9 +40,23 @@ class MainInfoWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Margarita Robles',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                Row(
+                  children: [
+                    Text(
+                      (this.user.name == '') ? 'Name' : this.user.name,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    Expanded(
+                      child: Text(
+                        (this.user.surname == '')
+                            ? ' Surname'
+                            : ' ' + this.user.surname,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10),
                 Row(

@@ -94,6 +94,9 @@ class UserRepository {
         user.uid = docReference.id;
         user.email = datasnapshot.get('email');
         user.profileImageUrl = datasnapshot.get('profileimageurl');
+        user.name = datasnapshot.get('name');
+        user.surname = datasnapshot.get('surname');
+        user.phone = datasnapshot.get('phone');
       } else {
         print('cant find this user...');
       }
@@ -221,6 +224,9 @@ class UserInfo {
   String username;
   String email;
   String profileImageUrl;
+  String name;
+  String surname;
+  String phone;
   var uid;
   List<dynamic> workExperiences;
   List<dynamic> studies;

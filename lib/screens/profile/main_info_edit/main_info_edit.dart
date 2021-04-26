@@ -90,6 +90,7 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
+                    keyboardType: TextInputType.phone,
                   ),
                   SizedBox(height: 10),
                   ElevatedButton(

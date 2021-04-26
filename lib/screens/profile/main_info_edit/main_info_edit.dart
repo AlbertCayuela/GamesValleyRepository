@@ -14,6 +14,10 @@ class EditMainInfoScreen extends StatefulWidget {
 class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
   String imageUrl;
 
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _surnameController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -53,8 +57,8 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
             ),
             SizedBox(height: 10),
             TextFormField(
+              controller: _nameController,
               decoration: InputDecoration(
-                //icon: Icon(Icons.mail),
                 labelText: 'Name',
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
@@ -62,8 +66,8 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
             ),
             SizedBox(height: 10),
             TextFormField(
+              controller: _surnameController,
               decoration: InputDecoration(
-                //icon: Icon(Icons.mail),
                 labelText: 'Surname',
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
@@ -71,6 +75,7 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
             ),
             SizedBox(height: 10),
             TextFormField(
+              controller: _phoneNumberController,
               decoration: InputDecoration(
                 //icon: Icon(Icons.mail),
                 labelText: 'Phone number (please add your country code)',

@@ -230,6 +230,12 @@ class UserRepository {
       'surname': surname,
     });
   }
+
+  void changePhone(String phone) {
+    db.collection('users').doc(firebaseAuth.currentUser.uid).update({
+      'phone': phone,
+    });
+  }
 }
 
 class UserInfo {

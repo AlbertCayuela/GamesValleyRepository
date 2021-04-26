@@ -106,6 +106,12 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                               .read<UserRepository>()
                               .changeSurname(_surnameController.text);
                         }
+                        if (_phoneNumberController.text != '') {
+                          print('changing phone number!');
+                          context
+                              .read<UserRepository>()
+                              .changePhone(_phoneNumberController.text);
+                        }
                       },
                       child: Text('Edit information')),
                 ],

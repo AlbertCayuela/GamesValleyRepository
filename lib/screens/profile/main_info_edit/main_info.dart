@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/profile/main_info_edit/main_info_edit.dart';
 
 class MainInfoWidget extends StatelessWidget {
   const MainInfoWidget({
     Key key,
     @required this.user,
+    @required this.updateUser,
   }) : super(key: key);
 
   final UserInfo user;
+  final Function updateUser;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +26,12 @@ class MainInfoWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 40,
-            backgroundImage: NetworkImage(
-                'https://media.redadn.es/imagenes/otros-aticulos_308786.jpg'),
+            child: (this.user.profileImageUrl == '')
+                ? Icon(Icons.person, size: 45)
+                : null,
+            backgroundImage: (this.user.profileImageUrl != '')
+                ? NetworkImage(this.user.profileImageUrl)
+                : null,
           ),
           SizedBox(
             width: 20,
@@ -90,7 +97,14 @@ class MainInfoWidget extends StatelessWidget {
             alignment: Alignment.topRight,
             child: TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/editmaininfo');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditMainInfoScreen(
+                              user: this.user,
+                            ))).then((_) {
+                  updateUser();
+                });
               },
               child: Text('Edit'),
             ),

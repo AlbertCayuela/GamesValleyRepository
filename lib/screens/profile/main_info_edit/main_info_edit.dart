@@ -3,12 +3,22 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
 
 class EditMainInfoScreen extends StatefulWidget {
+  final UserInfo user;
+
+  EditMainInfoScreen({Key key, @required this.user}) : super(key: key);
+
   @override
   _EditMainInfoScreenState createState() => _EditMainInfoScreenState();
 }
 
 class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
   String imageUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    imageUrl = widget.user.profileImageUrl;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +34,11 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
         child: Column(
           children: [
             CircleAvatar(
-              child: (imageUrl != null) ? null : Icon(Icons.person, size: 45),
+              child: (imageUrl != '') ? null : Icon(Icons.person, size: 45),
               radius: 50,
-              backgroundImage:
-                  (imageUrl != null) ? NetworkImage(imageUrl) : null,
+              backgroundImage: (imageUrl != '') ? NetworkImage(imageUrl) : null,
             ),
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 context
                     .read<UserRepository>()

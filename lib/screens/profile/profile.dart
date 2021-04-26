@@ -29,24 +29,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
+  updateUser() {
+    print('calling updateuser function!');
+    setState(() {
+      _loading = true;
+    });
+    context.read<UserRepository>().getUserInfo().then((value) {
+      user = value;
+      setState(() {
+        _loading = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loading) {
       return Center(child: CircularProgressIndicator());
     } else {
-      return ProfileScreenWidget(user: user);
+      return ProfileScreenWidget(user: user, updateUser: updateUser);
     }
   }
 }
 
-class ProfileScreenWidget extends StatelessWidget {
+class ProfileScreenWidget extends StatefulWidget {
+  final UserInfo user;
+  final Function updateUser;
+
   const ProfileScreenWidget({
     Key key,
     @required this.user,
+    @required this.updateUser,
   }) : super(key: key);
 
-  final UserInfo user;
+  @override
+  _ProfileScreenWidgetState createState() => _ProfileScreenWidgetState();
+}
 
+class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,20 +78,21 @@ class ProfileScreenWidget extends StatelessWidget {
               padding: const EdgeInsets.all(4),
               child: Column(
                 children: [
-                  MainInfoWidget(user: user),
+                  MainInfoWidget(
+                      user: widget.user, updateUser: widget.updateUser),
                   SizedBox(height: 8),
                   WorkAndStudiesWidget(
-                    user: user,
+                    user: widget.user,
                     isWork: true,
                   ),
                   SizedBox(height: 8),
                   WorkAndStudiesWidget(
-                    user: user,
+                    user: widget.user,
                     isWork: false,
                   ),
                   SizedBox(height: 8),
                   LanguagesWidget(
-                    user: user,
+                    user: widget.user,
                   ),
                 ],
               ),

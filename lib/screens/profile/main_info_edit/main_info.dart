@@ -24,42 +24,39 @@ class MainInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          CircleAvatar(
-            radius: 40,
-            child: (this.user.profileImageUrl == '')
-                ? Icon(Icons.person, size: 45)
-                : null,
-            backgroundImage: (this.user.profileImageUrl != '')
-                ? NetworkImage(this.user.profileImageUrl)
-                : null,
-          ),
-          SizedBox(
-            width: 20,
-          ),
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                CircleAvatar(
+                  radius: 40,
+                  child: (this.user.profileImageUrl == '')
+                      ? Icon(Icons.person, size: 45)
+                      : null,
+                  backgroundImage: (this.user.profileImageUrl != '')
+                      ? NetworkImage(this.user.profileImageUrl)
+                      : null,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       (this.user.name == '') ? 'Name' : this.user.name,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
-                    Expanded(
-                      child: Text(
-                        (this.user.surname == '')
-                            ? ' Surname'
-                            : ' ' + this.user.surname,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
+                    Text(
+                      (this.user.surname == '')
+                          ? ' Surname'
+                          : ' ' + this.user.surname,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.perm_identity,
@@ -74,35 +71,33 @@ class MainInfoWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.email_outlined,
                       color: Colors.blueGrey,
                     ),
                     SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        user.email,
-                        style: TextStyle(color: Colors.blueGrey, fontSize: 15),
-                      ),
+                    Text(
+                      user.email,
+                      style: TextStyle(color: Colors.blueGrey, fontSize: 15),
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.phone_outlined,
                       color: Colors.blueGrey,
                     ),
                     SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        (this.user.phone == '')
-                            ? 'Phone number'
-                            : this.user.phone,
-                        style: TextStyle(color: Colors.blueGrey, fontSize: 15),
-                      ),
+                    Text(
+                      (this.user.phone == '')
+                          ? 'Phone number'
+                          : this.user.phone,
+                      style: TextStyle(color: Colors.blueGrey, fontSize: 15),
                     ),
                   ],
                 ),

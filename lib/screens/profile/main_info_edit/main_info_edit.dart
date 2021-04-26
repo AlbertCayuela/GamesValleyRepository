@@ -113,6 +113,7 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                               .read<UserRepository>()
                               .changePhone(_phoneNumberController.text);
                         }
+                        Navigator.pop(context);
                       },
                       child: Text('Edit information')),
                 ],

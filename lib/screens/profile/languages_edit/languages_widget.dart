@@ -5,9 +5,11 @@ class LanguagesWidget extends StatelessWidget {
   const LanguagesWidget({
     Key key,
     @required this.user,
+    @required this.updateUser,
   }) : super(key: key);
 
   final UserInfo user;
+  final Function updateUser;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,9 @@ class LanguagesWidget extends StatelessWidget {
             alignment: Alignment.topRight,
             child: TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/editlanguages');
+                Navigator.pushNamed(context, '/editlanguages').then((_) {
+                  updateUser();
+                });
               },
               child: Text('Edit'),
             ),

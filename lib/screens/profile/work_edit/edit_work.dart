@@ -233,7 +233,7 @@ class _EditWorkScreenState extends State<EditWorkScreen> {
                                   finishingMonth: finishMonth,
                                   finishYear: _finishingYearController.text,
                                 );
-                            Navigator.popAndPushNamed(context, '/profile');
+                            Navigator.pop(context);
                           } else {
                             print('Something wrong!');
                           }

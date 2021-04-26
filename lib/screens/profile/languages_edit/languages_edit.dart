@@ -87,6 +87,7 @@ class _EditLanguagesScreenState extends State<EditLanguagesScreen> {
                               language: _languageController.text,
                               level: level,
                             );
+                        Navigator.pop(context);
                       } else {
                         print('something wrong!');
                       }

@@ -7,9 +7,11 @@ class WorkAndStudiesWidget extends StatelessWidget {
     Key key,
     @required this.isWork,
     @required this.user,
+    @required this.updateUser,
   }) : super(key: key);
 
   final bool isWork;
+  final Function updateUser;
 
   final UserInfo user;
   @override
@@ -62,8 +64,13 @@ class WorkAndStudiesWidget extends StatelessWidget {
               child: TextButton(
                   onPressed: () {
                     isWork
-                        ? Navigator.pushNamed(context, '/editwork')
-                        : Navigator.pushNamed(context, '/editstudies');
+                        ? Navigator.pushNamed(context, '/editwork').then((_) {
+                            updateUser();
+                          })
+                        : Navigator.pushNamed(context, '/editstudies')
+                            .then((_) {
+                            updateUser();
+                          });
                     print(user.workExperiences);
                   },
                   child: Text('Edit'))),

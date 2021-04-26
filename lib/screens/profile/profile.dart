@@ -82,17 +82,20 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                       user: widget.user, updateUser: widget.updateUser),
                   SizedBox(height: 8),
                   WorkAndStudiesWidget(
+                    updateUser: widget.updateUser,
                     user: widget.user,
                     isWork: true,
                   ),
                   SizedBox(height: 8),
                   WorkAndStudiesWidget(
+                    updateUser: widget.updateUser,
                     user: widget.user,
                     isWork: false,
                   ),
                   SizedBox(height: 8),
                   LanguagesWidget(
                     user: widget.user,
+                    updateUser: widget.updateUser,
                   ),
                 ],
               ),

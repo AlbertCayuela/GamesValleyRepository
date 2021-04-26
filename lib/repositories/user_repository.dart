@@ -46,6 +46,7 @@ class UserRepository {
         'username': userName,
         'email': firebaseAuth.currentUser.email,
         'registrationdate': DateTime.now(),
+        'profileimageurl': '',
       });
       db.collection('work').doc(firebaseAuth.currentUser.uid).set({
         '0': [],
@@ -89,6 +90,7 @@ class UserRepository {
         user.username = datasnapshot.get('username');
         user.uid = docReference.id;
         user.email = datasnapshot.get('email');
+        user.profileImageUrl = datasnapshot.get('profileimageurl');
       } else {
         print('cant find this user...');
       }
@@ -202,7 +204,7 @@ class UserRepository {
             .putFile(imageFile);
         String downloadUrl = await snapshot.ref.getDownloadURL();
         db.collection('users').doc(firebaseAuth.currentUser.uid).update({
-          'profileimagelink': downloadUrl,
+          'profileimageurl': downloadUrl,
         });
         return downloadUrl;
       }

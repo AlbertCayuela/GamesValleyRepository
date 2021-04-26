@@ -98,7 +98,9 @@ class MainInfoWidget extends StatelessWidget {
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
-                        '+34 666 66 66 666666 66666 6666666',
+                        (this.user.phone == '')
+                            ? 'Phone number'
+                            : this.user.phone,
                         style: TextStyle(color: Colors.blueGrey, fontSize: 15),
                       ),
                     ),

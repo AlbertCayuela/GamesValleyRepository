@@ -47,6 +47,9 @@ class UserRepository {
         'email': firebaseAuth.currentUser.email,
         'registrationdate': DateTime.now(),
         'profileimageurl': '',
+        'name': '',
+        'surname': '',
+        'phone': '',
       });
       db.collection('work').doc(firebaseAuth.currentUser.uid).set({
         '0': [],

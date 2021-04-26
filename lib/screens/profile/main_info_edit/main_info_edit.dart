@@ -77,7 +77,6 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
             TextFormField(
               controller: _phoneNumberController,
               decoration: InputDecoration(
-                //icon: Icon(Icons.mail),
                 labelText: 'Phone number (please add your country code)',
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(10)),

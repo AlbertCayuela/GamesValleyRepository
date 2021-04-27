@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:games_valley/screens/profile/profile.dart';
 
 import '../offers.dart';
+import 'company_profile_screen.dart';
 
 class CompanyBaseScreen extends StatefulWidget {
   int index;
@@ -33,7 +34,7 @@ class _CompanyBaseScreenState extends State<CompanyBaseScreen> {
         body = OffersScreen();
         break;
       case 1:
-        body = ProfileScreen();
+        body = CompanyProfileScreen();
         break;
     }
     return Scaffold(

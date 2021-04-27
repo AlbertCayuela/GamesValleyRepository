@@ -84,6 +84,8 @@ class CompanyProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () {}, child: Text('Create a job offer')),
             ],
           ),
         ),

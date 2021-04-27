@@ -53,15 +53,17 @@ class UserRepository {
         'surname': '',
         'phone': '',
       });
-      db.collection('work').doc(firebaseAuth.currentUser.uid).set({
-        '0': [],
-      });
-      db.collection('studies').doc(firebaseAuth.currentUser.uid).set({
-        '0': [],
-      });
-      db.collection('languages').doc(firebaseAuth.currentUser.uid).set({
-        '0': [],
-      });
+      if (!isCompany) {
+        db.collection('work').doc(firebaseAuth.currentUser.uid).set({
+          '0': [],
+        });
+        db.collection('studies').doc(firebaseAuth.currentUser.uid).set({
+          '0': [],
+        });
+        db.collection('languages').doc(firebaseAuth.currentUser.uid).set({
+          '0': [],
+        });
+      }
       return true;
     }
   }
@@ -79,6 +81,22 @@ class UserRepository {
     }
     email = firebaseAuth.currentUser.email;
     return email;
+  }
+
+  //get if user is a company
+  Future<bool> getIsCompany() async {
+    bool isCompany;
+    DocumentReference docReference = FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseAuth.currentUser.uid);
+
+    await docReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        isCompany = datasnapshot.get('iscompany');
+      }
+    });
+
+    return isCompany;
   }
 
   //get user information into user class

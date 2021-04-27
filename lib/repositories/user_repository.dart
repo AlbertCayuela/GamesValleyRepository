@@ -31,7 +31,8 @@ class UserRepository {
   }
 
   //sign up
-  Future<bool> signUp({String email, String password, String userName}) async {
+  Future<bool> signUp(
+      {String email, String password, String userName, bool isCompany}) async {
     bool success;
     try {
       await firebaseAuth.createUserWithEmailAndPassword(
@@ -46,6 +47,7 @@ class UserRepository {
         'username': userName,
         'email': firebaseAuth.currentUser.email,
         'registrationdate': DateTime.now(),
+        'iscompany': isCompany,
         'profileimageurl': '',
         'name': '',
         'surname': '',

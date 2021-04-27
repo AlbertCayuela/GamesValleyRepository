@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/base.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:games_valley/screens/company/company_signup.dart';
 import 'package:games_valley/screens/login.dart';
 import 'package:games_valley/screens/offers.dart';
 import 'package:games_valley/screens/profile/languages_edit/languages_edit.dart';
@@ -47,6 +48,7 @@ class GamesValley extends StatelessWidget {
           '/editwork': (context) => EditWorkScreen(),
           '/editstudies': (context) => EditStudiesScreen(),
           '/editlanguages': (context) => EditLanguagesScreen(),
+          '/companysignup': (context) => CompanySignUpScreen(),
         },
         home: MultiProvider(
           child: AuthWrapper(),

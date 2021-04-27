@@ -126,7 +126,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () => Navigator.pushNamed(context, '/signup'),
                 ),
                 OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/companysignup');
+                    },
                     child: Text(
                       'Are you a company? Sign up here',
                       style: TextStyle(color: Colors.deepPurple),

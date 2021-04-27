@@ -5,12 +5,12 @@ import 'package:provider/provider.dart';
 //todo touch outside textfield doesnt work
 //todo forgot passsword is just a text
 //todo overflow lower screen
-class SignUpScreen extends StatefulWidget {
+class CompanySignUpScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _CompanySignUpScreenState createState() => _CompanySignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _CompanySignUpScreenState extends State<CompanySignUpScreen> {
   bool isSignedUp = false;
   bool signUp = false;
 
@@ -49,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Container(
                   padding: EdgeInsets.only(left: 55),
                   child: Text(
-                    'Sign Up',
+                    'Company Sign Up',
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: _userNameController,
                   decoration: InputDecoration(
                     icon: Icon(Icons.person),
-                    labelText: 'Username',
+                    labelText: 'Company name',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
                   ),
@@ -101,7 +101,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   isSignedUp = await context.read<UserRepository>().signUp(
                       email: _emailController.text,
                       password: _passwordController.text,
-                      isCompany: false,
+                      isCompany: true,
                       userName: _userNameController.text);
                   if (isSignedUp) {
                     setState(() {

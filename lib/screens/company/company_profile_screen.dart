@@ -17,39 +17,51 @@ class CompanyProfileScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                     color: Colors.white,
                   ),
-                  child: Row(children: [
-                    Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          child: Icon(Icons.person,
-                              size: 45), //todo need to do all the logic yet
-                          backgroundImage: null, //todo get image
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.perm_identity, color: Colors.blueGrey),
-                            SizedBox(width: 5),
-                            Text(
-                              'Company name',
-                              style: TextStyle(
-                                  color: Colors.blueGrey, fontSize: 15),
-                            )
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          children: [
-                            Icon(Icons.email_outlined, color: Colors.blueGrey),
-                            SizedBox(width: 5),
-                            Text(
-                              'Company email',
-                              style: TextStyle(
-                                  color: Colors.blueGrey, fontSize: 15),
-                            )
-                          ],
-                        ),
-                      ],
+                  child: Row(mainAxisSize: MainAxisSize.max, children: [
+                    CircleAvatar(
+                      radius: 40,
+                      child: Icon(Icons.person,
+                          size: 45), //todo need to do all the logic yet
+                      backgroundImage: null, //todo get image
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.perm_identity, color: Colors.blueGrey),
+                              SizedBox(width: 5),
+                              Expanded(
+                                child: Text(
+                                  'Company name',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 15),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Icon(Icons.email_outlined,
+                                  color: Colors.blueGrey),
+                              SizedBox(width: 5),
+                              Expanded(
+                                child: Text(
+                                  'Company email',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 15),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Edit Profile'),
                     ),
                   ]),
                 ),

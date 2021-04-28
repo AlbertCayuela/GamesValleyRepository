@@ -76,7 +76,7 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                                 SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
-                                    'Company email',
+                                    company.email,
                                     style: TextStyle(
                                         color: Colors.blueGrey, fontSize: 15),
                                   ),
@@ -116,8 +116,7 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                                   fontSize: 18,
                                 ),
                               ),
-                              Text(
-                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non consequat elit. Nam neque ante, eleifend vel elit eu, luctus interdum magna. Proin consequat, enim et faucibus eleifend, ex ipsum mollis mauris, et laoreet ex purus sit amet lacus. Cras tristique erat eros, quis commodo ipsum semper sit amet. Fusce eros leo, ultrices at massa in, sagittis bibendum quam. Integer dapibus odio nunc, at sagittis mi luctus eu. Quisque scelerisque porta lectus, vitae facilisis nisl vehicula sit amet. Vivamus euismod malesuada nunc, a vestibulum quam consequat eleifend. Quisque sodales eros orci, malesuada malesuada dui consequat suscipit.')
+                              Text(company.description)
                             ],
                           ),
                         ),

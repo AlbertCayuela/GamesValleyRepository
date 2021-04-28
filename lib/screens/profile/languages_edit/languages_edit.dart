@@ -14,7 +14,9 @@ class _EditLanguagesScreenState extends State<EditLanguagesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Edit your languages')),
+      appBar: AppBar(
+          title: Text('Edit your languages',
+              style: TextStyle(fontWeight: FontWeight.bold))),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(

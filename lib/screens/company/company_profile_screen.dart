@@ -60,7 +60,9 @@ class CompanyProfileScreen extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/companyeditprofile');
+                      },
                       child: Text('Edit Profile'),
                     ),
                   ]),

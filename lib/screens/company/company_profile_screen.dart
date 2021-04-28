@@ -1,109 +1,136 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
-class CompanyProfileScreen extends StatelessWidget {
+class CompanyProfileScreen extends StatefulWidget {
+  @override
+  _CompanyProfileScreenState createState() => _CompanyProfileScreenState();
+}
+
+class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
+  CompanyInfo company;
+  bool _loading;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loading = true;
+    context.read<UserRepository>().getCompanyInfo().then((value) {
+      company = value;
+      setState(() {
+        _loading = false;
+      });
+      print(company);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: Colors.grey[200],
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: Container(
-                  padding: EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: Colors.white,
-                  ),
-                  child: Row(mainAxisSize: MainAxisSize.max, children: [
-                    CircleAvatar(
-                      radius: 40,
-                      child: Icon(Icons.person,
-                          size: 45), //todo need to do all the logic yet
-                      backgroundImage: null, //todo get image
+    if (_loading) {
+      return Center(child: CircularProgressIndicator());
+    } else
+      return Scaffold(
+        body: SafeArea(
+          child: Container(
+            color: Colors.grey[200],
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Container(
+                    padding: EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: Colors.white,
                     ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.perm_identity, color: Colors.blueGrey),
-                              SizedBox(width: 5),
-                              Expanded(
-                                child: Text(
-                                  'Company name',
-                                  style: TextStyle(
-                                      color: Colors.blueGrey, fontSize: 15),
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Icon(Icons.email_outlined,
-                                  color: Colors.blueGrey),
-                              SizedBox(width: 5),
-                              Expanded(
-                                child: Text(
-                                  'Company email',
-                                  style: TextStyle(
-                                      color: Colors.blueGrey, fontSize: 15),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                    child: Row(mainAxisSize: MainAxisSize.max, children: [
+                      CircleAvatar(
+                        radius: 40,
+                        child: Icon(Icons.person,
+                            size: 45), //todo need to do all the logic yet
+                        backgroundImage: null, //todo get image
                       ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/companyeditprofile');
-                      },
-                      child: Text('Edit Profile'),
-                    ),
-                  ]),
-                ),
-              ),
-              //Company description
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: Container(
-                  padding: EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    children: [
+                      SizedBox(width: 10),
                       Expanded(
                         child: Column(
                           children: [
-                            Text(
-                              'Company Description',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
+                            Row(
+                              children: [
+                                Icon(Icons.perm_identity,
+                                    color: Colors.blueGrey),
+                                SizedBox(width: 5),
+                                Expanded(
+                                  child: Text(
+                                    company.name,
+                                    style: TextStyle(
+                                        color: Colors.blueGrey, fontSize: 15),
+                                  ),
+                                )
+                              ],
                             ),
-                            Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non consequat elit. Nam neque ante, eleifend vel elit eu, luctus interdum magna. Proin consequat, enim et faucibus eleifend, ex ipsum mollis mauris, et laoreet ex purus sit amet lacus. Cras tristique erat eros, quis commodo ipsum semper sit amet. Fusce eros leo, ultrices at massa in, sagittis bibendum quam. Integer dapibus odio nunc, at sagittis mi luctus eu. Quisque scelerisque porta lectus, vitae facilisis nisl vehicula sit amet. Vivamus euismod malesuada nunc, a vestibulum quam consequat eleifend. Quisque sodales eros orci, malesuada malesuada dui consequat suscipit.')
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Icon(Icons.email_outlined,
+                                    color: Colors.blueGrey),
+                                SizedBox(width: 5),
+                                Expanded(
+                                  child: Text(
+                                    'Company email',
+                                    style: TextStyle(
+                                        color: Colors.blueGrey, fontSize: 15),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
-                    ],
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/companyeditprofile');
+                        },
+                        child: Text('Edit Profile'),
+                      ),
+                    ]),
                   ),
                 ),
-              ),
-              ElevatedButton(
-                  onPressed: () {}, child: Text('Create a job offer')),
-            ],
+                //Company description
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Container(
+                    padding: EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text(
+                                'Company Description',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non consequat elit. Nam neque ante, eleifend vel elit eu, luctus interdum magna. Proin consequat, enim et faucibus eleifend, ex ipsum mollis mauris, et laoreet ex purus sit amet lacus. Cras tristique erat eros, quis commodo ipsum semper sit amet. Fusce eros leo, ultrices at massa in, sagittis bibendum quam. Integer dapibus odio nunc, at sagittis mi luctus eu. Quisque scelerisque porta lectus, vitae facilisis nisl vehicula sit amet. Vivamus euismod malesuada nunc, a vestibulum quam consequat eleifend. Quisque sodales eros orci, malesuada malesuada dui consequat suscipit.')
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {}, child: Text('Create a job offer')),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

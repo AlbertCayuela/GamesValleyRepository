@@ -111,6 +111,36 @@ class UserRepository {
     return isCompany;
   }
 
+  //get company information into company class
+  Future<CompanyInfo> getCompanyInfo() async {
+    CompanyInfo company = CompanyInfo();
+    var offersMaps;
+    DocumentReference docReference = FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseAuth.currentUser.uid);
+    await docReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        company.name = datasnapshot.get('username');
+        company.uid = docReference.id;
+        company.email = datasnapshot.get('email');
+        company.description = datasnapshot.get('description');
+        company.profileImageUrl = datasnapshot.get('profileimageurl');
+      }
+    });
+
+    DocumentReference docRef = FirebaseFirestore.instance
+        .collection('offers')
+        .doc(firebaseAuth.currentUser.uid);
+    await docRef.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        offersMaps = datasnapshot.data();
+        company.offers = offersMaps.values.toList();
+      }
+    });
+
+    return company;
+  }
+
   //get user information into user class
   Future<UserInfo> getUserInfo() async {
     UserInfo user = UserInfo();

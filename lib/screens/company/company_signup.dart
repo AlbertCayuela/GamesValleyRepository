@@ -109,7 +109,7 @@ class _CompanySignUpScreenState extends State<CompanySignUpScreen> {
                     });
                     if (signUp) {
                       //todo change this pushnamed
-                      Navigator.pushNamed(context, '/offers');
+                      Navigator.pushNamed(context, '/authwrapper');
                     }
                   }
                 },

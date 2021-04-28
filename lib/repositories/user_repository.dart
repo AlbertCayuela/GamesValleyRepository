@@ -43,17 +43,17 @@ class UserRepository {
     }
 
     if (success) {
-      db.collection('users').doc(firebaseAuth.currentUser.uid).set({
-        'username': userName,
-        'email': firebaseAuth.currentUser.email,
-        'registrationdate': DateTime.now(),
-        'iscompany': isCompany,
-        'profileimageurl': '',
-        'name': '',
-        'surname': '',
-        'phone': '',
-      });
       if (!isCompany) {
+        db.collection('users').doc(firebaseAuth.currentUser.uid).set({
+          'username': userName,
+          'email': firebaseAuth.currentUser.email,
+          'registrationdate': DateTime.now(),
+          'iscompany': isCompany,
+          'profileimageurl': '',
+          'name': '',
+          'surname': '',
+          'phone': '',
+        });
         db.collection('work').doc(firebaseAuth.currentUser.uid).set({
           '0': [],
         });
@@ -61,6 +61,18 @@ class UserRepository {
           '0': [],
         });
         db.collection('languages').doc(firebaseAuth.currentUser.uid).set({
+          '0': [],
+        });
+      } else if (isCompany) {
+        db.collection('users').doc(firebaseAuth.currentUser.uid).set({
+          'username': userName,
+          'email': firebaseAuth.currentUser.email,
+          'registrationdate': DateTime.now(),
+          'iscompany': isCompany,
+          'profileimageurl': '',
+          'description': '',
+        });
+        db.collection('offers').doc(firebaseAuth.currentUser.uid).set({
           '0': [],
         });
       }
@@ -269,4 +281,13 @@ class UserInfo {
   List<dynamic> workExperiences;
   List<dynamic> studies;
   List<dynamic> languages;
+}
+
+class CompanyInfo {
+  String name;
+  String email;
+  String description;
+  String profileImageUrl;
+  List<dynamic> offers;
+  var uid;
 }

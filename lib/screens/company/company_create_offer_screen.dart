@@ -7,6 +7,7 @@ class CreateOfferScreen extends StatefulWidget {
 
 class _CreateOfferScreenState extends State<CreateOfferScreen> {
   String country;
+  String workField;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -454,6 +455,77 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                     value: 'Wales',
                   ),
                 ],
+              ),
+              SizedBox(height: 10),
+              DropdownButtonFormField(
+                isExpanded: true,
+                value: workField,
+                validator: (value) {
+                  if (value == null) {
+                    return 'Please select the work field';
+                  }
+                  return null;
+                },
+                hint: Text('Work field'),
+                items: [
+                  DropdownMenuItem(
+                    child: Text('Art and animation'),
+                    value: 'Art and animation',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Programming and technology'),
+                    value: 'Programming and technology',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Design and creative direction'),
+                    value: 'Design and creative direction',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Marketing'),
+                    value: 'Marketing',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Quality Management and localization'),
+                    value: 'Quality Management and localization',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Producing'),
+                    value: 'Producing',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Finance'),
+                    value: 'Finance',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Audio and video'),
+                    value: 'Audio and video',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Communication'),
+                    value: 'Communication',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Legal'),
+                    value: 'Legal',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Leadership and executive coordination'),
+                    value: 'Leadership and executive coordination',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Sales and monetization'),
+                    value: 'Sales and monetization',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Other'),
+                    value: 'Other',
+                  ),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    workField = value;
+                  });
+                },
               ),
             ],
           )),

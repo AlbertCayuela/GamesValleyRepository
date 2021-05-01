@@ -24,6 +24,19 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
     });
   }
 
+  updateCompany() {
+    print('calling updateuser function!');
+    setState(() {
+      _loading = true;
+    });
+    context.read<UserRepository>().getCompanyInfo().then((value) {
+      company = value;
+      setState(() {
+        _loading = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loading) {
@@ -88,7 +101,10 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/companyeditprofile');
+                          Navigator.pushNamed(context, '/companyeditprofile')
+                              .then((_) {
+                            updateCompany();
+                          });
                         },
                         child: Text('Edit Profile'),
                       ),

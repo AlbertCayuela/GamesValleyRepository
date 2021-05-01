@@ -84,6 +84,7 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
                       context.read<UserRepository>().changeCompanyDescription(
                           _descriptionController.text);
                     }
+                    Navigator.pop(context);
                   },
                   child: Text('Edit information')),
             ],

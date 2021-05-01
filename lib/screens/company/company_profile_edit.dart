@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
-class CompanyProfileEdit extends StatelessWidget {
+class CompanyProfileEdit extends StatefulWidget {
+  @override
+  _CompanyProfileEditState createState() => _CompanyProfileEditState();
+}
+
+class _CompanyProfileEditState extends State<CompanyProfileEdit> {
+  String imageUrl;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    imageUrl = '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,11 +30,22 @@ class CompanyProfileEdit extends StatelessWidget {
           child: Column(
             children: [
               CircleAvatar(
-                child: Icon(Icons.person, size: 45),
+                child: (imageUrl == '') ? Icon(Icons.person, size: 45) : null,
                 radius: 50,
+                backgroundImage:
+                    (imageUrl == '') ? null : NetworkImage(imageUrl),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context
+                      .read<UserRepository>()
+                      .pickImageAndUpload()
+                      .then((value) {
+                    setState(() {
+                      imageUrl = value;
+                    });
+                  });
+                },
                 child: Text('Edit profile image'),
               ),
               SizedBox(height: 10),

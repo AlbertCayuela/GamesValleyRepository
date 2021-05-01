@@ -141,7 +141,10 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                   ),
                 ),
                 ElevatedButton(
-                    onPressed: () {}, child: Text('Create a job offer')),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/createjoboffer');
+                    },
+                    child: Text('Create a job offer')),
               ],
             ),
           ),

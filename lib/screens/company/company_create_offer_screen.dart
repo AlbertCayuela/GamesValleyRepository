@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CreateOfferScreen extends StatelessWidget {
+class CreateOfferScreen extends StatefulWidget {
+  @override
+  _CreateOfferScreenState createState() => _CreateOfferScreenState();
+}
+
+class _CreateOfferScreenState extends State<CreateOfferScreen> {
+  String country;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +30,7 @@ class CreateOfferScreen extends StatelessWidget {
               ),
               SizedBox(height: 10),
               DropdownButtonFormField(
+                value: country,
                 isExpanded: true,
                 validator: (value) {
                   if (value == null) {
@@ -32,6 +39,11 @@ class CreateOfferScreen extends StatelessWidget {
                   return null;
                 },
                 hint: Text('Country'),
+                onChanged: (value) {
+                  setState(() {
+                    country = value;
+                  });
+                },
                 items: [
                   DropdownMenuItem(
                     child: Text('Remote'),

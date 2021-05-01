@@ -298,6 +298,18 @@ class UserRepository {
       'phone': phone,
     });
   }
+
+  void changeUsername(String username) {
+    db.collection('users').doc(firebaseAuth.currentUser.uid).update({
+      'username': username,
+    });
+  }
+
+  void changeCompanyDescription(String description) {
+    db.collection('users').doc(firebaseAuth.currentUser.uid).update({
+      'description': description,
+    });
+  }
 }
 
 class UserInfo {

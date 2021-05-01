@@ -9,6 +9,8 @@ class CompanyProfileEdit extends StatefulWidget {
 
 class _CompanyProfileEditState extends State<CompanyProfileEdit> {
   String imageUrl;
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
 
   @override
   void initState() {
@@ -50,7 +52,7 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
               ),
               SizedBox(height: 10),
               TextFormField(
-                // controller: _nameController,
+                controller: _nameController,
                 decoration: InputDecoration(
                   labelText: 'Company name',
                   border: OutlineInputBorder(
@@ -60,7 +62,7 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
               SizedBox(height: 10),
               TextFormField(
                 maxLines: null,
-                // controller: _surnameController,
+                controller: _descriptionController,
                 decoration: InputDecoration(
                   labelText: 'Company description',
                   border: OutlineInputBorder(
@@ -68,7 +70,22 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
                 ),
               ),
               SizedBox(height: 10),
-              ElevatedButton(onPressed: () {}, child: Text('Edit information')),
+              ElevatedButton(
+                  onPressed: () {
+                    print('pressed editing company info button!');
+                    if (_nameController.text != '') {
+                      print('changing company name!');
+                      context
+                          .read<UserRepository>()
+                          .changeUsername(_nameController.text);
+                    }
+                    if (_descriptionController.text != '') {
+                      print('changing company description!');
+                      context.read<UserRepository>().changeCompanyDescription(
+                          _descriptionController.text);
+                    }
+                  },
+                  child: Text('Edit information')),
             ],
           ),
         ),

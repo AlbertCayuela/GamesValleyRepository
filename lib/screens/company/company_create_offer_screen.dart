@@ -663,6 +663,7 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                                   extraInformation:
                                       _extraInformationController.text,
                                 );
+                            Navigator.pop(context);
                           } else {
                             print('Something is wrong in this offer!');
                           }

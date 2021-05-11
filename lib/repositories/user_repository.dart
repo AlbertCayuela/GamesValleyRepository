@@ -282,6 +282,21 @@ class UserRepository {
     });
   }
 
+  //get single company offers
+  Future getCompanyOffers() async {
+    var offers;
+    DocumentReference docReference = FirebaseFirestore.instance
+        .collection('offers')
+        .doc(firebaseAuth.currentUser.uid);
+    await docReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        offers = datasnapshot.data();
+      }
+    });
+
+    return offers;
+  }
+
   Future<String> pickImageAndUpload() async {
     final pickedImage =
         await ImagePicker().getImage(source: ImageSource.gallery);

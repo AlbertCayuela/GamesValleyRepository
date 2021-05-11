@@ -10,11 +10,11 @@ class CompanyOffersScreen extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           print(snapshot);
-          return Text('Snapshot has data');
+          return Scaffold();
         } else if (snapshot.hasError) {
           return Text('Snapshot has error');
         }
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator());
       },
     );
   }

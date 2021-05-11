@@ -256,6 +256,32 @@ class UserRepository {
     });
   }
 
+  //create a job offer being a company
+  void createJobOffer(
+      {@required String title,
+      @required String country,
+      @required String workField,
+      String annualSalary,
+      @required String type,
+      @required String requirements,
+      @required String workerDuties,
+      String extraInformation}) {
+    var offerArray = [
+      title,
+      country,
+      workField,
+      annualSalary,
+      type,
+      requirements,
+      workerDuties,
+      extraInformation
+    ];
+
+    db.collection('offers').doc(firebaseAuth.currentUser.uid).update({
+      Timestamp.now().millisecondsSinceEpoch.toString(): offerArray,
+    });
+  }
+
   Future<String> pickImageAndUpload() async {
     final pickedImage =
         await ImagePicker().getImage(source: ImageSource.gallery);

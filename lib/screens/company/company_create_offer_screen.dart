@@ -610,7 +610,7 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                   controller: _workerDutiesController,
                   decoration: InputDecoration(
                     //icon: Icon(Icons.mail),
-                    labelText: 'Worker duties',
+                    labelText: 'Worker duties*',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
                   ),
@@ -621,6 +621,19 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                   },
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ),
+                SizedBox(height: 10),
+                TextFormField(
+                  maxLines: null,
+                  controller: _workerDutiesController,
+                  decoration: InputDecoration(
+                    //icon: Icon(Icons.mail),
+                    labelText: 'Extra information',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                ),
+                SizedBox(height: 10),
+                ElevatedButton(onPressed: () {}, child: Text('Create offer')),
               ],
             )),
       ),

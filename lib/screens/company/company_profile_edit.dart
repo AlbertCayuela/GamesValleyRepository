@@ -3,12 +3,14 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
 
 class CompanyProfileEdit extends StatefulWidget {
+  String imageUrl;
+
+  CompanyProfileEdit({Key key, @required this.imageUrl}) : super(key: key);
   @override
   _CompanyProfileEditState createState() => _CompanyProfileEditState();
 }
 
 class _CompanyProfileEditState extends State<CompanyProfileEdit> {
-  String imageUrl;
   TextEditingController _nameController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
 
@@ -16,7 +18,6 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    imageUrl = '';
   }
 
   @override
@@ -32,10 +33,13 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
           child: Column(
             children: [
               CircleAvatar(
-                child: (imageUrl == '') ? Icon(Icons.person, size: 45) : null,
+                child: (widget.imageUrl == '')
+                    ? Icon(Icons.person, size: 45)
+                    : null,
                 radius: 50,
-                backgroundImage:
-                    (imageUrl == '') ? null : NetworkImage(imageUrl),
+                backgroundImage: (widget.imageUrl == '')
+                    ? null
+                    : NetworkImage(widget.imageUrl),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -45,7 +49,7 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
                       .then((value) {
                     if (value != null) {
                       setState(() {
-                        imageUrl = value;
+                        widget.imageUrl = value;
                       });
                     }
                   });

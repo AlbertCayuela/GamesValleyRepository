@@ -52,7 +52,6 @@ class GamesValley extends StatelessWidget {
           '/editstudies': (context) => EditStudiesScreen(),
           '/editlanguages': (context) => EditLanguagesScreen(),
           '/companysignup': (context) => CompanySignUpScreen(),
-          '/companyeditprofile': (context) => CompanyProfileEdit(),
           '/createjoboffer': (context) => CreateOfferScreen(),
         },
         home: MultiProvider(

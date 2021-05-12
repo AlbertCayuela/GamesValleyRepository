@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/company/company_profile_edit.dart';
 import 'package:provider/provider.dart';
 
 class CompanyProfileScreen extends StatefulWidget {
@@ -109,8 +110,13 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/companyeditprofile')
-                              .then((_) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CompanyProfileEdit(
+                                      imageUrl: this
+                                          .company
+                                          .profileImageUrl))).then((_) {
                             updateCompany();
                           });
                         },

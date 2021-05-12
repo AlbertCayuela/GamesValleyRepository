@@ -43,9 +43,11 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
                       .read<UserRepository>()
                       .pickImageAndUpload()
                       .then((value) {
-                    setState(() {
-                      imageUrl = value;
-                    });
+                    if (value != null) {
+                      setState(() {
+                        imageUrl = value;
+                      });
+                    }
                   });
                 },
                 child: Text('Edit profile image'),

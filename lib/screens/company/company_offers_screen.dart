@@ -16,13 +16,11 @@ class CompanyOffersScreen extends StatelessWidget {
             body: ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, i) {
-                if (snapshot.data[i].isNotEmpty) {
-                  item = snapshot.data[i];
-                  print(item[1]);
-                }
-                if (item != null) {
-                  return Text(item[1]);
-                }
+                print(snapshot.data[i]);
+                return Offer(
+                  title: snapshot.data[i][0],
+                  location: snapshot.data[i][1],
+                );
               },
             ),
           );

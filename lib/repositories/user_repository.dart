@@ -249,7 +249,7 @@ class UserRepository {
   }
 
   //create a job offer being a company
-  void createJobOffer(
+  Future<void> createJobOffer(
       {@required String title,
       @required String country,
       @required String workField,
@@ -257,8 +257,26 @@ class UserRepository {
       @required String type,
       @required String requirements,
       @required String workerDuties,
-      String extraInformation}) {
+      String extraInformation}) async {
+    String companyName;
+    String companyDescription;
+    String companyImageUrl;
+
+    DocumentReference docReference = FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseAuth.currentUser.uid);
+
+    await docReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        companyName = datasnapshot.get('username');
+        companyDescription = datasnapshot.get('description');
+        companyImageUrl = datasnapshot.get('profileimageurl');
+      }
+    });
     var offerArray = [
+      companyName,
+      companyDescription,
+      companyImageUrl,
       title,
       country,
       workField,

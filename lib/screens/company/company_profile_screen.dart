@@ -48,6 +48,11 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
             color: Colors.grey[200],
             child: Column(
               children: [
+                TextButton(
+                    onPressed: () {
+                      context.read<UserRepository>().singOut();
+                    },
+                    child: Text('SignOut')),
                 Padding(
                   padding: const EdgeInsets.all(4),
                   child: Container(

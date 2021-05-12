@@ -54,15 +54,9 @@ class UserRepository {
           'surname': '',
           'phone': '',
         });
-        db.collection('work').doc(firebaseAuth.currentUser.uid).set({
-          '0': [],
-        });
-        db.collection('studies').doc(firebaseAuth.currentUser.uid).set({
-          '0': [],
-        });
-        db.collection('languages').doc(firebaseAuth.currentUser.uid).set({
-          '0': [],
-        });
+        db.collection('work').doc(firebaseAuth.currentUser.uid).set({});
+        db.collection('studies').doc(firebaseAuth.currentUser.uid).set({});
+        db.collection('languages').doc(firebaseAuth.currentUser.uid).set({});
       } else if (isCompany) {
         db.collection('users').doc(firebaseAuth.currentUser.uid).set({
           'username': userName,
@@ -72,9 +66,7 @@ class UserRepository {
           'profileimageurl': '',
           'description': '',
         });
-        db.collection('offers').doc(firebaseAuth.currentUser.uid).set({
-          '0': [],
-        });
+        db.collection('offers').doc(firebaseAuth.currentUser.uid).set({});
       }
       return true;
     }
@@ -285,12 +277,14 @@ class UserRepository {
   //get single company offers
   Future getCompanyOffers() async {
     var offers;
+    var offersMaps;
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('offers')
         .doc(firebaseAuth.currentUser.uid);
     await docReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
-        offers = datasnapshot.data();
+        offersMaps = datasnapshot.data();
+        offers = offersMaps.values.toList();
       }
     });
 

@@ -39,14 +39,13 @@ class _OffersScreenState extends State<OffersScreen> {
 }
 
 class Offer extends StatelessWidget {
-  final String title, location, company, imageURL, money;
-  final int minSalary, maxSalary;
+  final String title, location, company, imageURL, money, salary;
+
   Offer(
       {this.title = 'unknown',
       this.location = 'unknown',
       this.company = 'unknown',
-      this.minSalary = 0,
-      this.maxSalary = 0,
+      this.salary = 'Salaray not available',
       this.imageURL =
           'https://media.redadn.es/imagenes/otros-aticulos_308786.jpg',
       this.money = '€'});
@@ -61,7 +60,6 @@ class Offer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            TextButton(onPressed: (){context.read<UserRepository>().singOut();}, child: Text('sign out')),
             CircleAvatar(
               backgroundImage: NetworkImage(this.imageURL),
             ),
@@ -98,8 +96,7 @@ class Offer extends StatelessWidget {
                           color: Colors.blueGrey,
                           size: 17,
                         ),
-                        Text('${this.minSalary} - ${this.maxSalary} $money',
-                            style: TextStyle(color: Colors.blueGrey)),
+                        Text(salary, style: TextStyle(color: Colors.blueGrey)),
                       ],
                     ),
                   ]),

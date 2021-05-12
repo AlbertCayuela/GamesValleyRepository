@@ -45,7 +45,7 @@ class Offer extends StatelessWidget {
       {this.title = 'unknown',
       this.location = 'unknown',
       this.company = 'unknown',
-      this.salary = 'Salaray not available',
+      this.salary = 'Salary not available',
       this.imageURL =
           'https://media.redadn.es/imagenes/otros-aticulos_308786.jpg',
       this.money = '€'});
@@ -96,7 +96,8 @@ class Offer extends StatelessWidget {
                           color: Colors.blueGrey,
                           size: 17,
                         ),
-                        Text(salary, style: TextStyle(color: Colors.blueGrey)),
+                        Text(salary + '/year',
+                            style: TextStyle(color: Colors.blueGrey)),
                       ],
                     ),
                   ]),

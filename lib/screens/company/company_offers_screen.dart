@@ -22,6 +22,7 @@ class CompanyOffersScreen extends StatelessWidget {
                   imageURL: snapshot.data[i][2],
                   title: snapshot.data[i][3],
                   location: snapshot.data[i][4],
+                  salary: snapshot.data[i][6],
                 );
               },
             ),

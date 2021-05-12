@@ -64,9 +64,12 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                     child: Row(mainAxisSize: MainAxisSize.max, children: [
                       CircleAvatar(
                         radius: 40,
-                        child: Icon(Icons.person,
-                            size: 45), //todo need to do all the logic yet
-                        backgroundImage: null, //todo get image
+                        child: company.profileImageUrl != ''
+                            ? null
+                            : Icon(Icons.person, size: 45),
+                        backgroundImage: company.profileImageUrl != ''
+                            ? NetworkImage(company.profileImageUrl)
+                            : null,
                       ),
                       SizedBox(width: 10),
                       Expanded(

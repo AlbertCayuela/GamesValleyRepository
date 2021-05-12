@@ -78,6 +78,11 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
               padding: const EdgeInsets.all(4),
               child: Column(
                 children: [
+                  TextButton(
+                      onPressed: () {
+                        context.read<UserRepository>().singOut();
+                      },
+                      child: Text('SignOUT')),
                   MainInfoWidget(
                       user: widget.user, updateUser: widget.updateUser),
                   SizedBox(height: 8),

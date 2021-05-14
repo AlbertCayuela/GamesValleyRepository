@@ -274,6 +274,7 @@ class UserRepository {
       }
     });
     var offerArray = [
+      Timestamp.now().millisecondsSinceEpoch.toString(),
       companyName,
       companyDescription,
       companyImageUrl,
@@ -307,6 +308,20 @@ class UserRepository {
     });
 
     return offers;
+  }
+
+  //get all the offers
+  Future getAllOffers() async {
+    var allOffers;
+    List offers;
+
+    CollectionReference colReference =
+        FirebaseFirestore.instance.collection('offers');
+    QuerySnapshot querySnapshot = await colReference.get();
+
+    List dataMap = querySnapshot.docs.map((e) => e.data()).toList();
+
+    print(dataMap);
   }
 
   Future<String> pickImageAndUpload() async {

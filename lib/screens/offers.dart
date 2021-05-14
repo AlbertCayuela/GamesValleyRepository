@@ -9,31 +9,29 @@ class OffersScreen extends StatefulWidget {
 }
 
 class _OffersScreenState extends State<OffersScreen> {
-  List<Offer> offersList;
+  var offers;
   ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    offersList = List.generate(10, (index) => Offer(title: '$index'));
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels ==
-          _scrollController.position.maxScrollExtent) {
-        loadMoreOffers(10, offersList);
-        setState(() {});
-      }
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: offersList.length,
-      itemBuilder: (context, index) {
-        return offersList[index];
-      },
+    return Scaffold(
+      body: FutureBuilder(
+          future: context.read<UserRepository>().getAllOffers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text('Snapshot has data');
+            } else if (snapshot.hasError) {
+              return Text('There was an error collecting the data');
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          }),
     );
   }
 }

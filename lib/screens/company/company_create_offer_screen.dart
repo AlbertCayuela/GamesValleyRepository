@@ -312,10 +312,6 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                           value: 'Mexico',
                         ),
                         DropdownMenuItem(
-                          child: Text('Azerbaijan'),
-                          value: 'Azerbaijan',
-                        ),
-                        DropdownMenuItem(
                           child: Text('Moldova'),
                           value: 'Moldova',
                         ),

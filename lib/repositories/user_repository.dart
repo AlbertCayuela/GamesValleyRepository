@@ -321,6 +321,10 @@ class UserRepository {
 
     List dataMap = querySnapshot.docs.map((e) => e.data()).toList();
 
+    for (int i = 0; i < dataMap.length; i++) {
+      //dataMap[i] = dataMap[i].values.toList();
+    }
+
     print(dataMap);
   }
 

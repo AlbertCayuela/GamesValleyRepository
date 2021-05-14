@@ -34,7 +34,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 SizedBox(height: 5),
-                if (isWork && this.user.workExperiences.length > 1)
+                if (isWork)
                   for (int i = 0; i < this.user.workExperiences.length; i++)
                     if (this.user.workExperiences[i].isNotEmpty)
                       WorkAndStudiesInfo(

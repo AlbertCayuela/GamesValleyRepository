@@ -35,62 +35,833 @@ class _OffersScreenState extends State<OffersScreen> {
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('Filter offers'),
+                padding: const EdgeInsets.only(left: 16.0, top: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Filter offers',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      'Workfield',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               ListTile(
                 title: Text('Art and animation',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Audio and video',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Communication',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Design and creative direction',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title:
                     Text('Finance', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Internship',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Leadership and executive coordination',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Legal', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title:
                     Text('Marketing', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title:
                     Text('Producing', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Programming and technology',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Quality management and localization',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Sales and monetization',
                     style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
                 title: Text('Other', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  'Country',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text('Remote', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Algeria', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Armenia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Argentina', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Australia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Austria', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Azerbaijan',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Bahrain', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Bangladesh',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Belarus', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Belgium', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Bosnia And Herzegovina',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Brazil', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Austria', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Bulgaria', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Cameroon', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Canada', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Cayman Islands',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Chile', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('China', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Colombia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Costa Rica',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Croacia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Cyprus', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Czech Republic',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Denmark', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Ecuador', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Egypt', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('El Salvador',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('England', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Estonia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Finland', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('France', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Georgia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Germany', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Ghana', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Greece', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Guatemala', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Hungary', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Iceland', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('India', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Indonesia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Iran', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Iraq', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Ireland', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Israel', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Italy', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Japan', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Jordan', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Kuwait', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Latvia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Lebanon', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Libya', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Lietchenstein',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Lithuania', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Luxembourg',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Macedonia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Malaysia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Malta', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Mexico', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Moldova', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Morocco', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Myanmar', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Netherlands',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('New Zealand',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Nigeria', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Northern Ireland',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Norway', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Pakistan', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Paraguay', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Peru', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Philippines',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Poland', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Portugal', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Qatar', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Romania', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Russia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Saudi Arabia',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Scotland', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Serbia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Singapore', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Slovakia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Slovenia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('South Africa',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('South Korea',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Spain', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Sri Lanka', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Sweden', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Switzerland',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Syria', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Taiwan', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Thailand', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Tunisia', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Turkey', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Ukraine', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('United Arab Emirates',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('United States',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Uruguay', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Venezuela', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Vietnam', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Wales', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  'Type',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              ListTile(
+                title:
+                    Text('Full time', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title:
+                    Text('Part time', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Other', style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
             ],
           ),

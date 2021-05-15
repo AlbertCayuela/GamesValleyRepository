@@ -312,20 +312,31 @@ class UserRepository {
 
   //get all the offers
   Future getAllOffers() async {
-    var allOffers;
-    List offers;
-
     CollectionReference colReference =
         FirebaseFirestore.instance.collection('offers');
     QuerySnapshot querySnapshot = await colReference.get();
 
-    List dataMap = querySnapshot.docs.map((e) => e.data()).toList();
+    var dataMap = querySnapshot.docs.map((e) => e.data()).toList();
+    var data = [];
+    var finalData = [];
 
     for (int i = 0; i < dataMap.length; i++) {
-      //dataMap[i] = dataMap[i].values.toList();
+      data.add(dataMap[i].values.toList());
     }
 
-    print(dataMap);
+    for (int j = 0; j < data.length; j++) {
+      for (int x = 0; x < data[j].length; x++) {
+        finalData.add(data[j][x]);
+      }
+    }
+
+    finalData.sort((a, b) => a[0].compareTo(b[0]));
+
+    var dataSorted = finalData.reversed.toList();
+
+    print(dataSorted);
+
+    return dataSorted;
   }
 
   Future<String> pickImageAndUpload() async {

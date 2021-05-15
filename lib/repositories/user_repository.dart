@@ -334,8 +334,6 @@ class UserRepository {
 
     var dataSorted = finalData.reversed.toList();
 
-    print(dataSorted);
-
     return dataSorted;
   }
 

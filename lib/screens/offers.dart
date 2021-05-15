@@ -8,9 +8,14 @@ class OffersScreen extends StatefulWidget {
   _OffersScreenState createState() => _OffersScreenState();
 }
 
+enum Filter { field, country, type }
+
 class _OffersScreenState extends State<OffersScreen> {
   List filteredOffers;
+  List offers;
   ScrollController _scrollController = ScrollController();
+
+  bool initialFilter = false;
 
   @override
   void initState() {
@@ -18,6 +23,28 @@ class _OffersScreenState extends State<OffersScreen> {
     super.initState();
 
     filteredOffers = [];
+    offers = [];
+  }
+
+  void filterOffers(Filter filterType, String option) {
+    int filter;
+
+    switch (filterType) {
+      case Filter.field:
+        filter = 6;
+        break;
+      case Filter.country:
+        filter = 5;
+        break;
+      case Filter.type:
+        filter = 8;
+    }
+    setState(() {
+      filteredOffers =
+          offers.where((element) => (element[filter] == option)).toList();
+      print('FILTERED OFFERS:');
+      print(filteredOffers);
+    });
   }
 
   @override
@@ -60,6 +87,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Art and animation',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, 'Art and animation');
                   Navigator.pop(context);
                 },
               ),
@@ -868,19 +896,26 @@ class _OffersScreenState extends State<OffersScreen> {
         ),
       ),
       body: FutureBuilder(
-          future: context.read<UserRepository>().getAllOffers(),
+          future: context.read<UserRepository>().getAllOffers().then((value) {
+            offers = value;
+            if (!initialFilter) {
+              filteredOffers = offers;
+              initialFilter = true;
+            }
+            return offers;
+          }),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
-                itemCount: snapshot.data.length,
+                itemCount: filteredOffers.length,
                 itemBuilder: (context, index) {
                   return Offer(
-                    company: snapshot.data[index][1],
-                    imageURL: snapshot.data[index][3],
-                    title: snapshot.data[index][4],
-                    location: snapshot.data[index][5],
-                    field: snapshot.data[index][6],
-                    salary: snapshot.data[index][7],
+                    company: filteredOffers[index][1],
+                    imageURL: filteredOffers[index][3],
+                    title: filteredOffers[index][4],
+                    location: filteredOffers[index][5],
+                    field: filteredOffers[index][6],
+                    salary: filteredOffers[index][7],
                   );
                 },
               );

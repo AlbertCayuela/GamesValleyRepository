@@ -34,6 +34,7 @@ class _OffersScreenState extends State<OffersScreen> {
                     imageURL: snapshot.data[index][3],
                     title: snapshot.data[index][4],
                     location: snapshot.data[index][5],
+                    field: snapshot.data[index][6],
                     salary: snapshot.data[index][7],
                   );
                 },
@@ -49,7 +50,7 @@ class _OffersScreenState extends State<OffersScreen> {
 }
 
 class Offer extends StatelessWidget {
-  final String title, location, company, imageURL, money, salary;
+  final String title, location, company, imageURL, money, salary, field;
 
   Offer(
       {this.title = 'unknown',
@@ -57,7 +58,8 @@ class Offer extends StatelessWidget {
       this.company = 'unknown',
       this.salary = 'Salary not available',
       this.imageURL,
-      this.money = '€'});
+      this.money = '€',
+      this.field});
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +83,25 @@ class Offer extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      this.title,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.deepPurple),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          this.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.deepPurple),
+                        ),
+                        Expanded(
+                          child: Text(
+                            this.field,
+                            style:
+                                TextStyle(color: Colors.blueGrey, fontSize: 12),
+                            textAlign: TextAlign.end,
+                          ),
+                        ),
+                      ],
                     ),
                     Text(this.company),
                     SizedBox(height: 10),

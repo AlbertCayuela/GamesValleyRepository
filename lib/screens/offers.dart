@@ -30,7 +30,72 @@ class _OffersScreenState extends State<OffersScreen> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      drawer: Drawer(),
+      drawer: SafeArea(
+        child: Drawer(
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Filter offers'),
+              ),
+              ListTile(
+                title: Text('Art and animation',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Audio and video',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Communication',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Design and creative direction',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title:
+                    Text('Finance', style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Internship',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Leadership and executive coordination',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Legal', style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title:
+                    Text('Marketing', style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title:
+                    Text('Producing', style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Programming and technology',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Quality management and localization',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Sales and monetization',
+                    style: TextStyle(color: Colors.blueGrey)),
+              ),
+              ListTile(
+                title: Text('Other', style: TextStyle(color: Colors.blueGrey)),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: FutureBuilder(
           future: context.read<UserRepository>().getAllOffers(),
           builder: (context, snapshot) {

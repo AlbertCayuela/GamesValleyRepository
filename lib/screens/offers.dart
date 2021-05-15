@@ -8,7 +8,7 @@ class OffersScreen extends StatefulWidget {
   _OffersScreenState createState() => _OffersScreenState();
 }
 
-enum Filter { field, country, type }
+enum Filter { field, country, type, delete }
 
 class _OffersScreenState extends State<OffersScreen> {
   List filteredOffers;
@@ -26,8 +26,10 @@ class _OffersScreenState extends State<OffersScreen> {
     offers = [];
   }
 
-  void filterOffers(Filter filterType, String option) {
+  void filterOffers(Filter filterType, {String option}) {
     int filter;
+
+    bool isDelete = false;
 
     switch (filterType) {
       case Filter.field:
@@ -38,13 +40,22 @@ class _OffersScreenState extends State<OffersScreen> {
         break;
       case Filter.type:
         filter = 8;
+        break;
+      case Filter.delete:
+        isDelete = true;
     }
-    setState(() {
-      filteredOffers =
-          offers.where((element) => (element[filter] == option)).toList();
-      print('FILTERED OFFERS:');
-      print(filteredOffers);
-    });
+    if (!isDelete) {
+      setState(() {
+        filteredOffers =
+            offers.where((element) => (element[filter] == option)).toList();
+        print('FILTERED OFFERS:');
+        print(filteredOffers);
+      });
+    } else {
+      setState(() {
+        filteredOffers = offers;
+      });
+    }
   }
 
   @override
@@ -62,32 +73,37 @@ class _OffersScreenState extends State<OffersScreen> {
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 16.0, top: 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Filter offers',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      'Workfield',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                padding: const EdgeInsets.only(left: 16, top: 10),
+                child: Text(
+                  'Filter offers',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text('Delete filter',
+                    style: TextStyle(color: Colors.blueGrey)),
+                onTap: () {
+                  filterOffers(Filter.delete);
+                  Navigator.pop(context);
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Text(
+                  'Workfield',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               ListTile(
                 title: Text('Art and animation',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
-                  filterOffers(Filter.field, 'Art and animation');
+                  filterOffers(Filter.field, option: 'Art and animation');
                   Navigator.pop(context);
                 },
               ),

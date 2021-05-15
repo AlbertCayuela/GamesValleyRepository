@@ -9,19 +9,28 @@ class OffersScreen extends StatefulWidget {
 }
 
 class _OffersScreenState extends State<OffersScreen> {
-  var offers;
+  List filteredOffers;
   ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    filteredOffers = [];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'GamesValley',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+      drawer: Drawer(),
       body: FutureBuilder(
           future: context.read<UserRepository>().getAllOffers(),
           builder: (context, snapshot) {

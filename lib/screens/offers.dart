@@ -91,24 +91,32 @@ class Offer extends StatelessWidget {
                     Text(this.company),
                     SizedBox(height: 10),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.place,
-                          color: Colors.blueGrey,
-                          size: 17,
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.place,
+                              color: Colors.blueGrey,
+                              size: 17,
+                            ),
+                            Text(
+                              this.location,
+                              style: TextStyle(color: Colors.blueGrey),
+                            ),
+                          ],
                         ),
-                        Text(
-                          this.location,
-                          style: TextStyle(color: Colors.blueGrey),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.attach_money,
+                              color: Colors.blueGrey,
+                              size: 17,
+                            ),
+                            Text(salary + '/year',
+                                style: TextStyle(color: Colors.blueGrey)),
+                          ],
                         ),
-                        SizedBox(width: 20),
-                        Icon(
-                          Icons.attach_money,
-                          color: Colors.blueGrey,
-                          size: 17,
-                        ),
-                        Text(salary + '/year',
-                            style: TextStyle(color: Colors.blueGrey)),
                       ],
                     ),
                   ]),

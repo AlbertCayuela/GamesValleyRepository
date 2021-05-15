@@ -21,11 +21,23 @@ class _OffersScreenState extends State<OffersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: FutureBuilder(
           future: context.read<UserRepository>().getAllOffers(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text('Snapshot has data');
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  return Offer(
+                    company: snapshot.data[index][1],
+                    imageURL: snapshot.data[index][3],
+                    title: snapshot.data[index][4],
+                    location: snapshot.data[index][5],
+                    salary: snapshot.data[index][7],
+                  );
+                },
+              );
             } else if (snapshot.hasError) {
               return Text('There was an error collecting the data');
             } else {
@@ -44,8 +56,7 @@ class Offer extends StatelessWidget {
       this.location = 'unknown',
       this.company = 'unknown',
       this.salary = 'Salary not available',
-      this.imageURL =
-          'https://media.redadn.es/imagenes/otros-aticulos_308786.jpg',
+      this.imageURL,
       this.money = '€'});
 
   @override
@@ -59,7 +70,9 @@ class Offer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(this.imageURL),
+              backgroundImage: this.imageURL == null || this.imageURL == ''
+                  ? null
+                  : NetworkImage(this.imageURL),
             ),
             SizedBox(
               width: 10,

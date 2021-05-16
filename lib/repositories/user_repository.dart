@@ -263,6 +263,8 @@ class UserRepository {
     String companyDescription;
     String companyImageUrl;
 
+    var uuid;
+
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('users')
         .doc(firebaseAuth.currentUser.uid);
@@ -287,12 +289,14 @@ class UserRepository {
       requirements,
       workerDuties,
       extraInformation,
-      Uuid(),
+      uuid = Uuid(),
     ];
 
     db.collection('offers').doc(firebaseAuth.currentUser.uid).update({
       Timestamp.now().millisecondsSinceEpoch.toString(): offerArray,
     });
+
+    db.collection('applicants').doc(uuid).set({});
   }
 
   //get single company offers

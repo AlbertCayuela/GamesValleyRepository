@@ -18,11 +18,17 @@ class CompanyOffersScreen extends StatelessWidget {
               itemBuilder: (context, i) {
                 print(snapshot.data[i]);
                 return Offer(
-                  company: snapshot.data[i][0],
-                  imageURL: snapshot.data[i][2],
-                  title: snapshot.data[i][3],
-                  location: snapshot.data[i][4],
-                  salary: snapshot.data[i][6],
+                  timestamp: snapshot.data[i][0],
+                  company: snapshot.data[i][1],
+                  //companyDescription: snapshot.data[i][2],
+                  //imageURL: snapshot.data[i][3],
+                  title: snapshot.data[i][4],
+                  location: snapshot.data[i][5],
+                  salary: snapshot.data[i][7],
+                  type: snapshot.data[i][8],
+                  requirements: snapshot.data[i][9],
+                  workerDuties: snapshot.data[i][10],
+                  extraInformation: snapshot.data[i][11],
                 );
               },
             ),

@@ -1062,6 +1062,7 @@ class _OffersScreenState extends State<OffersScreen> {
                     requirements: filteredOffers[index][9],
                     workerDuties: filteredOffers[index][10],
                     extraInformation: filteredOffers[index][11],
+                    //uuid: filteredOffers[index][12],
                   );
                 },
               );
@@ -1088,20 +1089,22 @@ class Offer extends StatelessWidget {
       type,
       requirements,
       workerDuties,
-      extraInformation;
+      extraInformation,
+      uuid;
   Offer({
-    this.timestamp,
+    this.timestamp = '',
     this.company = 'unknown',
-    this.companyDescription,
-    this.imageURL,
+    this.companyDescription = '',
+    this.imageURL = '',
     this.title = 'unknown',
     this.location = 'unknown',
-    this.field,
+    this.field = '',
     this.salary = 'Salary not available',
-    this.type,
-    this.requirements,
-    this.workerDuties,
-    this.extraInformation,
+    this.type = '',
+    this.requirements = '',
+    this.workerDuties = '',
+    this.extraInformation = '',
+    this.uuid = '',
     this.money = '€',
   });
 
@@ -1128,6 +1131,7 @@ class Offer extends StatelessWidget {
                         this.requirements,
                         this.workerDuties,
                         this.extraInformation,
+                        this.uuid,
                         this.money,
                       ],
                     )));

@@ -9,7 +9,23 @@ class DetailedOfferScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    content: Text('Choose the way you want to apply'),
+                    actions: [
+                      TextButton(
+                          onPressed: () {},
+                          child: Text('Apply with your profile information')),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text('Apply with your own CV')),
+                    ],
+                  );
+                });
+          },
           icon: Icon(Icons.approval),
           label: Text('Apply'),
         ),

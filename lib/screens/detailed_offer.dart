@@ -8,6 +8,11 @@ class DetailedOfferScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {},
+          icon: Icon(Icons.approval),
+          label: Text('Apply'),
+        ),
         body: Container(
           color: Colors.grey,
           child: Padding(

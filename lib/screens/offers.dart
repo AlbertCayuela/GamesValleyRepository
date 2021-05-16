@@ -225,6 +225,7 @@ class _OffersScreenState extends State<OffersScreen> {
               ListTile(
                 title: Text('Remote', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Remote');
                   Navigator.pop(context);
                 },
               ),
@@ -232,6 +233,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Algeria', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Algeria');
                   Navigator.pop(context);
                 },
               ),
@@ -239,6 +241,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Armenia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Armenia');
                   Navigator.pop(context);
                 },
               ),
@@ -246,6 +249,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Argentina', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Argentina');
                   Navigator.pop(context);
                 },
               ),
@@ -253,6 +257,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Australia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Australia');
                   Navigator.pop(context);
                 },
               ),
@@ -260,6 +265,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Austria', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Austria');
                   Navigator.pop(context);
                 },
               ),
@@ -267,6 +273,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Azerbaijan',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Azerbaijan');
                   Navigator.pop(context);
                 },
               ),
@@ -274,6 +281,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Bahrain', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Bahrain');
                   Navigator.pop(context);
                 },
               ),
@@ -281,6 +289,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Bangladesh',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Bangladesh');
                   Navigator.pop(context);
                 },
               ),
@@ -288,6 +297,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Belarus', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Belarus');
                   Navigator.pop(context);
                 },
               ),
@@ -295,6 +305,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Belgium', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Belgium');
                   Navigator.pop(context);
                 },
               ),
@@ -302,12 +313,15 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Bosnia And Herzegovina',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country,
+                      option: 'Bosnia And Herzegovina');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Brazil', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Brazil');
                   Navigator.pop(context);
                 },
               ),
@@ -315,6 +329,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Austria', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Austria');
                   Navigator.pop(context);
                 },
               ),
@@ -322,6 +337,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Bulgaria', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Bulgaria');
                   Navigator.pop(context);
                 },
               ),
@@ -329,12 +345,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Cameroon', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Cameroon');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Canada', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Canada');
                   Navigator.pop(context);
                 },
               ),
@@ -342,18 +360,21 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Cayman Islands',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Cayman Islands');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Chile', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Chile');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('China', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'China');
                   Navigator.pop(context);
                 },
               ),
@@ -361,6 +382,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Colombia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Colombia');
                   Navigator.pop(context);
                 },
               ),
@@ -368,6 +390,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Costa Rica',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Costa Rica');
                   Navigator.pop(context);
                 },
               ),
@@ -375,12 +398,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Croacia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Croacia');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Cyprus', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Cyprus');
                   Navigator.pop(context);
                 },
               ),
@@ -388,6 +413,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Czech Republic',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Czech Republic');
                   Navigator.pop(context);
                 },
               ),
@@ -395,6 +421,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Denmark', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Denmark');
                   Navigator.pop(context);
                 },
               ),
@@ -402,12 +429,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Ecuador', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Ecuador');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Egypt', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Egypt');
                   Navigator.pop(context);
                 },
               ),
@@ -415,6 +444,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('El Salvador',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'El Salvador');
                   Navigator.pop(context);
                 },
               ),
@@ -422,6 +452,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('England', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'England');
                   Navigator.pop(context);
                 },
               ),
@@ -429,6 +460,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Estonia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Estonia');
                   Navigator.pop(context);
                 },
               ),
@@ -436,12 +468,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Finland', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Finland');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('France', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'France');
                   Navigator.pop(context);
                 },
               ),
@@ -449,6 +483,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Georgia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Georgia');
                   Navigator.pop(context);
                 },
               ),
@@ -456,18 +491,21 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Germany', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Germany');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Ghana', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Ghana');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Greece', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Greece');
                   Navigator.pop(context);
                 },
               ),
@@ -475,6 +513,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Guatemala', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Guatemala');
                   Navigator.pop(context);
                 },
               ),
@@ -482,6 +521,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Hungary', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Hungary');
                   Navigator.pop(context);
                 },
               ),
@@ -489,12 +529,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Iceland', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Iceland');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('India', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'India');
                   Navigator.pop(context);
                 },
               ),
@@ -502,18 +544,21 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Indonesia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Indonesia');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Iran', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Iran');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Iraq', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Iraq');
                   Navigator.pop(context);
                 },
               ),
@@ -521,42 +566,49 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Ireland', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Ireland');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Israel', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Israel');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Italy', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Italy');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Japan', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Japan');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Jordan', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Jordan');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Kuwait', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Kuwait');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Latvia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Latvia');
                   Navigator.pop(context);
                 },
               ),
@@ -564,12 +616,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Lebanon', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Lebanon');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Libya', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Libya');
                   Navigator.pop(context);
                 },
               ),
@@ -577,6 +631,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Lietchenstein',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Lietchenstein');
                   Navigator.pop(context);
                 },
               ),
@@ -584,6 +639,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Lithuania', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Lithuania');
                   Navigator.pop(context);
                 },
               ),
@@ -591,6 +647,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Luxembourg',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Luxembourg');
                   Navigator.pop(context);
                 },
               ),
@@ -598,6 +655,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Macedonia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Macedonia');
                   Navigator.pop(context);
                 },
               ),
@@ -605,18 +663,21 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Malaysia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Malaysia');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Malta', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Malta');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Mexico', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Mexico');
                   Navigator.pop(context);
                 },
               ),
@@ -624,6 +685,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Moldova', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Moldova');
                   Navigator.pop(context);
                 },
               ),
@@ -631,6 +693,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Morocco', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Morocco');
                   Navigator.pop(context);
                 },
               ),
@@ -638,6 +701,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Myanmar', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Myanmar');
                   Navigator.pop(context);
                 },
               ),
@@ -645,6 +709,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Netherlands',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Netherlands');
                   Navigator.pop(context);
                 },
               ),
@@ -652,6 +717,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('New Zealand',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'New Zealand');
                   Navigator.pop(context);
                 },
               ),
@@ -659,6 +725,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Nigeria', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Nigeria');
                   Navigator.pop(context);
                 },
               ),
@@ -666,12 +733,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Northern Ireland',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Northern Ireland');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Norway', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Norway');
                   Navigator.pop(context);
                 },
               ),
@@ -679,6 +748,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Pakistan', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Pakistan');
                   Navigator.pop(context);
                 },
               ),
@@ -686,12 +756,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Paraguay', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Paraguay');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Peru', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Peru');
                   Navigator.pop(context);
                 },
               ),
@@ -699,12 +771,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Philippines',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Philippines');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Poland', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Poland');
                   Navigator.pop(context);
                 },
               ),
@@ -712,12 +786,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Portugal', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Portugal');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Qatar', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Qatar');
                   Navigator.pop(context);
                 },
               ),
@@ -725,12 +801,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Romania', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Romania');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Russia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Russia');
                   Navigator.pop(context);
                 },
               ),
@@ -738,6 +816,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Saudi Arabia',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Saudi Arabia');
                   Navigator.pop(context);
                 },
               ),
@@ -745,12 +824,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Scotland', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Scotland');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Serbia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Serbia');
                   Navigator.pop(context);
                 },
               ),
@@ -758,6 +839,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Singapore', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Singapore');
                   Navigator.pop(context);
                 },
               ),
@@ -765,6 +847,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Slovakia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Slovakia');
                   Navigator.pop(context);
                 },
               ),
@@ -772,6 +855,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Slovenia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Slovenia');
                   Navigator.pop(context);
                 },
               ),
@@ -779,6 +863,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('South Africa',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'South Africa');
                   Navigator.pop(context);
                 },
               ),
@@ -786,12 +871,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('South Korea',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'South Korea');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Spain', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Spain');
                   Navigator.pop(context);
                 },
               ),
@@ -799,12 +886,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Sri Lanka', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Sri Lanka');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Sweden', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Sweden');
                   Navigator.pop(context);
                 },
               ),
@@ -812,18 +901,21 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Switzerland',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Switzerland');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Syria', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Syria');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Taiwan', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Taiwan');
                   Navigator.pop(context);
                 },
               ),
@@ -831,6 +923,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Thailand', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Thailand');
                   Navigator.pop(context);
                 },
               ),
@@ -838,12 +931,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Tunisia', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Tunisia');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Turkey', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Turkey');
                   Navigator.pop(context);
                 },
               ),
@@ -851,6 +946,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Ukraine', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Ukraine');
                   Navigator.pop(context);
                 },
               ),
@@ -858,6 +954,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('United Arab Emirates',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'United Arab Emirates');
                   Navigator.pop(context);
                 },
               ),
@@ -865,6 +962,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('United States',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'United States');
                   Navigator.pop(context);
                 },
               ),
@@ -872,6 +970,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Uruguay', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Uruguay');
                   Navigator.pop(context);
                 },
               ),
@@ -879,6 +978,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Venezuela', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Venezuela');
                   Navigator.pop(context);
                 },
               ),
@@ -886,12 +986,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Vietnam', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Vietnam');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Wales', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.country, option: 'Wales');
                   Navigator.pop(context);
                 },
               ),

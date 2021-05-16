@@ -14,14 +14,55 @@ class DetailedOfferScreen extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    content: Text('Choose the way you want to apply'),
+                    content: Text('Choose the way you want to apply:'),
                     actions: [
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    content: Text(
+                                        'Do you want to send your information?'),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () {}, child: Text('Yes')),
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('No')),
+                                    ],
+                                  );
+                                });
+                          },
                           child: Text('Apply with your profile information')),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    content:
+                                        Text('Do you want to send your CV?'),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () {}, child: Text('Yes')),
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('No')),
+                                    ],
+                                  );
+                                });
+                          },
                           child: Text('Apply with your own CV')),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text('Cancel')),
                     ],
                   );
                 });

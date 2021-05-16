@@ -289,7 +289,7 @@ class UserRepository {
       requirements,
       workerDuties,
       extraInformation,
-      uuid = Uuid(),
+      uuid = Uuid().v1().toString(),
     ];
 
     db.collection('offers').doc(firebaseAuth.currentUser.uid).update({

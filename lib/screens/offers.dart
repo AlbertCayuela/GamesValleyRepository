@@ -1071,7 +1071,6 @@ class _OffersScreenState extends State<OffersScreen> {
 
 class Offer extends StatelessWidget {
   final String title, location, company, imageURL, money, salary, field;
-
   Offer(
       {this.title = 'unknown',
       this.location = 'unknown',
@@ -1087,8 +1086,20 @@ class Offer extends StatelessWidget {
       onTap: () {
         print('offer tapped!!!');
         print(this.title);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => DetailedOfferScreen()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailedOfferScreen(
+                      offer: [
+                        this.title,
+                        this.location,
+                        this.company,
+                        this.salary,
+                        this.imageURL,
+                        this.money,
+                        this.field
+                      ],
+                    )));
       },
       child: Card(
         margin: EdgeInsets.all(5),

@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
+import 'package:uuid/uuid.dart';
 
 class UserRepository {
   final FirebaseAuth firebaseAuth;
@@ -285,7 +286,8 @@ class UserRepository {
       type,
       requirements,
       workerDuties,
-      extraInformation
+      extraInformation,
+      Uuid(),
     ];
 
     db.collection('offers').doc(firebaseAuth.currentUser.uid).update({

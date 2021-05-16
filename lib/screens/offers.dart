@@ -1081,80 +1081,86 @@ class Offer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(5),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              backgroundImage: this.imageURL == null || this.imageURL == ''
-                  ? null
-                  : NetworkImage(this.imageURL),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Expanded(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          this.title,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.deepPurple),
-                        ),
-                        Expanded(
-                          child: Text(
-                            this.field,
-                            style:
-                                TextStyle(color: Colors.blueGrey, fontSize: 12),
-                            textAlign: TextAlign.end,
+    return GestureDetector(
+      onTap: () {
+        print('offer tapped!!!');
+        print(this.title);
+      },
+      child: Card(
+        margin: EdgeInsets.all(5),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundImage: this.imageURL == null || this.imageURL == ''
+                    ? null
+                    : NetworkImage(this.imageURL),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            this.title,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.deepPurple),
                           ),
-                        ),
-                      ],
-                    ),
-                    Text(this.company),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.place,
-                              color: Colors.blueGrey,
-                              size: 17,
+                          Expanded(
+                            child: Text(
+                              this.field,
+                              style: TextStyle(
+                                  color: Colors.blueGrey, fontSize: 12),
+                              textAlign: TextAlign.end,
                             ),
-                            Text(
-                              this.location,
-                              style: TextStyle(color: Colors.blueGrey),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.attach_money,
-                              color: Colors.blueGrey,
-                              size: 17,
-                            ),
-                            Text(salary + '/year',
-                                style: TextStyle(color: Colors.blueGrey)),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ]),
-            ),
-          ],
+                          ),
+                        ],
+                      ),
+                      Text(this.company),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.place,
+                                color: Colors.blueGrey,
+                                size: 17,
+                              ),
+                              Text(
+                                this.location,
+                                style: TextStyle(color: Colors.blueGrey),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.attach_money,
+                                color: Colors.blueGrey,
+                                size: 17,
+                              ),
+                              Text(salary + '/year',
+                                  style: TextStyle(color: Colors.blueGrey)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ]),
+              ),
+            ],
+          ),
         ),
       ),
     );

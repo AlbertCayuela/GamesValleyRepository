@@ -1010,6 +1010,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Full time', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.type, option: 'Full time');
                   Navigator.pop(context);
                 },
               ),
@@ -1017,12 +1018,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Part time', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.type, option: 'Part time');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Other', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.type, option: 'Other');
                   Navigator.pop(context);
                 },
               ),

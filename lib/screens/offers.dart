@@ -111,6 +111,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Audio and video',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Audio and video');
                   Navigator.pop(context);
                 },
               ),
@@ -118,6 +119,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Communication',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Communication');
                   Navigator.pop(context);
                 },
               ),
@@ -125,6 +127,8 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Design and creative direction',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field,
+                      option: 'Design and creative direction');
                   Navigator.pop(context);
                 },
               ),
@@ -132,6 +136,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Finance', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Finance');
                   Navigator.pop(context);
                 },
               ),
@@ -139,6 +144,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Internship',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Internship');
                   Navigator.pop(context);
                 },
               ),
@@ -146,12 +152,15 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Leadership and executive coordination',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field,
+                      option: 'Leadership and executive coordination');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Legal', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Legal');
                   Navigator.pop(context);
                 },
               ),
@@ -159,6 +168,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Marketing', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Marketing');
                   Navigator.pop(context);
                 },
               ),
@@ -166,6 +176,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 title:
                     Text('Producing', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Producing');
                   Navigator.pop(context);
                 },
               ),
@@ -173,6 +184,8 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Programming and technology',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field,
+                      option: 'Programming and technology');
                   Navigator.pop(context);
                 },
               ),
@@ -180,6 +193,8 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Quality management and localization',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field,
+                      option: 'Quality Management and localization');
                   Navigator.pop(context);
                 },
               ),
@@ -187,12 +202,14 @@ class _OffersScreenState extends State<OffersScreen> {
                 title: Text('Sales and monetization',
                     style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Sales and monetization');
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 title: Text('Other', style: TextStyle(color: Colors.blueGrey)),
                 onTap: () {
+                  filterOffers(Filter.field, option: 'Other');
                   Navigator.pop(context);
                 },
               ),

@@ -1050,12 +1050,18 @@ class _OffersScreenState extends State<OffersScreen> {
                 itemCount: filteredOffers.length,
                 itemBuilder: (context, index) {
                   return Offer(
+                    timestamp: filteredOffers[index][0],
                     company: filteredOffers[index][1],
+                    companyDescription: filteredOffers[index][2],
                     imageURL: filteredOffers[index][3],
                     title: filteredOffers[index][4],
                     location: filteredOffers[index][5],
                     field: filteredOffers[index][6],
                     salary: filteredOffers[index][7],
+                    type: filteredOffers[index][8],
+                    requirements: filteredOffers[index][9],
+                    workerDuties: filteredOffers[index][10],
+                    extraInformation: filteredOffers[index][11],
                   );
                 },
               );
@@ -1070,34 +1076,59 @@ class _OffersScreenState extends State<OffersScreen> {
 }
 
 class Offer extends StatelessWidget {
-  final String title, location, company, imageURL, money, salary, field;
-  Offer(
-      {this.title = 'unknown',
-      this.location = 'unknown',
-      this.company = 'unknown',
-      this.salary = 'Salary not available',
-      this.imageURL,
-      this.money = '€',
-      this.field});
+  final String title,
+      location,
+      company,
+      imageURL,
+      money,
+      salary,
+      field,
+      timestamp,
+      companyDescription,
+      type,
+      requirements,
+      workerDuties,
+      extraInformation;
+  Offer({
+    this.timestamp,
+    this.company = 'unknown',
+    this.companyDescription,
+    this.imageURL,
+    this.title = 'unknown',
+    this.location = 'unknown',
+    this.field,
+    this.salary = 'Salary not available',
+    this.type,
+    this.requirements,
+    this.workerDuties,
+    this.extraInformation,
+    this.money = '€',
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         print('offer tapped!!!');
-        print(this.title);
+        print(this.timestamp);
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => DetailedOfferScreen(
                       offer: [
+                        this.timestamp,
+                        this.company,
+                        this.companyDescription,
+                        this.imageURL,
                         this.title,
                         this.location,
-                        this.company,
+                        this.field,
                         this.salary,
-                        this.imageURL,
+                        this.type,
+                        this.requirements,
+                        this.workerDuties,
+                        this.extraInformation,
                         this.money,
-                        this.field
                       ],
                     )));
       },

@@ -3,6 +3,8 @@ import 'package:games_valley/functions/offers_functions.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
 
+import 'detailed_offer.dart';
+
 class OffersScreen extends StatefulWidget {
   @override
   _OffersScreenState createState() => _OffersScreenState();
@@ -1085,6 +1087,8 @@ class Offer extends StatelessWidget {
       onTap: () {
         print('offer tapped!!!');
         print(this.title);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => DetailedOfferScreen()));
       },
       child: Card(
         margin: EdgeInsets.all(5),

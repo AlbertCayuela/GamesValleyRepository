@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:uuid/uuid.dart';
+import 'package:file_picker/file_picker.dart';
 
 class UserRepository {
   final FirebaseAuth firebaseAuth;
@@ -341,6 +342,18 @@ class UserRepository {
     var dataSorted = finalData.reversed.toList();
 
     return dataSorted;
+  }
+
+  Future pickFileAndUpload() async {
+    FilePickerResult result = await FilePicker.platform
+        .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
+
+    if (result != null) {
+      File file = File(result.files.single.path);
+      print(file);
+    } else {
+      // User canceled the picker
+    }
   }
 
   Future<String> pickImageAndUpload() async {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
 class DetailedOfferScreen extends StatelessWidget {
   final offer;
@@ -47,7 +49,13 @@ class DetailedOfferScreen extends StatelessWidget {
                                         Text('Do you want to send your CV?'),
                                     actions: [
                                       TextButton(
-                                          onPressed: () {}, child: Text('Yes')),
+                                          onPressed: () {
+                                            context
+                                                .read<UserRepository>()
+                                                .pickFileAndUpload();
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('Yes')),
                                       TextButton(
                                           onPressed: () {
                                             Navigator.pop(context);

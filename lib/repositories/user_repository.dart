@@ -346,20 +346,28 @@ class UserRepository {
     return dataSorted;
   }
 
-  Future pickFileAndUpload(var uuid) async {
+  Future pickCVAndUpload() async {
     FilePickerResult result = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
 
     if (result != null) {
       File file = File(result.files.single.path);
-      String fileName = basename(file.path);
-      print(fileName);
-      var snapshot = await storage
-          .ref('/applicants')
-          .child(uuid.toString() + '/' + firebaseAuth.currentUser.uid)
-          .putFile(file);
+      if (file != null) {
+        String fileName = basename(file.path);
+        print(fileName);
+        var snapshot = await storage
+            .ref()
+            .child('CV/' + firebaseAuth.currentUser.uid)
+            .putFile(file);
+
+        String cvUrl = await snapshot.ref.getDownloadURL();
+        db.collection('users').doc(firebaseAuth.currentUser.uid).update({
+          'cvurl': cvUrl,
+        });
+        return fileName;
+      }
     } else {
-      // User canceled the picker
+      return null;
     }
   }
 

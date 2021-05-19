@@ -50,9 +50,6 @@ class DetailedOfferScreen extends StatelessWidget {
                                     actions: [
                                       TextButton(
                                           onPressed: () {
-                                            context
-                                                .read<UserRepository>()
-                                                .pickFileAndUpload(offer[0]);
                                             Navigator.pop(context);
                                           },
                                           child: Text('Yes')),

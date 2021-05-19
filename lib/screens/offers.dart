@@ -1062,7 +1062,7 @@ class _OffersScreenState extends State<OffersScreen> {
                     requirements: filteredOffers[index][9],
                     workerDuties: filteredOffers[index][10],
                     extraInformation: filteredOffers[index][11],
-                    //uuid: filteredOffers[index][12],
+                    uuid: filteredOffers[index][12],
                   );
                 },
               );

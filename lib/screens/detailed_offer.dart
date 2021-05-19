@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DetailedOfferScreen extends StatelessWidget {
   final offer;
@@ -50,6 +51,12 @@ class DetailedOfferScreen extends StatelessWidget {
                                     actions: [
                                       TextButton(
                                           onPressed: () {
+                                            context
+                                                .read<UserRepository>()
+                                                .applyToOffer(
+                                                    offer[12],
+                                                    FirebaseAuth.instance
+                                                        .currentUser.uid);
                                             Navigator.pop(context);
                                           },
                                           child: Text('Yes')),

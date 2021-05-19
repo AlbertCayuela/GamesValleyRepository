@@ -346,6 +346,7 @@ class UserRepository {
     return dataSorted;
   }
 
+  //select pdf and upload as CV
   Future pickCVAndUpload() async {
     FilePickerResult result = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
@@ -371,6 +372,7 @@ class UserRepository {
     }
   }
 
+  //select image and upload as profile image
   Future<String> pickImageAndUpload() async {
     final pickedImage =
         await ImagePicker().getImage(source: ImageSource.gallery);
@@ -424,6 +426,12 @@ class UserRepository {
     db.collection('users').doc(firebaseAuth.currentUser.uid).update({
       'description': description,
     });
+  }
+
+  Future applyToOffer(var offerUid, var userUid) {
+    print(offerUid.toString());
+    print(userUid);
+    db.collection('applicants').doc(offerUid).update({userUid: userUid});
   }
 }
 

@@ -350,7 +350,12 @@ class UserRepository {
 
     if (result != null) {
       File file = File(result.files.single.path);
-      print(file);
+      String fileName = basename(file.path);
+      print(fileName);
+      var snapshot = await storage
+          .ref('/applicants')
+          .child(firebaseAuth.currentUser.uid)
+          .putFile(file);
     } else {
       // User canceled the picker
     }

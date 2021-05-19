@@ -52,7 +52,7 @@ class DetailedOfferScreen extends StatelessWidget {
                                           onPressed: () {
                                             context
                                                 .read<UserRepository>()
-                                                .pickFileAndUpload();
+                                                .pickFileAndUpload(offer[0]);
                                             Navigator.pop(context);
                                           },
                                           child: Text('Yes')),

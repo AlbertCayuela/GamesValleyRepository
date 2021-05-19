@@ -55,6 +55,7 @@ class UserRepository {
           'name': '',
           'surname': '',
           'phone': '',
+          'cvurl': '',
         });
         db.collection('work').doc(firebaseAuth.currentUser.uid).set({});
         db.collection('studies').doc(firebaseAuth.currentUser.uid).set({});
@@ -153,6 +154,7 @@ class UserRepository {
         user.name = datasnapshot.get('name');
         user.surname = datasnapshot.get('surname');
         user.phone = datasnapshot.get('phone');
+        user.cvUrl = datasnapshot.get('cvurl');
       } else {
         print('cant find this user...');
       }
@@ -344,7 +346,7 @@ class UserRepository {
     return dataSorted;
   }
 
-  Future pickFileAndUpload() async {
+  Future pickFileAndUpload(var uuid) async {
     FilePickerResult result = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
 
@@ -354,7 +356,7 @@ class UserRepository {
       print(fileName);
       var snapshot = await storage
           .ref('/applicants')
-          .child(firebaseAuth.currentUser.uid)
+          .child(uuid.toString() + '/' + firebaseAuth.currentUser.uid)
           .putFile(file);
     } else {
       // User canceled the picker
@@ -428,6 +430,7 @@ class UserInfo {
   List<dynamic> workExperiences;
   List<dynamic> studies;
   List<dynamic> languages;
+  var cvUrl;
 }
 
 class CompanyInfo {

@@ -101,6 +101,23 @@ class MainInfoWidget extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.grading,
+                      color: Colors.blueGrey,
+                    ),
+                    SizedBox(width: 5),
+                    Text(
+                      (this.user.cvUrl == '')
+                          ? 'CV not uploaded'
+                          : 'CV uploaded',
+                      style: TextStyle(color: Colors.blueGrey, fontSize: 15),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

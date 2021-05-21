@@ -56,7 +56,8 @@ class DetailedOfferScreen extends StatelessWidget {
                                                 .applyToOffer(
                                                     offer[12],
                                                     FirebaseAuth.instance
-                                                        .currentUser.uid);
+                                                        .currentUser.uid,
+                                                    false);
                                             Navigator.pop(context);
                                           },
                                           child: Text('Yes')),

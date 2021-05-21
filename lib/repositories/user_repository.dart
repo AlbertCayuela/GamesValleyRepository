@@ -428,10 +428,18 @@ class UserRepository {
     });
   }
 
-  Future applyToOffer(var offerUid, var userUid) {
+  Future applyToOffer(var offerUid, var userUid, bool applyWithProfile) {
     print(offerUid.toString());
     print(userUid);
-    db.collection('applicants').doc(offerUid).update({userUid: userUid});
+
+    var applicantArray = [];
+    applicantArray = [
+      userUid,
+      applyWithProfile,
+    ];
+    db.collection('applicants').doc(offerUid).update({
+      userUid: applicantArray,
+    });
   }
 }
 

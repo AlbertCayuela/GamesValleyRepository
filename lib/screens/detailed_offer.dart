@@ -29,7 +29,17 @@ class DetailedOfferScreen extends StatelessWidget {
                                         'Do you want to send your information?'),
                                     actions: [
                                       TextButton(
-                                          onPressed: () {}, child: Text('Yes')),
+                                          onPressed: () {
+                                            context
+                                                .read<UserRepository>()
+                                                .applyToOffer(
+                                                    offer[12],
+                                                    FirebaseAuth.instance
+                                                        .currentUser.uid,
+                                                    true);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('Yes')),
                                       TextButton(
                                           onPressed: () {
                                             Navigator.pop(context);

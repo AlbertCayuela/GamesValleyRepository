@@ -441,6 +441,21 @@ class UserRepository {
       userUid: applicantArray,
     });
   }
+
+  Future getOfferApplicants(var offerUid) async {
+    var applicants = [];
+
+    DocumentReference docReference =
+        FirebaseFirestore.instance.collection('applicants').doc(offerUid);
+
+    await docReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        applicants = datasnapshot.data().values.toList();
+        print('APPLICANTS');
+        print(applicants);
+      }
+    });
+  }
 }
 
 class UserInfo {

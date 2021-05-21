@@ -1113,28 +1113,35 @@ class Offer extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         print('offer tapped!!!');
-        print(this.timestamp);
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => DetailedOfferScreen(
-                      offer: [
-                        this.timestamp,
-                        this.company,
-                        this.companyDescription,
-                        this.imageURL,
-                        this.title,
-                        this.location,
-                        this.field,
-                        this.salary,
-                        this.type,
-                        this.requirements,
-                        this.workerDuties,
-                        this.extraInformation,
-                        this.uuid,
-                        this.money,
-                      ],
-                    )));
+        print(this.uuid);
+
+        context.read<UserRepository>().getIsCompany().then((value) {
+          if (value == false) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailedOfferScreen(
+                          offer: [
+                            this.timestamp,
+                            this.company,
+                            this.companyDescription,
+                            this.imageURL,
+                            this.title,
+                            this.location,
+                            this.field,
+                            this.salary,
+                            this.type,
+                            this.requirements,
+                            this.workerDuties,
+                            this.extraInformation,
+                            this.uuid,
+                            this.money,
+                          ],
+                        )));
+          } else if (value == true) {
+            context.read<UserRepository>().getOfferApplicants(this.uuid);
+          }
+        });
       },
       child: Card(
         margin: EdgeInsets.all(5),

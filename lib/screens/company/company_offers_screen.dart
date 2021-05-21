@@ -29,6 +29,7 @@ class CompanyOffersScreen extends StatelessWidget {
                   requirements: snapshot.data[i][9],
                   workerDuties: snapshot.data[i][10],
                   extraInformation: snapshot.data[i][11],
+                  uuid: snapshot.data[i][12],
                 );
               },
             ),

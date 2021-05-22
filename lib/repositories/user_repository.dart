@@ -455,6 +455,8 @@ class UserRepository {
         print(applicants);
       }
     });
+
+    return applicants;
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/functions/offers_functions.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/company/company_applicants.dart';
 import 'package:provider/provider.dart';
 
 import 'detailed_offer.dart';
@@ -1139,7 +1140,10 @@ class Offer extends StatelessWidget {
                           ],
                         )));
           } else if (value == true) {
-            context.read<UserRepository>().getOfferApplicants(this.uuid);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CompanyApplicantsScreen(this.uuid)));
           }
         });
       },

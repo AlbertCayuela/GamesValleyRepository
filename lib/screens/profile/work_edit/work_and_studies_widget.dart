@@ -13,7 +13,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
   final bool isWork;
   final Function updateUser;
 
-  final UserInfo user;
+  final UserInformation user;
   @override
   Widget build(BuildContext context) {
     return Container(

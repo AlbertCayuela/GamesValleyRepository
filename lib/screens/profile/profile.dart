@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/profile/work_edit/work_and_studies_widget.dart';
@@ -12,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  UserInfo user;
+  UserInformation user;
   bool _loading;
 
   @override
@@ -21,7 +22,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     _loading = true;
 
-    context.read<UserRepository>().getUserInfo().then((value) {
+    context
+        .read<UserRepository>()
+        .getUserInfo(FirebaseAuth.instance.currentUser.uid)
+        .then((value) {
       user = value;
       setState(() {
         _loading = false;
@@ -34,7 +38,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       _loading = true;
     });
-    context.read<UserRepository>().getUserInfo().then((value) {
+    context
+        .read<UserRepository>()
+        .getUserInfo(FirebaseAuth.instance.currentUser.uid)
+        .then((value) {
       user = value;
       setState(() {
         _loading = false;
@@ -53,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 }
 
 class ProfileScreenWidget extends StatefulWidget {
-  final UserInfo user;
+  final UserInformation user;
   final Function updateUser;
 
   const ProfileScreenWidget({

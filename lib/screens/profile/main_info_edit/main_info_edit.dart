@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:validators/validators.dart';
 
 class EditMainInfoScreen extends StatefulWidget {
-  final UserInfo user;
+  final UserInformation user;
 
   EditMainInfoScreen({Key key, @required this.user}) : super(key: key);
 

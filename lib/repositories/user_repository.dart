@@ -137,14 +137,13 @@ class UserRepository {
   }
 
   //get user information into user class
-  Future<UserInfo> getUserInfo() async {
-    UserInfo user = UserInfo();
+  Future<UserInformation> getUserInfo(var userUid) async {
+    UserInformation user = UserInformation();
     var workMaps;
     var studiesMaps;
     var languagesMaps;
-    DocumentReference docReference = FirebaseFirestore.instance
-        .collection('users')
-        .doc(firebaseAuth.currentUser.uid);
+    DocumentReference docReference =
+        FirebaseFirestore.instance.collection('users').doc(userUid);
     await docReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         user.username = datasnapshot.get('username');
@@ -160,9 +159,8 @@ class UserRepository {
       }
     });
 
-    DocumentReference documentReference = FirebaseFirestore.instance
-        .collection('work')
-        .doc(firebaseAuth.currentUser.uid);
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection('work').doc(userUid);
     await documentReference.get().then((datasnapshot) {
       workMaps = datasnapshot.data();
       user.workExperiences = workMaps.values.toList();
@@ -170,9 +168,8 @@ class UserRepository {
       print(user.workExperiences);
     });
 
-    DocumentReference dReference = FirebaseFirestore.instance
-        .collection('studies')
-        .doc(firebaseAuth.currentUser.uid);
+    DocumentReference dReference =
+        FirebaseFirestore.instance.collection('studies').doc(userUid);
     await dReference.get().then((datasnapshot) {
       studiesMaps = datasnapshot.data();
       user.studies = studiesMaps.values.toList();
@@ -180,9 +177,8 @@ class UserRepository {
       print(user.studies);
     });
 
-    DocumentReference reference = FirebaseFirestore.instance
-        .collection('languages')
-        .doc(firebaseAuth.currentUser.uid);
+    DocumentReference reference =
+        FirebaseFirestore.instance.collection('languages').doc(userUid);
     await reference.get().then((datasnapshot) {
       languagesMaps = datasnapshot.data();
       user.languages = languagesMaps.values.toList();
@@ -460,7 +456,7 @@ class UserRepository {
   }
 }
 
-class UserInfo {
+class UserInformation {
   String username;
   String email;
   String profileImageUrl;

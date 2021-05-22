@@ -13,7 +13,7 @@ class WorkAndStudiesInfo extends StatelessWidget {
     @required this.finalYear,
   }) : super(key: key);
 
-  final UserInfo user;
+  final UserInformation user;
   final String title;
   final String place;
   final String startMonth;

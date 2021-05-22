@@ -9,7 +9,7 @@ class MainInfoWidget extends StatelessWidget {
     @required this.updateUser,
   }) : super(key: key);
 
-  final UserInfo user;
+  final UserInformation user;
   final Function updateUser;
 
   @override

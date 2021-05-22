@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 class CompanyApplicantsScreen extends StatelessWidget {
   List applicants = [];
+  var initialApplicants = [];
   final offerUid;
   CompanyApplicantsScreen(this.offerUid);
 
@@ -19,6 +20,7 @@ class CompanyApplicantsScreen extends StatelessWidget {
             .read<UserRepository>()
             .getOfferApplicants(offerUid)
             .then((value) async {
+          initialApplicants = value;
           for (int i = 0; i < value.length; i++) {
             await context
                 .read<UserRepository>()
@@ -53,6 +55,18 @@ class CompanyApplicantsScreen extends StatelessWidget {
                               ' ' +
                               snapshot.data[index].surname),
                           subtitle: Text(snapshot.data[index].email),
+                          onTap: () {
+                            print(snapshot.data[index].uid);
+                            print(initialApplicants);
+                            var applicantRef = initialApplicants.firstWhere(
+                                (element) =>
+                                    element[0] == snapshot.data[index].uid);
+                            if (applicantRef[1] == true) {
+                              print('this user applied with profile');
+                            } else if (applicantRef[1] == false) {
+                              print('this user applied with cv');
+                            }
+                          },
                         ),
                       ],
                     ),

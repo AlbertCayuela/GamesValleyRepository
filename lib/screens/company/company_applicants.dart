@@ -30,7 +30,20 @@ class CompanyApplicantsScreen extends StatelessWidget {
           if (snapshot.hasData) {
             print(snapshot.data.length);
 
-            return Text('snapshot has data');
+            return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      leading: snapshot.data[index].profileImageUrl != null &&
+                              snapshot.data[index].profileImageUrl != ''
+                          ? CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  snapshot.data[index].profileImageUrl))
+                          : CircleAvatar(child: Icon(Icons.person)),
+                    ),
+                  );
+                });
           } else if (snapshot.hasError) {
             return Text('There was an error collecting the data');
           } else {

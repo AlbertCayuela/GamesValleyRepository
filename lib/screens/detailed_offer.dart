@@ -9,6 +9,7 @@ class DetailedOfferScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool applied;
     return Scaffold(
         appBar: AppBar(),
         floatingActionButton: FloatingActionButton.extended(
@@ -36,8 +37,46 @@ class DetailedOfferScreen extends StatelessWidget {
                                                     offer[12],
                                                     FirebaseAuth.instance
                                                         .currentUser.uid,
-                                                    true);
-                                            Navigator.pop(context);
+                                                    true)
+                                                .then((value) {
+                                              print('kpasa');
+                                              if (value == false) {
+                                                print('the value is false');
+                                                showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return AlertDialog();
+                                                    });
+                                              }
+                                            }
+                                                    // print(
+                                                    //     'eeeeeeeeeeeeeeeeeeeeeeeee');
+                                                    // if (value == false) {
+                                                    //   print('applied is false');
+                                                    //   showDialog(
+                                                    //       context: context,
+                                                    //       builder:
+                                                    //           (BuildContext context) {
+                                                    //         return AlertDialog(
+                                                    //           content: Text(
+                                                    //               'You cannot apply to the offer, first fulfill your basic profile information'),
+                                                    //           actions: [
+                                                    //             TextButton(
+                                                    //                 onPressed: () {
+                                                    //                   Navigator.pop(
+                                                    //                       context);
+                                                    //                 },
+                                                    //                 child:
+                                                    //                     Text('OK')),
+                                                    //           ],
+                                                    //         );
+                                                    //       });
+                                                    //   //Navigator.pop(context);
+                                                    // } else if (value == true) {
+                                                    //   Navigator.pop(context);
+                                                    // }
+                                                    );
                                           },
                                           child: Text('Yes')),
                                       TextButton(

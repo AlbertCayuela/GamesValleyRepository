@@ -424,18 +424,35 @@ class UserRepository {
     });
   }
 
-  Future applyToOffer(var offerUid, var userUid, bool applyWithProfile) {
+  Future<bool> applyToOffer(
+      var offerUid, var userUid, bool applyWithProfile) async {
+    bool applied;
+    UserInformation user = UserInformation();
     print(offerUid.toString());
     print(userUid);
+    print('im here!');
 
-    var applicantArray = [];
-    applicantArray = [
-      userUid,
-      applyWithProfile,
-    ];
-    db.collection('applicants').doc(offerUid).update({
-      userUid: applicantArray,
+    await getUserInfo(userUid).then((value) {
+      user = value;
     });
+
+    if (user.name != '' && user.surname != '') {
+      print('its true');
+      var applicantArray = [];
+      applicantArray = [
+        userUid,
+        applyWithProfile,
+      ];
+      db.collection('applicants').doc(offerUid).update({
+        userUid: applicantArray,
+      });
+      applied = true;
+      return applied;
+    } else {
+      print('its false');
+      applied = false;
+      return applied;
+    }
   }
 
   Future getOfferApplicants(var offerUid) async {

@@ -11,6 +11,9 @@ class CompanyApplicantsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text('Offer applicants',
+              style: TextStyle(fontWeight: FontWeight.bold))),
       body: FutureBuilder(
         future: context
             .read<UserRepository>()
@@ -34,13 +37,21 @@ class CompanyApplicantsScreen extends StatelessWidget {
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    child: ListTile(
-                      leading: snapshot.data[index].profileImageUrl != null &&
-                              snapshot.data[index].profileImageUrl != ''
-                          ? CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  snapshot.data[index].profileImageUrl))
-                          : CircleAvatar(child: Icon(Icons.person)),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading:
+                              snapshot.data[index].profileImageUrl != null &&
+                                      snapshot.data[index].profileImageUrl != ''
+                                  ? CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          snapshot.data[index].profileImageUrl))
+                                  : CircleAvatar(child: Icon(Icons.person)),
+                          title: Text(snapshot.data[index].name +
+                              ' ' +
+                              snapshot.data[index].surname),
+                        ),
+                      ],
                     ),
                   );
                 });

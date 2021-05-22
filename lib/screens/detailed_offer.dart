@@ -9,7 +9,6 @@ class DetailedOfferScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool applied;
     return Scaffold(
         appBar: AppBar(),
         floatingActionButton: FloatingActionButton.extended(
@@ -43,40 +42,50 @@ class DetailedOfferScreen extends StatelessWidget {
                                               if (value == false) {
                                                 print('the value is false');
                                                 showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return AlertDialog();
-                                                    });
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return AlertDialog(
+                                                            content: Text(
+                                                                'Could not apply for this offer, fulfill your basic profile information first.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                child:
+                                                                    Text('OK'),
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                              )
+                                                            ],
+                                                          );
+                                                        })
+                                                    .then((value) =>
+                                                        Navigator.pop(context));
+                                              } else if (value == true) {
+                                                showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return AlertDialog(
+                                                            content: Text(
+                                                                'You applied for this offer!'),
+                                                            actions: [
+                                                              TextButton(
+                                                                  child: Text(
+                                                                      'OK'),
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  })
+                                                            ],
+                                                          );
+                                                        })
+                                                    .then((value) =>
+                                                        Navigator.pop(context));
                                               }
-                                            }
-                                                    // print(
-                                                    //     'eeeeeeeeeeeeeeeeeeeeeeeee');
-                                                    // if (value == false) {
-                                                    //   print('applied is false');
-                                                    //   showDialog(
-                                                    //       context: context,
-                                                    //       builder:
-                                                    //           (BuildContext context) {
-                                                    //         return AlertDialog(
-                                                    //           content: Text(
-                                                    //               'You cannot apply to the offer, first fulfill your basic profile information'),
-                                                    //           actions: [
-                                                    //             TextButton(
-                                                    //                 onPressed: () {
-                                                    //                   Navigator.pop(
-                                                    //                       context);
-                                                    //                 },
-                                                    //                 child:
-                                                    //                     Text('OK')),
-                                                    //           ],
-                                                    //         );
-                                                    //       });
-                                                    //   //Navigator.pop(context);
-                                                    // } else if (value == true) {
-                                                    //   Navigator.pop(context);
-                                                    // }
-                                                    );
+                                            });
                                           },
                                           child: Text('Yes')),
                                       TextButton(

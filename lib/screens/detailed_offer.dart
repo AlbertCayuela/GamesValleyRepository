@@ -38,7 +38,6 @@ class DetailedOfferScreen extends StatelessWidget {
                                                         .currentUser.uid,
                                                     true)
                                                 .then((value) {
-                                              print('kpasa');
                                               if (value == false) {
                                                 print('the value is false');
                                                 showDialog(

@@ -44,12 +44,15 @@ class CompanyApplicantsScreen extends StatelessWidget {
                               snapshot.data[index].profileImageUrl != null &&
                                       snapshot.data[index].profileImageUrl != ''
                                   ? CircleAvatar(
+                                      radius: 30,
                                       backgroundImage: NetworkImage(
                                           snapshot.data[index].profileImageUrl))
-                                  : CircleAvatar(child: Icon(Icons.person)),
+                                  : CircleAvatar(
+                                      radius: 30, child: Icon(Icons.person)),
                           title: Text(snapshot.data[index].name +
                               ' ' +
                               snapshot.data[index].surname),
+                          subtitle: Text(snapshot.data[index].email),
                         ),
                       ],
                     ),

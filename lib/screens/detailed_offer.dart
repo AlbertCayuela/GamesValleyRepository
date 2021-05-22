@@ -115,8 +115,54 @@ class DetailedOfferScreen extends StatelessWidget {
                                                     offer[12],
                                                     FirebaseAuth.instance
                                                         .currentUser.uid,
-                                                    false);
-                                            Navigator.pop(context);
+                                                    false)
+                                                .then((value) {
+                                              if (value == false) {
+                                                showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return AlertDialog(
+                                                            content: Text(
+                                                                'Could not apply for this offer, fulfill your basic profile information first.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                  child: Text(
+                                                                      'OK'),
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  }),
+                                                            ],
+                                                          );
+                                                        })
+                                                    .then((value) =>
+                                                        Navigator.pop(context));
+                                              } else if (value == true) {
+                                                showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return AlertDialog(
+                                                            content: Text(
+                                                                'You applied for this offer!'),
+                                                            actions: [
+                                                              TextButton(
+                                                                  child: Text(
+                                                                      'OK'),
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  })
+                                                            ],
+                                                          );
+                                                        })
+                                                    .then((value) =>
+                                                        Navigator.pop(context));
+                                              }
+                                            });
                                           },
                                           child: Text('Yes')),
                                       TextButton(

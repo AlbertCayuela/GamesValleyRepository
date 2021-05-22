@@ -164,8 +164,8 @@ class UserRepository {
     await documentReference.get().then((datasnapshot) {
       workMaps = datasnapshot.data();
       user.workExperiences = workMaps.values.toList();
-      print('work:');
-      print(user.workExperiences);
+      // print('work:');
+      // print(user.workExperiences);
     });
 
     DocumentReference dReference =
@@ -173,8 +173,8 @@ class UserRepository {
     await dReference.get().then((datasnapshot) {
       studiesMaps = datasnapshot.data();
       user.studies = studiesMaps.values.toList();
-      print('studies:');
-      print(user.studies);
+      // print('studies:');
+      // print(user.studies);
     });
 
     DocumentReference reference =
@@ -182,8 +182,8 @@ class UserRepository {
     await reference.get().then((datasnapshot) {
       languagesMaps = datasnapshot.data();
       user.languages = languagesMaps.values.toList();
-      print('languages:');
-      print(user.languages);
+      // print('languages:');
+      // print(user.languages);
     });
 
     return user;

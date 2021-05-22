@@ -4,9 +4,10 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
 
 class CompanyApplicantsScreen extends StatelessWidget {
-  List<UserInformation> applicants;
+  List applicants = [];
   final offerUid;
   CompanyApplicantsScreen(this.offerUid);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,20 +15,21 @@ class CompanyApplicantsScreen extends StatelessWidget {
         future: context
             .read<UserRepository>()
             .getOfferApplicants(offerUid)
-            .then((value) {
-          if (value != null) {
-            for (int i = 0; i < applicants.length; i++) {
-              context
-                  .read<UserRepository>()
-                  .getUserInfo(value[i][0])
-                  .then(((user) {
-                applicants.add(user);
-              }));
-            }
+            .then((value) async {
+          for (int i = 0; i < value.length; i++) {
+            await context
+                .read<UserRepository>()
+                .getUserInfo(value[i][0])
+                .then((result) {
+              applicants.add(result);
+            });
           }
+          return applicants;
         }),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            print(snapshot.data.length);
+
             return Text('snapshot has data');
           } else if (snapshot.hasError) {
             return Text('There was an error collecting the data');

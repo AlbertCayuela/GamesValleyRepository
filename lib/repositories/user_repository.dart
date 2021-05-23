@@ -446,6 +446,10 @@ class UserRepository {
       db.collection('applicants').doc(offerUid).update({
         userUid: applicantArray,
       });
+      if (applyWithProfile == false && user.cvUrl == '') {
+        applied = false;
+        return applied;
+      }
       applied = true;
       return applied;
     } else {

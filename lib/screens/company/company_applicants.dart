@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/company/company_cv_pdf.dart';
 import 'package:provider/provider.dart';
+import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 
 class CompanyApplicantsScreen extends StatelessWidget {
   List applicants = [];
@@ -55,7 +57,7 @@ class CompanyApplicantsScreen extends StatelessWidget {
                               ' ' +
                               snapshot.data[index].surname),
                           subtitle: Text(snapshot.data[index].email),
-                          onTap: () {
+                          onTap: () async {
                             print(snapshot.data[index].uid);
                             print(initialApplicants);
                             var applicantRef = initialApplicants.firstWhere(
@@ -65,6 +67,12 @@ class CompanyApplicantsScreen extends StatelessWidget {
                               print('this user applied with profile');
                             } else if (applicantRef[1] == false) {
                               print('this user applied with cv');
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CompanyPdfCVScreen(
+                                          snapshot.data[index].cvUrl)));
                             }
                           },
                         ),

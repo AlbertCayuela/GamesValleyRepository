@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/company/company_cv_pdf.dart';
+import 'package:games_valley/screens/company/company_cv_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 
@@ -65,6 +66,13 @@ class CompanyApplicantsScreen extends StatelessWidget {
                                     element[0] == snapshot.data[index].uid);
                             if (applicantRef[1] == true) {
                               print('this user applied with profile');
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          CompanyCVProfileScreen(
+                                              snapshot.data[index])));
                             } else if (applicantRef[1] == false) {
                               print('this user applied with cv');
 

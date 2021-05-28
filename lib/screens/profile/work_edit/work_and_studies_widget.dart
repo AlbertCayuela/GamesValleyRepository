@@ -45,7 +45,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
                           startYear: this.user.workExperiences[i][3],
                           finalMonth: this.user.workExperiences[i][4],
                           finalYear: this.user.workExperiences[i][5]),
-                if (!isWork && this.user.studies.length > 1)
+                if (!isWork)
                   for (int i = 0; i < this.user.studies.length; i++)
                     if (this.user.studies[i].isNotEmpty)
                       WorkAndStudiesInfo(

@@ -173,8 +173,8 @@ class UserRepository {
     await dReference.get().then((datasnapshot) {
       studiesMaps = datasnapshot.data();
       user.studies = studiesMaps.values.toList();
-      // print('studies:');
-      // print(user.studies);
+      print('studies:');
+      print(user.studies);
     });
 
     DocumentReference reference =

@@ -36,18 +36,17 @@ class LanguagesWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 5),
-                if (this.user.languages.length > 1)
-                  for (int i = 0; i < this.user.languages.length; i++)
-                    if (this.user.languages[i].isNotEmpty)
-                      Row(
-                        children: [
-                          Text(this.user.languages[i][0] + ' - '),
-                          Text(
-                            this.user.languages[i][1] + ' level',
-                            style: TextStyle(color: Colors.blueGrey),
-                          )
-                        ],
-                      ),
+                for (int i = 0; i < this.user.languages.length; i++)
+                  if (this.user.languages[i].isNotEmpty)
+                    Row(
+                      children: [
+                        Text(this.user.languages[i][0] + ' - '),
+                        Text(
+                          this.user.languages[i][1] + ' level',
+                          style: TextStyle(color: Colors.blueGrey),
+                        )
+                      ],
+                    ),
               ],
             ),
           ),

@@ -89,7 +89,7 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                       onPressed: () {
                         context.read<UserRepository>().singOut();
                       },
-                      child: Text('SignOUT')),
+                      child: Text('Sign Out')),
                   MainInfoWidget(
                       user: widget.user, updateUser: widget.updateUser),
                   SizedBox(height: 8),

@@ -28,6 +28,22 @@ class MainInfoWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditMainInfoScreen(
+                                    user: this.user,
+                                  ))).then((_) {
+                        updateUser();
+                      });
+                    },
+                    child: Text('Edit'),
+                  ),
+                ),
                 CircleAvatar(
                   radius: 40,
                   child: (this.user.profileImageUrl == '')
@@ -119,22 +135,6 @@ class MainInfoWidget extends StatelessWidget {
                   ],
                 ),
               ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => EditMainInfoScreen(
-                              user: this.user,
-                            ))).then((_) {
-                  updateUser();
-                });
-              },
-              child: Text('Edit'),
             ),
           ),
         ],

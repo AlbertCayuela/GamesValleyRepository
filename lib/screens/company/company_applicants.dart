@@ -16,6 +16,7 @@ class CompanyApplicantsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          centerTitle: true,
           title: Text('Offer applicants',
               style: TextStyle(fontWeight: FontWeight.bold))),
       body: FutureBuilder(

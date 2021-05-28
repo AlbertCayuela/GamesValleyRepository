@@ -10,57 +10,66 @@ class CompanyCVProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(5),
-            margin: EdgeInsets.all(5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: user.profileImageUrl != ''
-                      ? NetworkImage(user.profileImageUrl)
-                      : null,
-                  child: user.profileImageUrl != '' ? null : Icon(Icons.person),
-                ),
-                Text(
-                  user.name + user.surname,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Text(
-                  user.email,
-                  style: TextStyle(fontSize: 15),
-                ),
-                Text(user.phone),
-                Divider(
-                  color: Colors.deepPurple,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Work experience',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    for (int i = 0; i < user.workExperiences.length; i++)
-                      ExperienceWidget(user.workExperiences[i]),
-                    Divider(color: Colors.deepPurple),
-                    Text(
-                      'Studies',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    for (int j = 0; j < user.studies.length; j++)
-                      ExperienceWidget(user.studies[j]),
-                  ],
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(5),
+              margin: EdgeInsets.all(5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: user.profileImageUrl != ''
+                        ? NetworkImage(user.profileImageUrl)
+                        : null,
+                    child:
+                        user.profileImageUrl != '' ? null : Icon(Icons.person),
+                  ),
+                  Text(
+                    user.name + user.surname,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Text(
+                    user.email,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  Text(user.phone),
+                  Divider(
+                    color: Colors.deepPurple,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Work experience',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      for (int i = 0; i < user.workExperiences.length; i++)
+                        ExperienceWidget(user.workExperiences[i]),
+                      Divider(color: Colors.deepPurple),
+                      Text(
+                        'Studies',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      for (int j = 0; j < user.studies.length; j++)
+                        ExperienceWidget(user.studies[j]),
+                      Divider(color: Colors.deepPurple),
+                      Text('Languages',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20)),
+                      for (int k = 0; k < user.languages.length; k++)
+                        LanguagesWidget(user.languages[k]),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -74,11 +83,15 @@ class ExperienceWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          experiences[0],
-          style: TextStyle(fontSize: 15),
+        Row(
+          children: [
+            Text(
+              experiences[0],
+              style: TextStyle(fontSize: 15),
+            ),
+            if (experiences[1] != '') Text(' at ' + experiences[1]),
+          ],
         ),
-        if (experiences[1] != '') Text(experiences[1]),
         Row(
           children: [
             Text(
@@ -92,6 +105,21 @@ class ExperienceWidget extends StatelessWidget {
                 : Text('Now', style: TextStyle(color: Colors.blueGrey))
           ],
         ),
+      ],
+    );
+  }
+}
+
+class LanguagesWidget extends StatelessWidget {
+  final List languages;
+  LanguagesWidget(this.languages);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(languages[0]),
+        Text(' - '),
+        Text(languages[1], style: TextStyle(color: Colors.blueGrey)),
       ],
     );
   }

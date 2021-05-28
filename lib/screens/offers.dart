@@ -1167,25 +1167,17 @@ class Offer extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            this.title,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.deepPurple),
-                          ),
-                          Expanded(
-                            child: Text(
-                              this.field,
-                              style: TextStyle(
-                                  color: Colors.blueGrey, fontSize: 12),
-                              textAlign: TextAlign.end,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        this.title,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.deepPurple),
+                      ),
+                      Text(
+                        this.field,
+                        style: TextStyle(color: Colors.blueGrey, fontSize: 12),
+                        textAlign: TextAlign.end,
                       ),
                       Text(this.company),
                       SizedBox(height: 10),

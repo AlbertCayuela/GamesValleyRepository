@@ -24,6 +24,7 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Edit your profile',
             style: TextStyle(fontWeight: FontWeight.bold)),
       ),

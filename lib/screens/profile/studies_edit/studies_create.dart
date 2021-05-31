@@ -3,12 +3,12 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:validators/validators.dart';
 import 'package:provider/provider.dart';
 
-class EditStudiesScreen extends StatefulWidget {
+class CreateStudiesScreen extends StatefulWidget {
   @override
-  _EditStudiesScreenState createState() => _EditStudiesScreenState();
+  _CreateStudiesScreenState createState() => _CreateStudiesScreenState();
 }
 
-class _EditStudiesScreenState extends State<EditStudiesScreen> {
+class _CreateStudiesScreenState extends State<CreateStudiesScreen> {
   String startingMonth;
   String finishMonth;
   TextEditingController _typeOfStudiesController = TextEditingController();

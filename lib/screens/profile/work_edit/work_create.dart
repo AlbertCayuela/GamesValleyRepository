@@ -3,12 +3,12 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:validators/validators.dart';
 
-class EditWorkScreen extends StatefulWidget {
+class CreateWorkScreen extends StatefulWidget {
   @override
-  _EditWorkScreenState createState() => _EditWorkScreenState();
+  _CreateWorkScreenState createState() => _CreateWorkScreenState();
 }
 
-class _EditWorkScreenState extends State<EditWorkScreen> {
+class _CreateWorkScreenState extends State<CreateWorkScreen> {
   String startingMonth;
   String finishMonth;
 

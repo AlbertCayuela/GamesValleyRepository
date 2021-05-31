@@ -12,10 +12,10 @@ import 'package:games_valley/screens/offers.dart';
 import 'package:games_valley/screens/profile/languages_edit/languages_create.dart';
 import 'package:games_valley/screens/profile/main_info_edit/main_info_edit.dart';
 import 'package:games_valley/screens/profile/profile.dart';
-import 'package:games_valley/screens/profile/studies_edit/studies_edit.dart';
+import 'package:games_valley/screens/profile/studies_edit/studies_create.dart';
 import 'package:games_valley/screens/signup.dart';
 import 'package:provider/provider.dart';
-import 'package:games_valley/screens/profile/work_edit/edit_work.dart';
+import 'package:games_valley/screens/profile/work_edit/work_create.dart';
 
 //*-----------------------------MAIN--------------------------------------------
 Future<void> main() async {
@@ -48,8 +48,8 @@ class GamesValley extends StatelessWidget {
           '/offers': (context) => BaseScreen(index: 0),
           '/profile': (context) => BaseScreen(index: 1),
           '/authwrapper': (context) => AuthWrapper(),
-          '/editwork': (context) => EditWorkScreen(),
-          '/editstudies': (context) => EditStudiesScreen(),
+          '/editwork': (context) => CreateWorkScreen(),
+          '/editstudies': (context) => CreateStudiesScreen(),
           '/editlanguages': (context) => CreateLanguageScreen(),
           '/companysignup': (context) => CompanySignUpScreen(),
           '/createjoboffer': (context) => CreateOfferScreen(),

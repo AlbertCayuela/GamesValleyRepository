@@ -248,6 +248,22 @@ class UserRepository {
     });
   }
 
+  Future getLanguages() async {
+    var languagesMaps;
+    List languages = [];
+    DocumentReference reference = FirebaseFirestore.instance
+        .collection('languages')
+        .doc(firebaseAuth.currentUser.uid);
+    await reference.get().then((datasnapshot) {
+      languagesMaps = datasnapshot.data();
+      languages = languagesMaps.values.toList();
+      // print('languages:');
+      // print(user.languages);
+    });
+
+    return languages;
+  }
+
   //create a job offer being a company
   Future<void> createJobOffer(
       {@required String title,

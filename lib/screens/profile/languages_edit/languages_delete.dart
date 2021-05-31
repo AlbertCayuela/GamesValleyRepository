@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/profile/languages_edit/languages_edit.dart';
 import 'package:provider/provider.dart';
 
-class LanguageDeleteScreen extends StatelessWidget {
-  final List languages;
+class LanguageDeleteScreen extends StatefulWidget {
+  List languages;
   LanguageDeleteScreen(this.languages);
+
+  @override
+  _LanguageDeleteScreenState createState() => _LanguageDeleteScreenState();
+}
+
+class _LanguageDeleteScreenState extends State<LanguageDeleteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +27,7 @@ class LanguageDeleteScreen extends StatelessWidget {
           child: Container(
             color: Colors.grey,
             child: Column(children: [
-              for (int i = 0; i < languages.length; i++)
+              for (int i = 0; i < widget.languages.length; i++)
                 Container(
                     margin: EdgeInsets.all(5),
                     padding: EdgeInsets.all(10),
@@ -30,12 +37,12 @@ class LanguageDeleteScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Text(languages[i][0]),
+                        Text(widget.languages[i][0]),
                         Text(
                           ' - ',
                           style: TextStyle(color: Colors.blueGrey),
                         ),
-                        Text(languages[i][1],
+                        Text(widget.languages[i][1],
                             style: TextStyle(color: Colors.blueGrey)),
                         Expanded(
                           child: Align(
@@ -55,7 +62,8 @@ class LanguageDeleteScreen extends StatelessWidget {
                                                   context
                                                       .read<UserRepository>()
                                                       .updateLanguages(
-                                                          this.languages, i);
+                                                          this.widget.languages,
+                                                          i);
                                                   Navigator.pop(context);
                                                 },
                                                 child: Text('Yes')),
@@ -72,7 +80,28 @@ class LanguageDeleteScreen extends StatelessWidget {
                           ),
                         )
                       ],
-                    ))
+                    )),
+              Align(
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                    child: Text('Add a new language'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  EditLanguagesScreen())).then((_) {
+                        context
+                            .read<UserRepository>()
+                            .getLanguages()
+                            .then((value) {
+                          setState(() {
+                            widget.languages = value;
+                          });
+                        });
+                      });
+                    }),
+              ),
             ]),
           ),
         ));

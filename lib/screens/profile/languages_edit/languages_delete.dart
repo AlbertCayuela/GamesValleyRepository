@@ -40,7 +40,29 @@ class LanguageDeleteScreen extends StatelessWidget {
                             alignment: Alignment.centerRight,
                             child: TextButton(
                                 child: Icon(Icons.clear, color: Colors.red),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          content: Text(
+                                              'Do you want to delete this language?'),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Yes')),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('Cancel'),
+                                            )
+                                          ],
+                                        );
+                                      });
+                                }),
                           ),
                         )
                       ],

@@ -1,107 +1,120 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/profile/languages_edit/languages_create.dart';
 import 'package:provider/provider.dart';
 
-class EditLanguagesScreen extends StatefulWidget {
+class LanguageEditScreen extends StatefulWidget {
+  List languages;
+  LanguageEditScreen(this.languages);
+
   @override
-  _EditLanguagesScreenState createState() => _EditLanguagesScreenState();
+  _LanguageEditScreenState createState() => _LanguageEditScreenState();
 }
 
-class _EditLanguagesScreenState extends State<EditLanguagesScreen> {
-  String level;
-  TextEditingController _languageController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+class _LanguageEditScreenState extends State<LanguageEditScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Edit your languages',
-              style: TextStyle(fontWeight: FontWeight.bold))),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Container(
-              margin: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Text(
-                    'Add language',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(height: 10),
-                  TextFormField(
-                    controller: _languageController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a language';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Language',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  DropdownButtonFormField(
-                    isExpanded: true,
-                    value: level,
-                    validator: (value) {
-                      if (value == null) {
-                        return 'Please select your language level';
-                      }
-                      return null;
-                    },
-                    hint: Text('Level'),
-                    items: [
-                      DropdownMenuItem(
-                        child: Text('Native'),
-                        value: 'Native',
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Proficient'),
-                        value: 'Proficient',
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Medium'),
-                        value: 'Medium',
-                      ),
-                      DropdownMenuItem(
-                        child: Text('Basic'),
-                        value: 'Basic',
-                      ),
-                    ],
-                    onChanged: (value) {
-                      setState(() {
-                        level = value;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        print('all ok!');
-                        context.read<UserRepository>().addLanguages(
-                              language: _languageController.text,
-                              level: level,
-                            );
-                        Navigator.pop(context);
-                      } else {
-                        print('something wrong!');
-                      }
-                    },
-                    child: Text('Add language'),
-                  ),
-                ],
-              ),
-            ),
+        backgroundColor: Colors.grey,
+        appBar: AppBar(
+          title: Text(
+            'Edit you languages',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+          child: Container(
+            color: Colors.grey,
+            child: Column(children: [
+              for (int i = 0; i < widget.languages.length; i++)
+                Container(
+                    margin: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(widget.languages[i][0]),
+                        Text(
+                          ' - ',
+                          style: TextStyle(color: Colors.blueGrey),
+                        ),
+                        Text(widget.languages[i][1],
+                            style: TextStyle(color: Colors.blueGrey)),
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                                child: Icon(Icons.clear, color: Colors.red),
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          content: Text(
+                                              'Do you want to delete this language?'),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<UserRepository>()
+                                                      .updateLanguages(
+                                                          this.widget.languages,
+                                                          i)
+                                                      .then((_) {
+                                                    context
+                                                        .read<UserRepository>()
+                                                        .getLanguages()
+                                                        .then((value) {
+                                                      setState(() {
+                                                        widget.languages =
+                                                            value;
+                                                      });
+                                                    });
+                                                  });
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text('Yes')),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text('Cancel'),
+                                            )
+                                          ],
+                                        );
+                                      });
+                                }),
+                          ),
+                        )
+                      ],
+                    )),
+              Align(
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                    child: Text('Add a new language'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CreateLanguageScreen())).then((_) {
+                        context
+                            .read<UserRepository>()
+                            .getLanguages()
+                            .then((value) {
+                          setState(() {
+                            widget.languages = value;
+                          });
+                        });
+                      });
+                    }),
+              ),
+            ]),
+          ),
+        ));
   }
 }

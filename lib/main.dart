@@ -9,7 +9,7 @@ import 'package:games_valley/screens/company/company_profile_edit.dart';
 import 'package:games_valley/screens/company/company_signup.dart';
 import 'package:games_valley/screens/login.dart';
 import 'package:games_valley/screens/offers.dart';
-import 'package:games_valley/screens/profile/languages_edit/languages_edit.dart';
+import 'package:games_valley/screens/profile/languages_edit/languages_create.dart';
 import 'package:games_valley/screens/profile/main_info_edit/main_info_edit.dart';
 import 'package:games_valley/screens/profile/profile.dart';
 import 'package:games_valley/screens/profile/studies_edit/studies_edit.dart';
@@ -50,7 +50,7 @@ class GamesValley extends StatelessWidget {
           '/authwrapper': (context) => AuthWrapper(),
           '/editwork': (context) => EditWorkScreen(),
           '/editstudies': (context) => EditStudiesScreen(),
-          '/editlanguages': (context) => EditLanguagesScreen(),
+          '/editlanguages': (context) => CreateLanguageScreen(),
           '/companysignup': (context) => CompanySignUpScreen(),
           '/createjoboffer': (context) => CreateOfferScreen(),
         },

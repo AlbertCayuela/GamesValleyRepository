@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
-import 'package:games_valley/screens/profile/languages_edit/languages_delete.dart';
+import 'package:games_valley/screens/profile/languages_edit/languages_edit.dart';
 
 class LanguagesWidget extends StatelessWidget {
   const LanguagesWidget({
@@ -56,11 +56,10 @@ class LanguagesWidget extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                LanguageDeleteScreen(this.user.languages)))
-                    .then((_) {
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            LanguageEditScreen(this.user.languages))).then((_) {
                   updateUser();
                 });
               },

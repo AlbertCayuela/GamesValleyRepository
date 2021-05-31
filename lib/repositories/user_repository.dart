@@ -481,11 +481,11 @@ class UserRepository {
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('languages')
         .doc(firebaseAuth.currentUser.uid);
-    await docReference.set({});
-    for (int i = 0; i < languages.length; i++) {
-      docReference.update(
-          {Timestamp.now().millisecondsSinceEpoch.toString(): languages[i]});
-    }
+    await docReference.set({}).then((_) {
+      for (int i = 0; i < languages.length; i++) {
+        docReference.update({i.toString(): languages[i]});
+      }
+    });
   }
 }
 

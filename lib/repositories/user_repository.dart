@@ -475,6 +475,18 @@ class UserRepository {
 
     return applicants;
   }
+
+  //updates languages from profile
+  Future updateLanguages(List languages) async {
+    DocumentReference docReference = FirebaseFirestore.instance
+        .collection('languages')
+        .doc(firebaseAuth.currentUser.uid);
+    await docReference.set({});
+    for (int i = 0; i < languages.length; i++) {
+      docReference.update(
+          {Timestamp.now().millisecondsSinceEpoch.toString(): languages[i]});
+    }
+  }
 }
 
 class UserInformation {

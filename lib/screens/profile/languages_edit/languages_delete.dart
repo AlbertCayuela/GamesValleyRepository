@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
+import 'package:provider/provider.dart';
 
 class LanguageDeleteScreen extends StatelessWidget {
   final List languages;
@@ -50,6 +52,10 @@ class LanguageDeleteScreen extends StatelessWidget {
                                           actions: [
                                             TextButton(
                                                 onPressed: () {
+                                                  context
+                                                      .read<UserRepository>()
+                                                      .updateLanguages(
+                                                          this.languages);
                                                   Navigator.pop(context);
                                                 },
                                                 child: Text('Yes')),

@@ -1155,11 +1155,11 @@ class Offer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(
-                backgroundImage: this.imageURL == null || this.imageURL == ''
-                    ? null
-                    : NetworkImage(this.imageURL),
-              ),
+              // CircleAvatar(
+              //   backgroundImage: this.imageURL == null || this.imageURL == ''
+              //       ? null
+              //       : NetworkImage(this.imageURL),
+              // ),
               SizedBox(
                 width: 10,
               ),

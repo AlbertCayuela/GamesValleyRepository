@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/profile/studies_edit/studies_edit.dart';
 import 'package:games_valley/screens/profile/work_edit/work_and_studies_info.dart';
 
 class WorkAndStudiesWidget extends StatelessWidget {
@@ -67,10 +68,11 @@ class WorkAndStudiesWidget extends StatelessWidget {
                         ? Navigator.pushNamed(context, '/editwork').then((_) {
                             updateUser();
                           })
-                        : Navigator.pushNamed(context, '/editstudies')
-                            .then((_) {
-                            updateUser();
-                          });
+                        : Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    StudiesEditScreen()));
                     print(user.workExperiences);
                   },
                   child: Text('Edit'))),

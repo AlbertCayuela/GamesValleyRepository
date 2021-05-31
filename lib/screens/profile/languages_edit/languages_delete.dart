@@ -55,7 +55,7 @@ class LanguageDeleteScreen extends StatelessWidget {
                                                   context
                                                       .read<UserRepository>()
                                                       .updateLanguages(
-                                                          this.languages);
+                                                          this.languages, i);
                                                   Navigator.pop(context);
                                                 },
                                                 child: Text('Yes')),

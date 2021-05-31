@@ -477,7 +477,8 @@ class UserRepository {
   }
 
   //updates languages from profile
-  Future updateLanguages(List languages) async {
+  Future updateLanguages(List languages, int deletePosition) async {
+    languages.removeAt(deletePosition);
     DocumentReference docReference = FirebaseFirestore.instance
         .collection('languages')
         .doc(firebaseAuth.currentUser.uid);

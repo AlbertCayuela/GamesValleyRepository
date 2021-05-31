@@ -63,7 +63,18 @@ class _LanguageDeleteScreenState extends State<LanguageDeleteScreen> {
                                                       .read<UserRepository>()
                                                       .updateLanguages(
                                                           this.widget.languages,
-                                                          i);
+                                                          i)
+                                                      .then((_) {
+                                                    context
+                                                        .read<UserRepository>()
+                                                        .getLanguages()
+                                                        .then((value) {
+                                                      setState(() {
+                                                        widget.languages =
+                                                            value;
+                                                      });
+                                                    });
+                                                  });
                                                   Navigator.pop(context);
                                                 },
                                                 child: Text('Yes')),

@@ -72,7 +72,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    StudiesEditScreen()));
+                                    StudiesEditScreen(user.studies)));
                     print(user.workExperiences);
                   },
                   child: Text('Edit'))),

@@ -222,7 +222,7 @@ class _CreateWorkScreenState extends State<CreateWorkScreen> {
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             print('all ok!');
                             context.read<UserRepository>().addJobExperience(
@@ -233,7 +233,12 @@ class _CreateWorkScreenState extends State<CreateWorkScreen> {
                                   finishingMonth: finishMonth,
                                   finishYear: _finishingYearController.text,
                                 );
-                            Navigator.pop(context);
+                            await context
+                                .read<UserRepository>()
+                                .getWorkExperiences()
+                                .then((value) {
+                              Navigator.pop(context, value);
+                            });
                           } else {
                             print('Something wrong!');
                           }

@@ -107,10 +107,11 @@ class _StudiesEditScreenState extends State<StudiesEditScreen> {
                                             .then((_) async {
                                           await context
                                               .read<UserRepository>()
-                                              .getStudies();
-                                        }).then((value) {
-                                          setState(() {
-                                            widget.studies = value;
+                                              .getStudies()
+                                              .then((value) {
+                                            setState(() {
+                                              widget.studies = value;
+                                            });
                                           });
                                         });
                                         Navigator.pop(context);

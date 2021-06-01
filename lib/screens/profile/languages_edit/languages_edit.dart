@@ -67,13 +67,7 @@ class _LanguageEditScreenState extends State<LanguageEditScreen> {
                                                       .then((_) async {
                                                     await context
                                                         .read<UserRepository>()
-                                                        .getLanguages()
-                                                        .then((value) {
-                                                      setState(() {
-                                                        widget.languages =
-                                                            value;
-                                                      });
-                                                    });
+                                                        .getLanguages();
                                                   });
                                                   Navigator.pop(context);
                                                 },

@@ -77,6 +77,20 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SafeArea(
+        child: Drawer(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Align(
+              alignment: Alignment.topLeft,
+              child: TextButton(
+                  child: Text('Sign out'),
+                  onPressed: () {
+                    context.read<UserRepository>().singOut();
+                  })),
+        )),
+      ),
+      appBar: AppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -85,11 +99,6 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
               padding: const EdgeInsets.all(4),
               child: Column(
                 children: [
-                  TextButton(
-                      onPressed: () {
-                        context.read<UserRepository>().singOut();
-                      },
-                      child: Text('Sign Out')),
                   MainInfoWidget(
                       user: widget.user, updateUser: widget.updateUser),
                   SizedBox(height: 8),

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
+import 'package:games_valley/screens/profile/work_edit/work_edit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:uuid/uuid.dart';
@@ -278,6 +279,20 @@ class UserRepository {
     return studies;
   }
 
+  Future getWorkExperiences() async {
+    var workMaps;
+    List workExperiences = [];
+    DocumentReference reference = FirebaseFirestore.instance
+        .collection('work')
+        .doc(firebaseAuth.currentUser.uid);
+    await reference.get().then((datasnapshot) {
+      workMaps = datasnapshot.data();
+      workExperiences = workMaps.values.toList();
+    });
+
+    return workExperiences;
+  }
+
   //create a job offer being a company
   Future<void> createJobOffer(
       {@required String title,
@@ -527,6 +542,18 @@ class UserRepository {
     await docReference.set({}).then((_) {
       for (int i = 0; i < studies.length; i++) {
         docReference.update({i.toString(): studies[i]});
+      }
+    });
+  }
+
+  Future updateWorkExperiences(List workExperiences, int deletePosition) async {
+    workExperiences.removeAt(deletePosition);
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('work')
+        .doc(firebaseAuth.currentUser.uid);
+    await documentReference.set({}).then((_) {
+      for (int i = 0; i < workExperiences.length; i++) {
+        documentReference.update({i.toString(): workExperiences[i]});
       }
     });
   }

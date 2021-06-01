@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:games_valley/screens/profile/work_edit/work_create.dart';
 
 class WorkEditScreen extends StatelessWidget {
   List workExperiences;
@@ -7,6 +8,16 @@ class WorkEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[200],
+        floatingActionButton: FloatingActionButton.extended(
+          label: Text('Add a new work experience'),
+          icon: Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => CreateWorkScreen()));
+          },
+        ),
         appBar: AppBar(
           centerTitle: true,
           title: Text(
@@ -29,7 +40,31 @@ class WorkEditScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(workExperiences[i][0]),
+                        workExperiences[i][1] != null &&
+                                workExperiences[i][1] != ''
+                            ? Text(workExperiences[i][0] +
+                                ' at ' +
+                                workExperiences[i][1])
+                            : Text(workExperiences[i][0]),
+                        workExperiences[i][4] != null &&
+                                workExperiences[i][4] != ''
+                            ? Text(
+                                workExperiences[i][2] +
+                                    ' ' +
+                                    workExperiences[i][3] +
+                                    ' - ' +
+                                    workExperiences[i][4] +
+                                    ' ' +
+                                    workExperiences[i][5],
+                                style: TextStyle(color: Colors.blueGrey),
+                              )
+                            : Text(
+                                workExperiences[i][2] +
+                                    ' ' +
+                                    workExperiences[i][3] +
+                                    ' - Present',
+                                style: TextStyle(color: Colors.blueGrey),
+                              )
                       ],
                     ),
                   ),

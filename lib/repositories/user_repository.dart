@@ -334,6 +334,7 @@ class UserRepository {
       workerDuties,
       extraInformation,
       uuid = Uuid().v1().toString(),
+      firebaseAuth.currentUser.uid,
     ];
 
     db.collection('offers').doc(firebaseAuth.currentUser.uid).update({

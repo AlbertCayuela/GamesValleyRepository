@@ -117,19 +117,18 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CompanyProfileEdit(
-                                      imageUrl: this
-                                          .company
-                                          .profileImageUrl))).then((_) {
-                            updateCompany();
-                          });
-                        },
-                        child: Text('Edit Profile'),
-                      ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CompanyProfileEdit(
+                                        imageUrl: this
+                                            .company
+                                            .profileImageUrl))).then((_) {
+                              updateCompany();
+                            });
+                          },
+                          child: Text('Edit Profile')),
                     ]),
                   ),
                 ),
@@ -162,11 +161,6 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/createjoboffer');
-                    },
-                    child: Text('Create a job offer')),
               ],
             ),
           ),

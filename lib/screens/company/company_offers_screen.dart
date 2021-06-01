@@ -13,6 +13,14 @@ class CompanyOffersScreen extends StatelessWidget {
         if (snapshot.hasData) {
           //print(snapshot);
           return Scaffold(
+            backgroundColor: Colors.grey[200],
+            floatingActionButton: FloatingActionButton.extended(
+              label: Text('Create a new job offer'),
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.pushNamed(context, '/createjoboffer');
+              },
+            ),
             body: ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, i) {

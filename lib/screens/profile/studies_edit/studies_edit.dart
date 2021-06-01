@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class StudiesEditScreen extends StatelessWidget {
@@ -26,26 +28,36 @@ class StudiesEditScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(studies[i][0]),
-                      Text(studies[i][1]),
-                      Text(studies[i][2]),
-                    ],
-                  ),
                   Expanded(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        child: Icon(
-                          Icons.clear,
-                          color: Colors.red,
-                        ),
-                        onPressed: () {},
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(studies[i][0] + ' at ' + studies[i][1]),
+                        studies[i][4] != '' && studies[i][4] != null
+                            ? Text(
+                                studies[i][2] +
+                                    ' ' +
+                                    studies[i][3] +
+                                    ' - ' +
+                                    studies[i][4] +
+                                    ' ' +
+                                    studies[i][5],
+                                style: TextStyle(color: Colors.blueGrey),
+                              )
+                            : Text(
+                                studies[i][2] + studies[i][3] + ' - Present',
+                                style: TextStyle(color: Colors.blueGrey),
+                              ),
+                      ],
                     ),
-                  )
+                  ),
+                  TextButton(
+                    child: Icon(
+                      Icons.clear,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {},
+                  ),
                 ],
               ),
             )

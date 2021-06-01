@@ -44,16 +44,24 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
       return Center(child: CircularProgressIndicator());
     } else
       return Scaffold(
+        drawer: SafeArea(
+          child: Drawer(
+              child: Align(
+            alignment: Alignment.topLeft,
+            child: TextButton(
+              child: Text('Sign out'),
+              onPressed: () {
+                context.read<UserRepository>().singOut();
+              },
+            ),
+          )),
+        ),
+        appBar: AppBar(),
         body: SafeArea(
           child: Container(
             color: Colors.grey[200],
             child: Column(
               children: [
-                TextButton(
-                    onPressed: () {
-                      context.read<UserRepository>().singOut();
-                    },
-                    child: Text('SignOut')),
                 Padding(
                   padding: const EdgeInsets.all(4),
                   child: Container(

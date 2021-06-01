@@ -5,9 +5,15 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/profile/studies_edit/studies_create.dart';
 import 'package:provider/provider.dart';
 
-class StudiesEditScreen extends StatelessWidget {
+class StudiesEditScreen extends StatefulWidget {
   List studies;
   StudiesEditScreen(this.studies);
+
+  @override
+  _StudiesEditScreenState createState() => _StudiesEditScreenState();
+}
+
+class _StudiesEditScreenState extends State<StudiesEditScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,9 +21,16 @@ class StudiesEditScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => CreateStudiesScreen()));
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CreateStudiesScreen()))
+              .then((_) {
+            context.read<UserRepository>().getStudies().then((value) {
+              setState(() {
+                widget.studies = value;
+              });
+            });
+          });
         },
         label: Text('Add new studies'),
         icon: Icon(Icons.add),
@@ -32,7 +45,7 @@ class StudiesEditScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            for (int i = 0; i < studies.length; i++)
+            for (int i = 0; i < widget.studies.length; i++)
               Container(
                 padding: EdgeInsets.all(5),
                 margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
@@ -46,20 +59,26 @@ class StudiesEditScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(studies[i][0] + ' at ' + studies[i][1]),
-                          studies[i][4] != '' && studies[i][4] != null
+                          Text(widget.studies[i][0] +
+                              ' at ' +
+                              widget.studies[i][1]),
+                          widget.studies[i][4] != '' &&
+                                  widget.studies[i][4] != null
                               ? Text(
-                                  studies[i][2] +
+                                  widget.studies[i][2] +
                                       ' ' +
-                                      studies[i][3] +
+                                      widget.studies[i][3] +
                                       ' - ' +
-                                      studies[i][4] +
+                                      widget.studies[i][4] +
                                       ' ' +
-                                      studies[i][5],
+                                      widget.studies[i][5],
                                   style: TextStyle(color: Colors.blueGrey),
                                 )
                               : Text(
-                                  studies[i][2] + studies[i][3] + ' - Present',
+                                  widget.studies[i][2] +
+                                      ' ' +
+                                      widget.studies[i][3] +
+                                      ' - Present',
                                   style: TextStyle(color: Colors.blueGrey),
                                 ),
                         ],
@@ -83,7 +102,17 @@ class StudiesEditScreen extends StatelessWidget {
                                       onPressed: () {
                                         context
                                             .read<UserRepository>()
-                                            .updateStudies(studies, i);
+                                            .updateStudies(widget.studies, i)
+                                            .then((_) {
+                                          context
+                                              .read<UserRepository>()
+                                              .getStudies();
+                                        }).then((value) {
+                                          setState(() {
+                                            widget.studies = value;
+                                          });
+                                        });
+                                        Navigator.pop(context);
                                       }),
                                   TextButton(
                                       child: Text('Cancel'),

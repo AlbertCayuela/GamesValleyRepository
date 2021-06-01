@@ -78,14 +78,19 @@ class _CreateLanguageScreenState extends State<CreateLanguageScreen> {
                   ),
                   SizedBox(height: 10),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         print('all ok!');
                         context.read<UserRepository>().addLanguages(
                               language: _languageController.text,
                               level: level,
                             );
-                        Navigator.pop(context);
+                        await context
+                            .read<UserRepository>()
+                            .getLanguages()
+                            .then((value) {
+                          Navigator.pop(context, value);
+                        });
                       } else {
                         print('something wrong!');
                       }

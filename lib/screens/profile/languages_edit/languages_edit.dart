@@ -58,14 +58,14 @@ class _LanguageEditScreenState extends State<LanguageEditScreen> {
                                               'Do you want to delete this language?'),
                                           actions: [
                                             TextButton(
-                                                onPressed: () {
-                                                  context
+                                                onPressed: () async {
+                                                  await context
                                                       .read<UserRepository>()
                                                       .updateLanguages(
                                                           this.widget.languages,
                                                           i)
-                                                      .then((_) {
-                                                    context
+                                                      .then((_) async {
+                                                    await context
                                                         .read<UserRepository>()
                                                         .getLanguages()
                                                         .then((value) {
@@ -101,15 +101,12 @@ class _LanguageEditScreenState extends State<LanguageEditScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreateLanguageScreen())).then((_) {
-                        context
-                            .read<UserRepository>()
-                            .getLanguages()
-                            .then((value) {
+                                  CreateLanguageScreen())).then((languages) {
+                        if (languages != null) {
                           setState(() {
-                            widget.languages = value;
+                            this.widget.languages = languages;
                           });
-                        });
+                        }
                       });
                     }),
               ),

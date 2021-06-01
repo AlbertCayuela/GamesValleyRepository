@@ -24,12 +24,12 @@ class _StudiesEditScreenState extends State<StudiesEditScreen> {
                   context,
                   MaterialPageRoute(
                       builder: (BuildContext context) => CreateStudiesScreen()))
-              .then((_) {
-            context.read<UserRepository>().getStudies().then((value) {
+              .then((value) {
+            if (value != null) {
               setState(() {
                 widget.studies = value;
               });
-            });
+            }
           });
         },
         label: Text('Add new studies'),
@@ -99,12 +99,13 @@ class _StudiesEditScreenState extends State<StudiesEditScreen> {
                                 actions: [
                                   TextButton(
                                       child: Text('Yes'),
-                                      onPressed: () {
-                                        context
+                                      onPressed: () async {
+                                        await context
                                             .read<UserRepository>()
-                                            .updateStudies(widget.studies, i)
-                                            .then((_) {
-                                          context
+                                            .updateStudies(
+                                                this.widget.studies, i)
+                                            .then((_) async {
+                                          await context
                                               .read<UserRepository>()
                                               .getStudies();
                                         }).then((value) {

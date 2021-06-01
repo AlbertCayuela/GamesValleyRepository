@@ -212,7 +212,7 @@ class _CreateStudiesScreenState extends State<CreateStudiesScreen> {
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         print('Everything ok!');
                         context.read<UserRepository>().addStudies(
@@ -223,7 +223,12 @@ class _CreateStudiesScreenState extends State<CreateStudiesScreen> {
                               finishingMonth: finishMonth,
                               finishingYear: _finishingYearController.text,
                             );
-                        Navigator.pop(context);
+                        await context
+                            .read<UserRepository>()
+                            .getStudies()
+                            .then((value) {
+                          Navigator.pop(context, value);
+                        });
                       } else {
                         print('something wrong!');
                       }

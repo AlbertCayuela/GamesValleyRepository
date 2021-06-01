@@ -20,22 +20,21 @@ class _CreateStudiesScreenState extends State<CreateStudiesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit your studies'),
+        title: Text(
+          'Add new studies',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
-            child: Container(
-              margin: EdgeInsets.all(10),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
               child: Column(
                 children: [
-                  Text(
-                    'Add new studies',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(height: 10),
                   TextFormField(
                     validator: (value) {
                       if (value.isEmpty || value == null) {

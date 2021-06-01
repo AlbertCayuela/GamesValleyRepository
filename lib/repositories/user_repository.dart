@@ -264,6 +264,20 @@ class UserRepository {
     return languages;
   }
 
+  Future getStudies() async {
+    var studiesMaps;
+    List studies = [];
+    DocumentReference reference = FirebaseFirestore.instance
+        .collection('studies')
+        .doc(firebaseAuth.currentUser.uid);
+    await reference.get().then((datasnapshot) {
+      studiesMaps = datasnapshot.data();
+      studies = studiesMaps.values.toList();
+    });
+
+    return studies;
+  }
+
   //create a job offer being a company
   Future<void> createJobOffer(
       {@required String title,
@@ -501,6 +515,18 @@ class UserRepository {
     await docReference.set({}).then((_) {
       for (int i = 0; i < languages.length; i++) {
         docReference.update({i.toString(): languages[i]});
+      }
+    });
+  }
+
+  Future updateStudies(List studies, int deletePosition) async {
+    studies.removeAt(deletePosition);
+    DocumentReference docReference = FirebaseFirestore.instance
+        .collection('studies')
+        .doc(firebaseAuth.currentUser.uid);
+    await docReference.set({}).then((_) {
+      for (int i = 0; i < studies.length; i++) {
+        docReference.update({i.toString(): studies[i]});
       }
     });
   }

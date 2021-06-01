@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/profile/studies_edit/studies_create.dart';
+import 'package:provider/provider.dart';
 
 class StudiesEditScreen extends StatelessWidget {
   List studies;
@@ -68,7 +70,30 @@ class StudiesEditScreen extends StatelessWidget {
                         Icons.clear,
                         color: Colors.red,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                content: Text(
+                                    'Do you want to delete these studies?'),
+                                actions: [
+                                  TextButton(
+                                      child: Text('Yes'),
+                                      onPressed: () {
+                                        context
+                                            .read<UserRepository>()
+                                            .updateStudies(studies, i);
+                                      }),
+                                  TextButton(
+                                      child: Text('Cancel'),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      })
+                                ],
+                              );
+                            });
+                      },
                     ),
                   ],
                 ),

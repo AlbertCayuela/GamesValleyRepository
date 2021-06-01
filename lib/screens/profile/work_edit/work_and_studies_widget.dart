@@ -70,7 +70,8 @@ class WorkAndStudiesWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    WorkEditScreen())).then((_) {
+                                    WorkEditScreen(
+                                        this.user.workExperiences))).then((_) {
                             updateUser();
                           })
                         : Navigator.push(

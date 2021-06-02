@@ -15,6 +15,11 @@ class CompanyApplicantsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Delete offer'),
+        icon: Icon(Icons.delete),
+        onPressed: () {},
+      ),
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
           centerTitle: true,

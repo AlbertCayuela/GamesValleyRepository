@@ -558,6 +558,25 @@ class UserRepository {
       }
     });
   }
+
+  Future deleteOffer(int deletePosition) async {
+    List companyOffers = [];
+    await getCompanyOffers().then((value) {
+      companyOffers = value;
+    });
+
+    companyOffers.removeAt(deletePosition);
+
+    DocumentReference documentReferece = FirebaseFirestore.instance
+        .collection('offers')
+        .doc(firebaseAuth.currentUser.uid);
+
+    documentReferece.set({}).then((_) {
+      for (int i = 0; i < companyOffers.length; i++) {
+        documentReferece.update({i.toString(): companyOffers[i]});
+      }
+    });
+  }
 }
 
 class UserInformation {

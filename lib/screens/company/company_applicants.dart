@@ -10,7 +10,8 @@ class CompanyApplicantsScreen extends StatelessWidget {
   List applicants = [];
   var initialApplicants = [];
   final offerUid;
-  CompanyApplicantsScreen(this.offerUid);
+  int index;
+  CompanyApplicantsScreen(this.offerUid, this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,9 @@ class CompanyApplicantsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         label: Text('Delete offer'),
         icon: Icon(Icons.delete),
-        onPressed: () {},
+        onPressed: () {
+          context.read<UserRepository>().deleteOffer(this.index);
+        },
       ),
       backgroundColor: Colors.grey[200],
       appBar: AppBar(

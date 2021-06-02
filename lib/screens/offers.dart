@@ -1092,6 +1092,7 @@ class Offer extends StatelessWidget {
       workerDuties,
       extraInformation,
       uuid;
+  final int index;
   Offer({
     this.timestamp = '',
     this.company = 'unknown',
@@ -1107,6 +1108,7 @@ class Offer extends StatelessWidget {
     this.extraInformation = '',
     this.uuid = '',
     this.money = '€',
+    this.index,
   });
 
   @override
@@ -1143,7 +1145,8 @@ class Offer extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => CompanyApplicantsScreen(this.uuid)));
+                    builder: (context) =>
+                        CompanyApplicantsScreen(this.uuid, this.index)));
           }
         });
       },

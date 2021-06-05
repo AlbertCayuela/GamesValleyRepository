@@ -641,10 +641,10 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                     ),
                     SizedBox(height: 10),
                     ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             print('everything is fine in this offer!');
-                            context
+                            await context
                                 .read<UserRepository>()
                                 .createJobOffer(
                                   title: _titleController.text,

@@ -644,7 +644,9 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             print('everything is fine in this offer!');
-                            context.read<UserRepository>().createJobOffer(
+                            context
+                                .read<UserRepository>()
+                                .createJobOffer(
                                   title: _titleController.text,
                                   country: country,
                                   workField: workField,
@@ -654,8 +656,10 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                                   annualSalary: _salaryController.text,
                                   extraInformation:
                                       _extraInformationController.text,
-                                );
-                            Navigator.pop(context);
+                                )
+                                .then((_) {
+                              Navigator.pop(context);
+                            });
                           } else {
                             print('Something is wrong in this offer!');
                           }

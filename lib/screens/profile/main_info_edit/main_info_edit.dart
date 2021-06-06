@@ -31,7 +31,9 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'Edit your main information',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -42,138 +44,135 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
-            child: Container(
-              color: Colors.grey,
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.all(2),
-                    padding: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(2),
+                  padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Flex(direction: Axis.horizontal),
+                      CircleAvatar(
+                        child: (imageUrl != '')
+                            ? null
+                            : Icon(Icons.person, size: 45),
+                        radius: 50,
+                        backgroundImage:
+                            (imageUrl != '') ? NetworkImage(imageUrl) : null,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          context
+                              .read<UserRepository>()
+                              .pickImageAndUpload()
+                              .then((value) {
+                            setState(() {
+                              imageUrl = value;
+                            });
+                          });
+                        },
+                        child: Text('Edit profile image'),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(2),
+                  padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        Flex(direction: Axis.horizontal),
-                        CircleAvatar(
-                          child: (imageUrl != '')
-                              ? null
-                              : Icon(Icons.person, size: 45),
-                          radius: 50,
-                          backgroundImage:
-                              (imageUrl != '') ? NetworkImage(imageUrl) : null,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            context
-                                .read<UserRepository>()
-                                .pickImageAndUpload()
-                                .then((value) {
-                              setState(() {
-                                imageUrl = value;
-                              });
+                      color: Colors.white),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (currentCV != '')
+                        Expanded(
+                            child:
+                                currentCV == '' ? Text('') : Text(currentCV)),
+                      ElevatedButton(
+                        onPressed: () {
+                          context
+                              .read<UserRepository>()
+                              .pickCVAndUpload()
+                              .then((value) {
+                            setState(() {
+                              currentCV = value;
                             });
-                          },
-                          child: Text('Edit profile image'),
-                        ),
-                      ],
-                    ),
+                          });
+                        },
+                        child: Text('Upload new CV'),
+                      ),
+                    ],
                   ),
-                  Container(
-                    margin: EdgeInsets.all(2),
-                    padding: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: Colors.white),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (currentCV != '')
-                          Expanded(
-                              child:
-                                  currentCV == '' ? Text('') : Text(currentCV)),
-                        ElevatedButton(
+                ),
+                Container(
+                  margin: EdgeInsets.all(2),
+                  padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: Colors.white),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          labelText: 'Name',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        controller: _surnameController,
+                        decoration: InputDecoration(
+                          labelText: 'Surname',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TextFormField(
+                        controller: _phoneNumberController,
+                        decoration: InputDecoration(
+                          labelText:
+                              'Phone number (please add your country code)',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        keyboardType: TextInputType.phone,
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
                           onPressed: () {
-                            context
-                                .read<UserRepository>()
-                                .pickCVAndUpload()
-                                .then((value) {
-                              setState(() {
-                                currentCV = value;
-                              });
-                            });
+                            if (_nameController.text != '') {
+                              print('changing name!');
+                              context
+                                  .read<UserRepository>()
+                                  .changeName(_nameController.text);
+                            }
+                            if (_surnameController.text != '') {
+                              print('changing surname!');
+                              context
+                                  .read<UserRepository>()
+                                  .changeSurname(_surnameController.text);
+                            }
+                            if (_phoneNumberController.text != '') {
+                              print('changing phone number!');
+                              context
+                                  .read<UserRepository>()
+                                  .changePhone(_phoneNumberController.text);
+                            }
+                            Navigator.pop(context);
                           },
-                          child: Text('Upload new CV'),
-                        ),
-                      ],
-                    ),
+                          child: Text('Edit information')),
+                    ],
                   ),
-                  Container(
-                    margin: EdgeInsets.all(2),
-                    padding: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: Colors.white),
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          controller: _nameController,
-                          decoration: InputDecoration(
-                            labelText: 'Name',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        TextFormField(
-                          controller: _surnameController,
-                          decoration: InputDecoration(
-                            labelText: 'Surname',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        TextFormField(
-                          controller: _phoneNumberController,
-                          decoration: InputDecoration(
-                            labelText:
-                                'Phone number (please add your country code)',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          keyboardType: TextInputType.phone,
-                        ),
-                        SizedBox(height: 10),
-                        ElevatedButton(
-                            onPressed: () {
-                              if (_nameController.text != '') {
-                                print('changing name!');
-                                context
-                                    .read<UserRepository>()
-                                    .changeName(_nameController.text);
-                              }
-                              if (_surnameController.text != '') {
-                                print('changing surname!');
-                                context
-                                    .read<UserRepository>()
-                                    .changeSurname(_surnameController.text);
-                              }
-                              if (_phoneNumberController.text != '') {
-                                print('changing phone number!');
-                                context
-                                    .read<UserRepository>()
-                                    .changePhone(_phoneNumberController.text);
-                              }
-                              Navigator.pop(context);
-                            },
-                            child: Text('Edit information')),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

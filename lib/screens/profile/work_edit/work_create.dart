@@ -27,8 +27,9 @@ class _CreateWorkScreenState extends State<CreateWorkScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
-          'Edit your work experience',
+          'Add a new work experience',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
@@ -44,10 +45,6 @@ class _CreateWorkScreenState extends State<CreateWorkScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      'Add experience',
-                      style: TextStyle(fontSize: 20),
-                    ),
                     SizedBox(height: 10),
                     TextFormField(
                       validator: (value) {

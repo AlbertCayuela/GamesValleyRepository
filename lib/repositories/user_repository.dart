@@ -28,7 +28,7 @@ class UserRepository {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       return true;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       return false;
     }
   }

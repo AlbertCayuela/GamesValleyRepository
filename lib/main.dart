@@ -112,7 +112,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
           return BaseScreen(index: 0);
         }
       }
-      return Center(child: CircularProgressIndicator());
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     return LoginScreen();
   }

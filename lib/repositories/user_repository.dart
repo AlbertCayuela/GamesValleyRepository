@@ -419,6 +419,7 @@ class UserRepository {
     final pickedImage =
         await ImagePicker().getImage(source: ImageSource.gallery);
 
+    List companyOffers;
     if (pickedImage != null) {
       imageFile = File(pickedImage.path);
       print('SELECTED IMAGE: ' + basename(pickedImage.path));
@@ -432,6 +433,22 @@ class UserRepository {
         String downloadUrl = await snapshot.ref.getDownloadURL();
         db.collection('users').doc(firebaseAuth.currentUser.uid).update({
           'profileimageurl': downloadUrl,
+        });
+        await getIsCompany().then((value) async {
+          if (value == true) {
+            await getCompanyOffers().then((value) {
+              companyOffers = value;
+            });
+            DocumentReference docReference = FirebaseFirestore.instance
+                .collection('offers')
+                .doc(firebaseAuth.currentUser.uid);
+            docReference.set({}).then((_) {
+              for (int i = 0; i < companyOffers.length; i++) {
+                companyOffers[i][3] = downloadUrl;
+                docReference.update({i.toString(): companyOffers[i]});
+              }
+            });
+          }
         });
         return downloadUrl;
       }

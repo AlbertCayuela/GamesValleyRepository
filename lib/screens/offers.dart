@@ -1152,18 +1152,22 @@ class Offer extends StatelessWidget {
         });
       },
       child: Card(
-        margin: EdgeInsets.all(5),
+        margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // CircleAvatar(
-              //   backgroundImage: this.imageURL == null || this.imageURL == ''
-              //       ? null
-              //       : NetworkImage(this.imageURL),
-              // ),
+              CircleAvatar(
+                child: this.imageURL == null || this.imageURL == ''
+                    ? Icon(Icons.person)
+                    : null,
+                backgroundImage: this.imageURL == null || this.imageURL == ''
+                    ? null
+                    : NetworkImage(this.imageURL),
+                radius: 35,
+              ),
               SizedBox(
                 width: 10,
               ),

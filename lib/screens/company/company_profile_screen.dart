@@ -63,7 +63,7 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(4),
+                  padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
                   child: Container(
                     padding: EdgeInsets.all(7),
                     decoration: BoxDecoration(
@@ -95,7 +95,22 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                                     style: TextStyle(
                                         color: Colors.blueGrey, fontSize: 15),
                                   ),
-                                )
+                                ),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CompanyProfileEdit(
+                                                          imageUrl: this
+                                                              .company
+                                                              .profileImageUrl)))
+                                          .then((_) {
+                                        updateCompany();
+                                      });
+                                    },
+                                    child: Text('Edit Profile')),
                               ],
                             ),
                             SizedBox(height: 10),
@@ -116,19 +131,6 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
                           ],
                         ),
                       ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CompanyProfileEdit(
-                                        imageUrl: this
-                                            .company
-                                            .profileImageUrl))).then((_) {
-                              updateCompany();
-                            });
-                          },
-                          child: Text('Edit Profile')),
                     ]),
                   ),
                 ),

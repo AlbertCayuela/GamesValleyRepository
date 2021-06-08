@@ -92,8 +92,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(10)),
                           suffixIcon: TextButton(
                             child: hidePassword == true
-                                ? Icon(Icons.visibility)
-                                : Icon(Icons.visibility_off),
+                                ? Icon(
+                                    Icons.visibility,
+                                    color: Colors.grey,
+                                  )
+                                : Icon(
+                                    Icons.visibility_off,
+                                    color: Colors.grey,
+                                  ),
                             onPressed: () {
                               setState(() {
                                 hidePassword = !hidePassword;

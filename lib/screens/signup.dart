@@ -14,6 +14,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool isSignedUp = false;
   bool signUp = false;
+  bool hidePassword = true;
 
   TextEditingController _emailController = TextEditingController();
 
@@ -108,12 +109,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       return null;
                     },
                     controller: _passwordController,
-                    obscureText: true, //todo show-hide password
+                    obscureText: hidePassword, //todo show-hide password
                     decoration: InputDecoration(
                       icon: Icon(Icons.vpn_key),
                       labelText: 'Password',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
+                      suffixIcon: TextButton(
+                        child: hidePassword == true
+                            ? Icon(
+                                Icons.visibility,
+                                color: Colors.grey,
+                              )
+                            : Icon(
+                                Icons.visibility_off,
+                                color: Colors.grey,
+                              ),
+                        onPressed: () {
+                          setState(() {
+                            hidePassword = !hidePassword;
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ),

@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool logInSuccess = true;
   bool logInError = false;
+  bool hidePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -83,13 +84,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         return null;
                       },
                       controller: _passwordController,
-                      obscureText: true, //todo show-hide password
+                      obscureText: hidePassword, //todo show-hide password
                       decoration: InputDecoration(
-                        icon: Icon(Icons.vpn_key),
-                        labelText: 'Password',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
+                          icon: Icon(Icons.vpn_key),
+                          labelText: 'Password',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          suffixIcon: TextButton(
+                            child: hidePassword == true
+                                ? Icon(Icons.visibility)
+                                : Icon(Icons.visibility_off),
+                            onPressed: () {
+                              setState(() {
+                                hidePassword = !hidePassword;
+                              });
+                            },
+                          )),
                     ),
                   ),
                   Text('Forgot password?'),

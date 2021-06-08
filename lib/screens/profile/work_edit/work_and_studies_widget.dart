@@ -19,6 +19,7 @@ class WorkAndStudiesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 4),
       padding: EdgeInsets.all(7),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(7)),

@@ -96,24 +96,21 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
           child: Container(
             color: Colors.grey[200],
             child: Padding(
-              padding: const EdgeInsets.all(4),
+              padding: EdgeInsets.fromLTRB(4, 4, 4, 0),
               child: Column(
                 children: [
                   MainInfoWidget(
                       user: widget.user, updateUser: widget.updateUser),
-                  SizedBox(height: 8),
                   WorkAndStudiesWidget(
                     updateUser: widget.updateUser,
                     user: widget.user,
                     isWork: true,
                   ),
-                  SizedBox(height: 8),
                   WorkAndStudiesWidget(
                     updateUser: widget.updateUser,
                     user: widget.user,
                     isWork: false,
                   ),
-                  SizedBox(height: 8),
                   LanguagesWidget(
                     user: widget.user,
                     updateUser: widget.updateUser,

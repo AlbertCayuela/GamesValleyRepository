@@ -16,6 +16,7 @@ class LanguagesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(7),
+      margin: EdgeInsets.only(top: 4, bottom: 4),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(7),

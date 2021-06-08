@@ -15,7 +15,7 @@ class CompanyCVProfileScreen extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.all(5),
-              margin: EdgeInsets.all(5),
+              margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

@@ -19,8 +19,13 @@ class CompanyApplicantsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         label: Text('Delete offer'),
         icon: Icon(Icons.delete),
-        onPressed: () {
-          context.read<UserRepository>().deleteOffer(this.index);
+        onPressed: () async {
+          await context
+              .read<UserRepository>()
+              .deleteOffer(this.index)
+              .then((_) {
+            Navigator.pop(context);
+          });
         },
       ),
       backgroundColor: Colors.grey[200],

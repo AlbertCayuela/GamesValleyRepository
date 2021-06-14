@@ -37,6 +37,7 @@ dependencies:
   uuid: ^3.0.4
   file_picker: ^3.0.1
   advance_pdf_viewer: ^2.0.0
+  flutter_launcher_icons: ^0.9.0
 
 
 dev_dependencies:

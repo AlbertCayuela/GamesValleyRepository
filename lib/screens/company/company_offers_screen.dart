@@ -63,6 +63,7 @@ class _CompanyOffersScreenState extends State<CompanyOffersScreen> {
                       workerDuties: snapshot.data[i][10],
                       extraInformation: snapshot.data[i][11],
                       uuid: snapshot.data[i][12],
+                      money: snapshot.data[i][14],
                       index: i,
                     );
                   },

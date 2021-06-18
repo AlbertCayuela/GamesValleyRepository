@@ -1065,6 +1065,7 @@ class _OffersScreenState extends State<OffersScreen> {
                     workerDuties: filteredOffers[index][10],
                     extraInformation: filteredOffers[index][11],
                     uuid: filteredOffers[index][12],
+                    money: filteredOffers[index][14],
                   );
                 },
               );
@@ -1108,7 +1109,7 @@ class Offer extends StatelessWidget {
     this.workerDuties = '',
     this.extraInformation = '',
     this.uuid = '',
-    this.money = '€',
+    this.money = '',
     this.index,
   });
 
@@ -1207,13 +1208,13 @@ class Offer extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Icon(
-                                Icons.attach_money,
-                                color: Colors.blueGrey,
-                                size: 17,
-                              ),
-                              Text(salary + '/year',
-                                  style: TextStyle(color: Colors.blueGrey)),
+                              salary != ''
+                                  ? Text('$salary $money / year',
+                                      style: TextStyle(color: Colors.blueGrey))
+                                  : Text(
+                                      'Salary not available',
+                                      style: TextStyle(color: Colors.blueGrey),
+                                    ),
                             ],
                           ),
                         ],

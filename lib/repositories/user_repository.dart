@@ -302,6 +302,7 @@ class UserRepository {
       @required String type,
       @required String requirements,
       @required String workerDuties,
+      String currency,
       String extraInformation}) async {
     String companyName;
     String companyDescription;
@@ -335,6 +336,7 @@ class UserRepository {
       extraInformation,
       uuid = Uuid().v1().toString(),
       firebaseAuth.currentUser.uid,
+      currency,
     ];
 
     db.collection('offers').doc(firebaseAuth.currentUser.uid).update({

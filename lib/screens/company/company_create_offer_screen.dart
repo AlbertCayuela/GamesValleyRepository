@@ -12,6 +12,7 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
   String country;
   String workField;
   String type;
+  String currency;
 
   TextEditingController _titleController = TextEditingController();
   TextEditingController _salaryController = TextEditingController();
@@ -561,8 +562,49 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                         if (value.isNotEmpty && !isNumeric(value)) {
                           return 'The value must be a number';
                         }
+                        return null;
                       },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
+                    ),
+                    SizedBox(height: 10),
+                    DropdownButtonFormField(
+                      isExpanded: true,
+                      value: currency,
+                      validator: (value) {
+                        if (_salaryController.text.isNotEmpty &&
+                            value == null) {
+                          return 'Plese select a currency';
+                        }
+                        return null;
+                      },
+                      hint: Text('Currency'),
+                      items: [
+                        DropdownMenuItem(
+                          child: Text('USD'),
+                          value: 'USD',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('EUR'),
+                          value: 'EUR',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('GBP'),
+                          value: 'GBP',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('AUD'),
+                          value: 'AUD',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('CAD'),
+                          value: 'CAD',
+                        ),
+                      ],
+                      onChanged: (value) {
+                        setState(() {
+                          currency = value;
+                        });
+                      },
                     ),
                     SizedBox(height: 10),
                     DropdownButtonFormField(
@@ -656,6 +698,7 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                                   annualSalary: _salaryController.text,
                                   extraInformation:
                                       _extraInformationController.text,
+                                  currency: currency,
                                 )
                                 .then((_) {
                               Navigator.pop(context);

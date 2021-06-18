@@ -79,40 +79,28 @@ class AuthWrapper extends StatefulWidget {
 }
 
 class _AuthWrapperState extends State<AuthWrapper> {
-  bool isCompany;
-  bool loading;
-  bool isChecked;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    loading = true;
-    isChecked = false;
-  }
-
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      if (!isChecked) {
-        context.read<UserRepository>().getIsCompany().then((value) {
-          setState(() {
-            isCompany = value;
-            loading = false;
-            isChecked = true;
-          });
-        });
-      }
-
-      if (isChecked) {
-        if (isCompany) {
-          return CompanyBaseScreen();
-        } else if (!isCompany) {
-          return BaseScreen(index: 0);
-        }
-      }
-      return Scaffold(body: Center(child: CircularProgressIndicator()));
+      return FutureBuilder(
+        future: context.read<UserRepository>().getIsCompany(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data == true) {
+              return CompanyBaseScreen(index: 0);
+            } else if (snapshot.data == false) {
+              return BaseScreen(index: 0);
+            }
+          }
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
+      );
     }
     return LoginScreen();
   }

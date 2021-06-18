@@ -578,7 +578,7 @@ class UserRepository {
     });
   }
 
-  Future deleteOffer(int deletePosition) async {
+  Future deleteOffer(int deletePosition, var offerUid) async {
     List companyOffers = [];
     await getCompanyOffers().then((value) {
       companyOffers = value;
@@ -595,6 +595,10 @@ class UserRepository {
         documentReferece.update({i.toString(): companyOffers[i]});
       }
     });
+
+    DocumentReference docRef =
+        FirebaseFirestore.instance.collection('applicants').doc(offerUid);
+    docRef.delete();
   }
 }
 

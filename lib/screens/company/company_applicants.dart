@@ -22,7 +22,7 @@ class CompanyApplicantsScreen extends StatelessWidget {
         onPressed: () async {
           await context
               .read<UserRepository>()
-              .deleteOffer(this.index)
+              .deleteOffer(this.index, this.offerUid)
               .then((_) {
             Navigator.pop(context);
           });

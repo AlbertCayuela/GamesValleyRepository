@@ -61,6 +61,13 @@ class _OffersScreenState extends State<OffersScreen> {
     }
   }
 
+  Future _pullRefresh() async {
+    var refreshedOffers = await context.read<UserRepository>().getAllOffers();
+    setState(() {
+      offers = refreshedOffers;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1048,26 +1055,29 @@ class _OffersScreenState extends State<OffersScreen> {
           }),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: filteredOffers.length,
-                itemBuilder: (context, index) {
-                  return Offer(
-                    timestamp: filteredOffers[index][0],
-                    company: filteredOffers[index][1],
-                    companyDescription: filteredOffers[index][2],
-                    imageURL: filteredOffers[index][3],
-                    title: filteredOffers[index][4],
-                    location: filteredOffers[index][5],
-                    field: filteredOffers[index][6],
-                    salary: filteredOffers[index][7],
-                    type: filteredOffers[index][8],
-                    requirements: filteredOffers[index][9],
-                    workerDuties: filteredOffers[index][10],
-                    extraInformation: filteredOffers[index][11],
-                    uuid: filteredOffers[index][12],
-                    money: filteredOffers[index][14],
-                  );
-                },
+              return RefreshIndicator(
+                onRefresh: _pullRefresh,
+                child: ListView.builder(
+                  itemCount: filteredOffers.length,
+                  itemBuilder: (context, index) {
+                    return Offer(
+                      timestamp: filteredOffers[index][0],
+                      company: filteredOffers[index][1],
+                      companyDescription: filteredOffers[index][2],
+                      imageURL: filteredOffers[index][3],
+                      title: filteredOffers[index][4],
+                      location: filteredOffers[index][5],
+                      field: filteredOffers[index][6],
+                      salary: filteredOffers[index][7],
+                      type: filteredOffers[index][8],
+                      requirements: filteredOffers[index][9],
+                      workerDuties: filteredOffers[index][10],
+                      extraInformation: filteredOffers[index][11],
+                      uuid: filteredOffers[index][12],
+                      money: filteredOffers[index][14],
+                    );
+                  },
+                ),
               );
             } else if (snapshot.hasError) {
               return Text('There was an error collecting the data');

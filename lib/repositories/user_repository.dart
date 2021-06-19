@@ -76,6 +76,15 @@ class UserRepository {
     }
   }
 
+  Future<bool> ForgotPassword(String email) async {
+    try {
+      await firebaseAuth.sendPasswordResetEmail(email: email);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   //sign out
   Future<void> singOut() async {
     await firebaseAuth.signOut();

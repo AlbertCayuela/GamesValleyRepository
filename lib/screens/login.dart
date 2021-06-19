@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
+import 'package:games_valley/screens/forgot_password.dart';
 import 'package:provider/provider.dart';
 import 'package:validators/validators.dart';
 
@@ -108,7 +109,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           )),
                     ),
                   ),
-                  Text('Forgot password?'),
+                  TextButton(
+                    child: Text('Forgot password?'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ForgotPasswordScreen()));
+                    },
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
 //LOGIN BUTTON--------------------------------------------------------------------------------------

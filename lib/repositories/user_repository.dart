@@ -173,20 +173,18 @@ class UserRepository {
         FirebaseFirestore.instance.collection('work').doc(userUid);
     await documentReference.get().then((datasnapshot) {
       workMaps = datasnapshot.data();
-      user.workExperiences = workMaps.values.toList();
-      // print('work:');
-      // print(user.workExperiences);
+      List workExperiences = workMaps.values.toList();
+      workExperiences.sort((a, b) => a[3].compareTo(b[3]));
+      user.workExperiences = workExperiences.reversed.toList();
     });
 
     DocumentReference dReference =
         FirebaseFirestore.instance.collection('studies').doc(userUid);
     await dReference.get().then((datasnapshot) {
       studiesMaps = datasnapshot.data();
-      //user.studies = studiesMaps.values.toList();
       List studies = studiesMaps.values.toList();
       studies.sort((a, b) => a[3].compareTo(b[3]));
       user.studies = studies.reversed.toList();
-      print(user.studies);
     });
 
     DocumentReference reference =

@@ -46,7 +46,12 @@ class WorkAndStudiesInfo extends StatelessWidget {
               Text(
                 ' ' + this.finalYear,
                 style: TextStyle(color: Colors.blueGrey, fontSize: 12),
-              )
+              ),
+              if (this.finalMonth == null)
+                Text(
+                  '- present',
+                  style: TextStyle(color: Colors.blueGrey),
+                ),
             ],
           ),
           SizedBox(height: 5),

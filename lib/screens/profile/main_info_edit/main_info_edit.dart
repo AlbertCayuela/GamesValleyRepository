@@ -70,9 +70,11 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                               .read<UserRepository>()
                               .pickImageAndUpload()
                               .then((value) {
-                            setState(() {
-                              imageUrl = value;
-                            });
+                            if (value != null) {
+                              setState(() {
+                                imageUrl = value;
+                              });
+                            }
                           });
                         },
                         child: Text('Edit profile image'),
@@ -99,9 +101,11 @@ class _EditMainInfoScreenState extends State<EditMainInfoScreen> {
                               .read<UserRepository>()
                               .pickCVAndUpload()
                               .then((value) {
-                            setState(() {
-                              currentCV = value;
-                            });
+                            if (value != null) {
+                              setState(() {
+                                currentCV = value;
+                              });
+                            }
                           });
                         },
                         child: Text('Upload new CV'),

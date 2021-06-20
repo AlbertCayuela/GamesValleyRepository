@@ -182,8 +182,10 @@ class UserRepository {
         FirebaseFirestore.instance.collection('studies').doc(userUid);
     await dReference.get().then((datasnapshot) {
       studiesMaps = datasnapshot.data();
-      user.studies = studiesMaps.values.toList();
-      print('studies:');
+      //user.studies = studiesMaps.values.toList();
+      List studies = studiesMaps.values.toList();
+      studies.sort((a, b) => a[3].compareTo(b[3]));
+      user.studies = studies.reversed.toList();
       print(user.studies);
     });
 

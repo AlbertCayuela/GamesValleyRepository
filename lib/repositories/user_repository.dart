@@ -78,7 +78,8 @@ class UserRepository {
 
   Future<bool> ForgotPassword(String email) async {
     try {
-      await firebaseAuth.sendPasswordResetEmail(email: email);
+      await firebaseAuth
+        ..sendPasswordResetEmail(email: email);
       return true;
     } catch (e) {
       return false;
@@ -88,6 +89,26 @@ class UserRepository {
   //sign out
   Future<void> singOut() async {
     await firebaseAuth.signOut();
+  }
+
+  Future<void> deleteUser() async {
+    await FirebaseFirestore.instance
+        .collection('work')
+        .doc(firebaseAuth.currentUser.uid)
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('studies')
+        .doc(firebaseAuth.currentUser.uid)
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('languages')
+        .doc(firebaseAuth.currentUser.uid)
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseAuth.currentUser.uid)
+        .delete();
+    await firebaseAuth.currentUser.delete();
   }
 
   //get user email

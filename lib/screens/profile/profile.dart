@@ -79,16 +79,37 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
     return Scaffold(
       drawer: SafeArea(
         child: Drawer(
-            child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Align(
-              alignment: Alignment.topLeft,
-              child: TextButton(
-                  child: Text('Sign out'),
-                  onPressed: () {
-                    context.read<UserRepository>().singOut();
-                  })),
-        )),
+          //     child: Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Align(
+          //       alignment: Alignment.topLeft,
+          //       child: TextButton(
+          //           child: Text('Sign out'),
+          //           onPressed: () {
+          //             context.read<UserRepository>().singOut();
+          //           })),
+          // )
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text('Sign out'),
+                onTap: () async {
+                  await context.read<UserRepository>().singOut();
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/login', (route) => false);
+                },
+              ),
+              ListTile(
+                title: Text('Delete account'),
+                onTap: () async {
+                  await context.read<UserRepository>().deleteUser();
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/login', (route) => false);
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       appBar: AppBar(),
       body: SafeArea(

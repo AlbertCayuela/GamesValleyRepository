@@ -46,15 +46,27 @@ class _CompanyProfileScreenState extends State<CompanyProfileScreen> {
       return Scaffold(
         drawer: SafeArea(
           child: Drawer(
-              child: Align(
-            alignment: Alignment.topLeft,
-            child: TextButton(
-              child: Text('Sign out'),
-              onPressed: () {
-                context.read<UserRepository>().singOut();
-              },
+            child: ListView(
+              children: [
+                ListTile(
+                  title: Text('Sign out'),
+                  onTap: () async {
+                    await context.read<UserRepository>().singOut();
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/login', (route) => false);
+                  },
+                ),
+                ListTile(
+                  title: Text('Delete account'),
+                  onTap: () async {
+                    await context.read<UserRepository>().deleteCompany();
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/login', (route) => false);
+                  },
+                ),
+              ],
             ),
-          )),
+          ),
         ),
         appBar: AppBar(),
         body: SafeArea(

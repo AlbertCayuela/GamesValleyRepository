@@ -111,6 +111,25 @@ class UserRepository {
     await firebaseAuth.currentUser.delete();
   }
 
+  Future<void> deleteCompany() async {
+    List companyOffers = await getCompanyOffers();
+    for (int i = 0; i < companyOffers.length; i++) {
+      await FirebaseFirestore.instance
+          .collection('applicants')
+          .doc(companyOffers[i][12])
+          .delete();
+    }
+    await FirebaseFirestore.instance
+        .collection('offers')
+        .doc(firebaseAuth.currentUser.uid)
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(firebaseAuth.currentUser.uid)
+        .delete();
+    await firebaseAuth.currentUser.delete();
+  }
+
   //get user email
   String getUserEmail() {
     String email;

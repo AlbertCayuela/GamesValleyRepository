@@ -79,16 +79,6 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
     return Scaffold(
       drawer: SafeArea(
         child: Drawer(
-          //     child: Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Align(
-          //       alignment: Alignment.topLeft,
-          //       child: TextButton(
-          //           child: Text('Sign out'),
-          //           onPressed: () {
-          //             context.read<UserRepository>().singOut();
-          //           })),
-          // )
           child: ListView(
             children: [
               ListTile(

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:games_valley/main.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/profile/work_edit/work_and_studies_widget.dart';
 import 'package:provider/provider.dart';
@@ -85,16 +86,20 @@ class _ProfileScreenWidgetState extends State<ProfileScreenWidget> {
                 title: Text('Sign out'),
                 onTap: () async {
                   await context.read<UserRepository>().singOut();
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil('/login', (route) => false);
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => AuthWrapper()),
+                      (route) => false);
                 },
               ),
               ListTile(
                 title: Text('Delete account'),
                 onTap: () async {
                   await context.read<UserRepository>().deleteUser();
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil('/login', (route) => false);
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => AuthWrapper()),
+                      (route) => false);
                 },
               ),
             ],

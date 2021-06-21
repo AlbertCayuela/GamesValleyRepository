@@ -42,7 +42,9 @@ class CompanyApplicantsScreen extends StatelessWidget {
                 .read<UserRepository>()
                 .getUserInfo(value[i][0])
                 .then((result) {
-              applicants.add(result);
+              if (result != null) {
+                applicants.add(result);
+              }
             });
           }
           return applicants;

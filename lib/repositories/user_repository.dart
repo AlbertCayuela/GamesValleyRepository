@@ -191,8 +191,11 @@ class UserRepository {
     var workMaps;
     var studiesMaps;
     var languagesMaps;
+
+    bool userExists;
     DocumentReference docReference =
         FirebaseFirestore.instance.collection('users').doc(userUid);
+
     await docReference.get().then((datasnapshot) {
       if (datasnapshot.exists) {
         user.username = datasnapshot.get('username');
@@ -203,37 +206,42 @@ class UserRepository {
         user.surname = datasnapshot.get('surname');
         user.phone = datasnapshot.get('phone');
         user.cvUrl = datasnapshot.get('cvurl');
+        userExists = true;
       } else {
-        print('cant find this user...');
+        userExists = false;
       }
     });
 
-    DocumentReference documentReference =
-        FirebaseFirestore.instance.collection('work').doc(userUid);
-    await documentReference.get().then((datasnapshot) {
-      workMaps = datasnapshot.data();
-      List workExperiences = workMaps.values.toList();
-      workExperiences.sort((a, b) => a[3].compareTo(b[3]));
-      user.workExperiences = workExperiences.reversed.toList();
-    });
+    if (userExists) {
+      DocumentReference documentReference =
+          FirebaseFirestore.instance.collection('work').doc(userUid);
+      await documentReference.get().then((datasnapshot) {
+        workMaps = datasnapshot.data();
+        List workExperiences = workMaps.values.toList();
+        workExperiences.sort((a, b) => a[3].compareTo(b[3]));
+        user.workExperiences = workExperiences.reversed.toList();
+      });
 
-    DocumentReference dReference =
-        FirebaseFirestore.instance.collection('studies').doc(userUid);
-    await dReference.get().then((datasnapshot) {
-      studiesMaps = datasnapshot.data();
-      List studies = studiesMaps.values.toList();
-      studies.sort((a, b) => a[3].compareTo(b[3]));
-      user.studies = studies.reversed.toList();
-    });
+      DocumentReference dReference =
+          FirebaseFirestore.instance.collection('studies').doc(userUid);
+      await dReference.get().then((datasnapshot) {
+        studiesMaps = datasnapshot.data();
+        List studies = studiesMaps.values.toList();
+        studies.sort((a, b) => a[3].compareTo(b[3]));
+        user.studies = studies.reversed.toList();
+      });
 
-    DocumentReference reference =
-        FirebaseFirestore.instance.collection('languages').doc(userUid);
-    await reference.get().then((datasnapshot) {
-      languagesMaps = datasnapshot.data();
-      user.languages = languagesMaps.values.toList();
-    });
+      DocumentReference reference =
+          FirebaseFirestore.instance.collection('languages').doc(userUid);
+      await reference.get().then((datasnapshot) {
+        languagesMaps = datasnapshot.data();
+        user.languages = languagesMaps.values.toList();
+      });
 
-    return user;
+      return user;
+    } else {
+      return null;
+    }
   }
 
   //upload new job experience

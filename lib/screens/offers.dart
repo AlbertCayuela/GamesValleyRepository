@@ -19,6 +19,7 @@ class _OffersScreenState extends State<OffersScreen> {
   ScrollController _scrollController = ScrollController();
 
   bool initialFilter = false;
+  bool _workVisible = false;
 
   @override
   void initState() {
@@ -101,128 +102,178 @@ class _OffersScreenState extends State<OffersScreen> {
                   Navigator.pop(context);
                 },
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: Text(
-                  'Workfield',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+              ListTile(
+                title: Text(
+                  'Wokrfield',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                trailing: !_workVisible
+                    ? Icon(Icons.expand_more)
+                    : Icon(Icons.expand_less),
+                onTap: () {
+                  setState(() {
+                    _workVisible = !_workVisible;
+                  });
+                },
+              ),
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Art and animation',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Art and animation');
+                    Navigator.pop(context);
+                  },
                 ),
               ),
-              ListTile(
-                title: Text('Art and animation',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Art and animation');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Audio and video',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Audio and video');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Audio and video',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Audio and video');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Communication',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Communication');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Communication',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Communication');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Design and creative direction',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field,
+                        option: 'Design and creative direction');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Design and creative direction',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field,
-                      option: 'Design and creative direction');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title:
+                      Text('Finance', style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Finance');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title:
-                    Text('Finance', style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Finance');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Internship',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Internship');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Internship',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Internship');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Leadership and executive coordination',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field,
+                        option: 'Leadership and executive coordination');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Leadership and executive coordination',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field,
-                      option: 'Leadership and executive coordination');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title:
+                      Text('Legal', style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Legal');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Legal', style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Legal');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Marketing',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Marketing');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title:
-                    Text('Marketing', style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Marketing');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Producing',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Producing');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title:
-                    Text('Producing', style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Producing');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Programming and technology',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field,
+                        option: 'Programming and technology');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Programming and technology',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field,
-                      option: 'Programming and technology');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Quality management and localization',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field,
+                        option: 'Quality Management and localization');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Quality management and localization',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field,
-                      option: 'Quality Management and localization');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title: Text('Sales and monetization',
+                      style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field,
+                        option: 'Sales and monetization');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-              ListTile(
-                title: Text('Sales and monetization',
-                    style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Sales and monetization');
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text('Other', style: TextStyle(color: Colors.blueGrey)),
-                onTap: () {
-                  filterOffers(Filter.field, option: 'Other');
-                  Navigator.pop(context);
-                },
+              Visibility(
+                visible: _workVisible,
+                child: ListTile(
+                  title:
+                      Text('Other', style: TextStyle(color: Colors.blueGrey)),
+                  onTap: () {
+                    filterOffers(Filter.field, option: 'Other');
+                    Navigator.pop(context);
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),

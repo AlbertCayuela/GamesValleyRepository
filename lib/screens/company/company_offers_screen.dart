@@ -34,7 +34,6 @@ class _CompanyOffersScreenState extends State<CompanyOffersScreen> {
           icon: Icon(Icons.add),
           onPressed: () {
             Navigator.pushNamed(context, '/createjoboffer').then((_) {
-              //setState(() {});
               _pullRefresh();
             });
           },
@@ -43,7 +42,6 @@ class _CompanyOffersScreenState extends State<CompanyOffersScreen> {
           future: offers,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              //print(snapshot);
               return RefreshIndicator(
                 onRefresh: _pullRefresh,
                 child: ListView.builder(

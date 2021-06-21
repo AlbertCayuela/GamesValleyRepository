@@ -15,7 +15,6 @@ class _CompanyBaseScreenState extends State<CompanyBaseScreen> {
   int _currentIndex;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     if (widget.index != null) {
       _currentIndex = widget.index;

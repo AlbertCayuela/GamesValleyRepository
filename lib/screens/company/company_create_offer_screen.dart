@@ -43,7 +43,6 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                     TextFormField(
                       controller: _titleController,
                       decoration: InputDecoration(
-                        //icon: Icon(Icons.mail),
                         labelText: 'Title (Ex.: Lead programmer)*',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
@@ -553,7 +552,6 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                     TextFormField(
                       controller: _salaryController,
                       decoration: InputDecoration(
-                        //icon: Icon(Icons.mail),
                         labelText: 'Annual salary',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
@@ -650,6 +648,7 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                         if (value.isEmpty) {
                           return 'This field must not be empty';
                         }
+                        return null;
                       },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
@@ -667,6 +666,7 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                         if (value.isEmpty) {
                           return 'The value must not be empty';
                         }
+                        return null;
                       },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
@@ -675,7 +675,6 @@ class _CreateOfferScreenState extends State<CreateOfferScreen> {
                       maxLines: null,
                       controller: _extraInformationController,
                       decoration: InputDecoration(
-                        //icon: Icon(Icons.mail),
                         labelText: 'Extra information',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),

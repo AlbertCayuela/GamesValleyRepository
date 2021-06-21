@@ -16,7 +16,6 @@ class _CompanyProfileEditState extends State<CompanyProfileEdit> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

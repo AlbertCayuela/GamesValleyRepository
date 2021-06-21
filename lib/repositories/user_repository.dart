@@ -231,8 +231,6 @@ class UserRepository {
     await reference.get().then((datasnapshot) {
       languagesMaps = datasnapshot.data();
       user.languages = languagesMaps.values.toList();
-      // print('languages:');
-      // print(user.languages);
     });
 
     return user;
@@ -306,8 +304,6 @@ class UserRepository {
     await reference.get().then((datasnapshot) {
       languagesMaps = datasnapshot.data();
       languages = languagesMaps.values.toList();
-      // print('languages:');
-      // print(user.languages);
     });
 
     return languages;

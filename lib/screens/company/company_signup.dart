@@ -3,9 +3,6 @@ import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:validators/validators.dart';
 
-//todo touch outside textfield doesnt work
-//todo forgot passsword is just a text
-//todo overflow lower screen
 class CompanySignUpScreen extends StatefulWidget {
   @override
   _CompanySignUpScreenState createState() => _CompanySignUpScreenState();

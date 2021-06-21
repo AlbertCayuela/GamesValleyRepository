@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:provider/provider.dart';
-import 'package:validators/validators.dart';
 
 class EditMainInfoScreen extends StatefulWidget {
   final UserInformation user;

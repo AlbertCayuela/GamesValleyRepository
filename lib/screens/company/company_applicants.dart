@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:games_valley/repositories/user_repository.dart';
 import 'package:games_valley/screens/company/company_cv_pdf.dart';
 import 'package:games_valley/screens/company/company_cv_profile.dart';
 import 'package:provider/provider.dart';
-import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 
 class CompanyApplicantsScreen extends StatelessWidget {
   List applicants = [];

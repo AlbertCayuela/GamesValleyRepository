@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:games_valley/screens/profile/profile.dart';
-
-import '../offers.dart';
 import 'company_offers_screen.dart';
 import 'company_profile_screen.dart';
 

@@ -245,20 +245,13 @@ class DetailedOfferScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.monetization_on_rounded,
-                                color: Colors.blueGrey,
-                                size: 17,
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                offer[7],
-                                style: TextStyle(color: Colors.blueGrey),
-                              ),
-                            ],
-                          ),
+                          offer[7] != ''
+                              ? Text(
+                                  offer[7] + ' ' + offer[13] + ' / year',
+                                  style: TextStyle(color: Colors.blueGrey),
+                                )
+                              : Text('Salary not available',
+                                  style: TextStyle(color: Colors.blueGrey)),
                           Row(
                             children: [
                               Icon(

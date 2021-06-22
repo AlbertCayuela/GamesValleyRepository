@@ -187,9 +187,9 @@ class DetailedOfferScreen extends StatelessWidget {
           icon: Icon(Icons.approval),
           label: Text('Apply'),
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
+        body: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 Container(

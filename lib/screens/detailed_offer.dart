@@ -324,29 +324,30 @@ class DetailedOfferScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 5),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: Colors.white,
+                if (offer[11] != '')
+                  Container(
+                    margin: EdgeInsets.only(top: 5),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flex(
+                          direction: Axis.horizontal,
+                        ),
+                        Text(
+                          'Extra information',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                        SizedBox(height: 5),
+                        Text(offer[11]),
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flex(
-                        direction: Axis.horizontal,
-                      ),
-                      Text(
-                        'Extra information',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      SizedBox(height: 5),
-                      Text(offer[11]),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

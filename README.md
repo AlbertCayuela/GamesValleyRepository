@@ -16,5 +16,8 @@ As a dev you also have your profile, which is going to be used basically to fulf
 
 ### Companies functionalities
 
-
+As a company, you have the main functionality of uploading offers to the database. Your offers will be shown to every user. In order to upload an offer you have to provide the next information (title, country, work field, annual salary(optional), currency of payment(optional), type of job, requirements, worker duties, extra information(optional)).
+Once you have at least an offer uploaded you can check at any time who applied to the offers you uploaded. You only need to tap on an offer and you will navigate to an applicants screen where you are going to see a list of the people that applied to your offer, when you tap on anyone, you will navigate to his/her information, which is going to be either their profile information or their own cv, depending on the way they chose to apply.
+The offers you uploaded can be deleted at any time but they cannot be edited, since people that applied have 'agreed' with you to the initial offer.
+You also have a profile, where you can edit your company description and your profile picture (which will be displayed in your offers).
 

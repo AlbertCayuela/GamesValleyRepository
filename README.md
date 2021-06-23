@@ -3,6 +3,8 @@
 GamesValley is a mobile application with the purpose of providing video games developers and future video games developers with a tool to find a job in the industry.
 This project is made by Albert Cayuela Naval, a student of the Video Games Design And Development Degree at CITM (Universitat Politècnica de Catalunya).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IChOuY6bVe8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Application funcitonalities
 In GamesValley there are two types of users, devs and companies. When you sign up, you can do it as one of these two, having therefore, the functionalities of the type you chose.
 
